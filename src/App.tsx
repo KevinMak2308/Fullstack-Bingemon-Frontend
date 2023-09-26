@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Our Frontend Typescript React Project for Bingemon - Delta Group
         </a>
       </header>
     </div>
