@@ -1,5 +1,3 @@
-'use client'
-
 import {
     Box,
     Container,
@@ -11,11 +9,6 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react'
 import { ReactNode } from 'react'
-
-var Colors = {
-    grey: "#1A1917",
-    red: "#E11818",
-};
 
 const Logo = (props: any) => {
     return (
@@ -42,7 +35,7 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
 
 export default function Footer() {
     return (
-            <Box style={{backgroundColor: Colors.grey}} py={10} >
+            <Box py={10} bg={'#1A1917'} >
                 <Flex
                     align={'center'}
                     _before={{
@@ -65,7 +58,7 @@ export default function Footer() {
                     © 2023 Bingemon. All rights reserved
                 </Text>
                 <Text pt={2} fontSize={'xs'} textAlign={'center'}>
-                    TMDB reference
+                    Bingemon uses the TMDB API but is not endorsed or certified by TMDB
                 </Text>
             </Box>
 
