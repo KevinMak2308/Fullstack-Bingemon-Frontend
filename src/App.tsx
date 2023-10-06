@@ -6,6 +6,9 @@ import NavBarLoggedIn from "./components/NavBarLoggedIn"
 import SubNav from "./components/SubNav"
 import SubNavLoggedIn from "./components/SubNavLoggedIn"
 import SignupModal from "./components/SignupModal"
+import FrontPageFirstSection from "./components/FrontPageFirstSection"
+import FrontPageSecondSection from "./components/FrontPageSecondSection"
+import FrontPageThirdSection from "./components/FrontPageThirdSection"
 
 function App() {
 
@@ -23,6 +26,9 @@ function App() {
         <div>
             <NavBar/>
             <SubNav/>
+            <FrontPageFirstSection/>
+            <FrontPageSecondSection/>
+            <FrontPageThirdSection/>
         </div>
         );
     }
