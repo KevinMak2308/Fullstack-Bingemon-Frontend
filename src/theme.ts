@@ -26,9 +26,13 @@ const theme = extendTheme({
             900: "#111",
         },
 
-        bingemon: {
-            black: "#1A1917",
-            red: "#E11818",
+        red: {
+            100: "#E11818",
+            hover: "#E42F2F",
+        },
+
+        grey: {
+            100: "#1A1917",
         }
     },
 });
