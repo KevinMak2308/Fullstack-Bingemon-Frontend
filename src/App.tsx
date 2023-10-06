@@ -4,7 +4,6 @@ import './App.css';
 import NavBar from "./components/NavBar"
 import SubNav from "./components/SubNav"
 import SignupModal from "./components/SignupModal"
-import Footer from "./components/Footer"
 
 function App() {
     return (
@@ -26,7 +25,6 @@ function App() {
                     Our Frontend Typescript React Project for Bingemon - Delta Group
                 </a>
             </header>
-            <Footer/>
         </div>
     );
 }
