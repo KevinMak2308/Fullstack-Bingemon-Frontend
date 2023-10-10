@@ -1,26 +1,36 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import NavBar from "./components/NavBar"
+import NavBarLoggedIn from "./components/NavBarLoggedIn"
+import SubNav from "./components/SubNav"
+import SubNavLoggedIn from "./components/SubNavLoggedIn"
+import SignupModal from "./components/SignupModal"
+import FrontPageFirstSection from "./components/FrontPageFirstSection"
+import FrontPageSecondSection from "./components/FrontPageSecondSection"
+import FrontPageThirdSection from "./components/FrontPageThirdSection"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Our Frontend Typescript React Project for Bingemon - Delta Group
-        </a>
-      </header>
-    </div>
-  );
-}
 
+    if (localStorage.getItem("user")) {
+        return (
+        <div className="App">
+            <NavBarLoggedIn/>
+            <SubNavLoggedIn/>
+        </div>
+        );
+    }
+
+    else {
+        return (
+        <div>
+            <NavBar/>
+            <SubNav/>
+            <FrontPageFirstSection/>
+            <FrontPageSecondSection/>
+            <FrontPageThirdSection/>
+        </div>
+        );
+    }
+}
 export default App;
