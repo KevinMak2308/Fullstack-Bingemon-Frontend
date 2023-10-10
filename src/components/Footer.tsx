@@ -3,7 +3,6 @@ import { Center, Square, Circle } from '@chakra-ui/react'
 import { Stack, HStack, VStack } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
-
 function Footer() {
 
     return (
