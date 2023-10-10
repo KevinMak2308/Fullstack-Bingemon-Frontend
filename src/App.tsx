@@ -9,6 +9,7 @@ import SignupModal from "./components/SignupModal"
 import FrontPageFirstSection from "./components/FrontPageFirstSection"
 import FrontPageSecondSection from "./components/FrontPageSecondSection"
 import FrontPageThirdSection from "./components/FrontPageThirdSection"
+import Footer from "./components/Footer"
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
             <FrontPageFirstSection/>
             <FrontPageSecondSection/>
             <FrontPageThirdSection/>
+            <Footer/>
         </div>
         );
     }
