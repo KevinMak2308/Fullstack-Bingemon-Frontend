@@ -28,7 +28,7 @@ export default function ProfileInfo() {
                 />
                 </Flex>
 
-                <Stack pt={{sm: '0', lg:'6' }}>
+                <Stack pt={{sm: '0', lg:'6' }} mx={{sm:'4', lg:'0'}}>
                     <Flex gap={6} justifyContent={{sm:'center', lg:'flex-start'}}>
                         <Heading size='xl'>NAME NAMESEN </Heading>
 
