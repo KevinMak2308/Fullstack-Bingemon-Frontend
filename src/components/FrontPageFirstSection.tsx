@@ -8,24 +8,12 @@ import { Center} from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react';
 import { Flex } from '@chakra-ui/react';
 import { SimpleGrid } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/react';
-import { useDisclosure } from '@chakra-ui/react';
-import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    FormControl,
-    FormLabel,
-    Input,
-} from '@chakra-ui/react'
+
+import Signup from "./SignupModal";
 
 
 function FrontPageFirstSection() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+
     return (
         <SimpleGrid columns={[1, null, 2]} spacing='0px' bg='#1A1917' color='#dcdbd8'>
             <GridItem>
@@ -40,61 +28,7 @@ function FrontPageFirstSection() {
                                 Look no further – welcome to the ultimate platform for matching your movie interests.
                                 Join us today and let the cinematic matchmaking begin!
                             </Text>
-                            <Button onClick={onOpen}
-                                as='button'
-                                height={{ base: "44px", md: "47px", lg: "50px" }}
-                                width={{ base: "160px", md: "180px", lg: "200px" }}
-                                lineHeight='1.2'
-                                transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                                border=''
-                                px='8px'
-                                borderRadius='10px'
-                                fontSize={{ base: "16px", md: "16px", lg: "18px" }}
-                                fontWeight='semibold'
-                                bg='#E11818'
-                                borderColor=''
-                                color='#ffffff'
-                                _hover={{ bg: '#E42F2F' }}
-                                _active={{
-                                    bg: '#E42F2F',
-                                    transform: 'scale(0.98)',
-                                    borderColor: '',
-                                }}
-                                _focus={{
-                                    boxShadow:
-                                        '0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)',
-                                }}
-                            >
-                                Sign Up Now
-                            </Button>
-
-                            <Modal isOpen={isOpen} onClose={onClose} >
-                                <ModalOverlay />
-                                <ModalContent bg={'grey.100'}>
-                                    <ModalHeader fontSize={'2xl'}>Sign up</ModalHeader>
-                                    <ModalCloseButton />
-                                    <ModalBody>
-                                        <FormControl mb={'4'} id="email" isRequired >
-                                            <FormLabel>E-mail</FormLabel>
-                                            <Input borderRadius={'sm'} placeholder="E-mail" />
-                                        </FormControl>
-                                        <FormControl mb={'4'} id="username" isRequired>
-                                            <FormLabel>Username</FormLabel>
-                                            <Input borderRadius={'sm'} placeholder="Username" />
-                                        </FormControl>
-                                        <FormControl id="password" isRequired>
-                                            <FormLabel>Password</FormLabel>
-                                            <Input borderRadius={'sm'} placeholder="Password" />
-                                        </FormControl>
-                                    </ModalBody>
-
-                                    <ModalFooter>
-                                        <Button bg={'red.100'} borderRadius={'sm'} _hover={{bg: 'red.hover'}} px={'8'}>
-                                            Sign up
-                                        </Button>
-                                    </ModalFooter>
-                                </ModalContent>
-                            </Modal>
+                            <Signup/>
                         </Box>
                     </Center>
                 </Flex>
