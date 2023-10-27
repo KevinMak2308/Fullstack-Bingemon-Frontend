@@ -33,9 +33,9 @@ export default function WithSubnavigation() {
                 minH={'60px'}
                 py={{ base: 2 }}
                 px={{ base: 4 }}
-                borderBottom={1}
+                /*borderBottom={1}
                 borderStyle={'solid'}
-                borderColor={useColorModeValue('gray.200', 'gray.900')}
+                borderColor={useColorModeValue('gray.200', 'gray.900')}*/
                 align={'center'}>
                 <Flex
                     flex={{ base: 1, md: 'auto' }}
@@ -92,7 +92,7 @@ const DesktopNav = () => {
                             </Box>
                         </PopoverTrigger>
 
-                        {navItem.children && (
+                       {/* {navItem.children && (
                             <PopoverContent
                                 border={0}
                                 boxShadow={'xl'}
@@ -106,7 +106,7 @@ const DesktopNav = () => {
                                     ))}
                                 </Stack>
                             </PopoverContent>
-                        )}
+                        )}*/}
                     </Popover>
                 </Box>
             ))}
