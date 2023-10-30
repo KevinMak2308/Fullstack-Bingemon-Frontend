@@ -74,17 +74,38 @@ export default function SubNav() {
         ];
 
     return (
-        <Box>
+        <Flex py={{ base: 2 }}
+              px={{ base: 4 }}
+              borderBottom={1}
+              borderStyle={'solid'}
+              borderColor={useColorModeValue('gray.200', 'gray.900')}
+              align={'center'}>
             {isLoggedIn ? (
                     subNavItems.map((navItem) =>
-                        <Flex flexDirection="row">
+                        <Flex
+                            as="a"
+                            p={2}
+                            href={navItem.href ?? '#'}
+                            fontSize={'sm'}
+                            fontWeight={500}
+                            color={linkColor}
+                            _hover={{
+                                textDecoration: 'none',
+                                color: linkHoverColor,
+                            }}>
                         <Popover trigger={'hover'} placement={'bottom-start'}>
                         <PopoverTrigger>
                             <Text>
                                 {navItem.label}
                             </Text>
                         </PopoverTrigger>
-                        <PopoverContent>
+                        <PopoverContent
+                            border={0}
+                            boxShadow={'xl'}
+                            bg={popoverContentBgColor}
+                            p={4}
+                            rounded={'xl'}
+                            minW={'sm'}>
                             {navItem.children && navItem.children.map((child) => (
                                 <Stack>
                                     <Link>
@@ -109,6 +130,6 @@ export default function SubNav() {
                     )
             )}
 
-        </Box>
+        </Flex>
 
         )}
