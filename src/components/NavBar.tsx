@@ -13,10 +13,11 @@ import {
     PopoverContent,
     PopoverBody,
     PopoverArrow,
-    Link,
+    Image,
+    Link as ChakraLink, LinkProps
 } from '@chakra-ui/react'
 
-
+import { Link as ReactRouterLink } from 'react-router-dom'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import Login from "./LoginModal";
 import SubNav from "./SubNav";
@@ -40,9 +41,12 @@ export default function NavBar() {
     if (localStorage.getItem("user")) {
         return (
             <div>
+
                 <Box px={4}>
                     <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                        <Box>Logo</Box>
+                        <Box>
+                            <ChakraLink as={ReactRouterLink} to="/"><img src={process.env.PUBLIC_URL + 'images/bingemon_red_side_xsm.png'}/></ChakraLink>
+                        </Box>
 
                         <Popover>
                             <PopoverTrigger>
@@ -53,19 +57,19 @@ export default function NavBar() {
                             <PopoverContent textAlign={'left'}>
                                 <PopoverArrow/>
                                 <PopoverBody>
-                                   {/* Route til profile page*/}
-                                    <Link>My profile</Link>
+                                    <ChakraLink as={ReactRouterLink} to="/profilepage">My profile</ChakraLink>
                                 </PopoverBody>
                                 <PopoverBody>
-                                    <Link>My movies & series</Link>
+                                    <ChakraLink>My movies & series</ChakraLink>
                                 </PopoverBody>
                                 <PopoverBody>
-                                    <Link>Log out</Link>
+                                    <ChakraLink>Log out</ChakraLink>
                                 </PopoverBody>
                             </PopoverContent>
                         </Popover>
                     </Flex>
                 </Box>
+
             </div>
         )
     }
@@ -73,7 +77,9 @@ export default function NavBar() {
             <div>
                 <Box px={4}>
                     <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                        <Box>Logo</Box>
+                        <Box>
+                            <ChakraLink as={ReactRouterLink} to="/"><img src={process.env.PUBLIC_URL + 'images/bingemon_red_side_xsm.png'}/></ChakraLink>
+                        </Box>
 
                         <Flex alignItems={'center'} justifyContent={'space-between'}>
                             <Stack

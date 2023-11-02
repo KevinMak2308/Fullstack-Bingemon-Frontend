@@ -13,7 +13,7 @@ function Contentbox() {
                 mb={{sm:"9px", md:"10px", lg:"11px"}}
                 _hover={{transform: "scale(1.1)", filter: "auto", blur:"2px"}}
                 transition=".2s"
-                boxSize='200px'
+                boxSize="200px"
                 borderRadius="lg"
                 src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'/>
 

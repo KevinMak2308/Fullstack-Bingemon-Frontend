@@ -14,7 +14,8 @@ import {
     useColorModeValue,
     useBreakpointValue,
     useDisclosure,
-    Link,
+    Link as ChakraLink,
+    LinkProps,
 } from '@chakra-ui/react'
 import {
     HamburgerIcon,
@@ -22,6 +23,7 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
 } from '@chakra-ui/icons'
+import { Link as ReactRouterLink } from 'react-router-dom'
 
 export default function SubNav() {
     const linkColor = useColorModeValue('gray.600', 'gray.200')
@@ -108,12 +110,12 @@ export default function SubNav() {
                             minW={'sm'}>
                             {navItem.children && navItem.children.map((child) => (
                                 <Stack>
-                                    <Link>
+                                    <ChakraLink as={ReactRouterLink} to="/discover">
                                         {child.label}
-                                    </Link>
-                                    <Link>
+                                    </ChakraLink>
+                                    <ChakraLink as={ReactRouterLink} to="/">
                                         {child.subLabel}
-                                    </Link>
+                                    </ChakraLink>
                                 </Stack>
                             ))}
                         </PopoverContent>
