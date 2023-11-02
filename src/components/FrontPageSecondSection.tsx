@@ -1,21 +1,31 @@
 import React from 'react';
 import '../App.css';
-import { Image } from '@chakra-ui/react';
-import { GridItem } from '@chakra-ui/react';
-import { Text } from '@chakra-ui/react';
-import { Heading } from '@chakra-ui/react'
-import { Center} from '@chakra-ui/react';
-import { Box } from '@chakra-ui/react';
-import { Flex } from '@chakra-ui/react';
-import { SimpleGrid } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Center,
+    Flex,
+    GridItem,
+    Heading,
+    Image,
+    SimpleGrid,
+    Text
+} from '@chakra-ui/react';
 
 function FrontPageSecondSection() {
     return (
-        <Box bg='#21201d' color='#dcdbd8'>
-            <Flex py={{ base: '75px', md: '90px', lg: '60px' }} alignContent={"center"} justifyContent={"center"}>
+        <Box
+            bg='#21201D'
+            backgroundImage='https://www.pngkit.com/png/full/276-2764925_movie-film-png-movie-reel-border.png'
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="cover"
+            color='#dcdbd8'
+        >
+            <Flex py={{ base: '80px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
                 <Center>
-                    <Box  maxW={{ base: '87%', md: '87%', lg: '70%' }}>
-                        <SimpleGrid columns={[1, null, 2]} spacing={{ base: "0px", md: "40px", lg: "40px" }} >
+                    <Box w="80vw" >
+                        <SimpleGrid display="grid" gridGap={{ base: "4", md: "6", lg: "8" }} columns={[1, null, 2]} spacing={{ base: "0px", md: "40px", lg: "40px" }} >
                                 <GridItem>
                                     <Flex w='100%' height='100%' alignContent={"center"} justifyContent={"center"}>
                                         <Center>
@@ -23,50 +33,42 @@ function FrontPageSecondSection() {
                                                 boxSize=''
                                                 textAlign='right'
                                                 height={{ base: "100%", md: "100%", lg: "75%" }}
+                                                maxH='70vh'
                                                 width={{ base: "100%", md: "100%", lg: "100%" }}
                                                 objectFit='cover'
-                                                src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'
+                                                src='https://cdn.pixabay.com/photo/2022/02/21/06/56/couple-7025924_1280.jpg'
                                                 alt='Placeholder'
                                             />
                                         </Center>
                                     </Flex>
                                 </GridItem>
                             <GridItem>
-                                <Flex pt={{ base: '15px', md: '0px', lg: '0px' }} w='100%' h='100%' alignContent={"center"} justifyContent={"center"}>
+                                <Flex w='100%' h='100%' alignContent={"center"} justifyContent={"center"}>
                                     <Center>
                                         <Box>
-                                            <Heading mt={{ base: '4', md: '0', lg: '0' }} mb={{ base: '4', md: '5', lg: '6' }} fontSize={{ base: "25px", md: "30px", lg: "35px" }}>
+                                            <Box display="grid" gridGap={{ base: "4", md: "6", lg: "8" }}>
+                                            <Heading as='h2' fontSize={{ base: "25px", md: "30px", lg: "35px" }}>
                                                 Heading 2
                                             </Heading>
-                                            <Text mb={{ base: '8', md: '9', lg: '10' }} fontSize={{ base: "16px", md: "17px", lg: "18px" }} lineHeight='1.6'>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque convallis ut nunc quis ullamcorper. Proin id ullamcorper dolor, ac aliquet ex. Vestibulum accumsan gravida elementum. Nunc dolor nibh, facilisis in nibh quis, egestas congue sem.                             </Text>
-                                            <Box
-                                                as='button'
-                                                height={{ base: "44px", md: "47px", lg: "50px" }}
-                                                width={{ base: "160px", md: "180px", lg: "200px" }}
+                                            <Text  fontSize={{ base: "16px", md: "17px", lg: "18px" }} lineHeight='1.7'>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque convallis ut nunc quis ullamcorper. Proin id ullamcorper dolor, ac aliquet ex. Vestibulum accumsan gravida elementum. Nunc dolor nibh, facilisis in nibh quis, egestas congue sem.
+                                            </Text>
+                                            </Box>
+                                            <Button
+                                                py={{base: "24px", md: "26px", lg: "25px"}}
+                                                px={{base: "28px", md: "29px", lg: "30px"}}
+                                                mt='40px'
                                                 lineHeight='1.2'
                                                 transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                                                border='2px'
-                                                px='8px'
+                                                border=''
                                                 borderRadius='10px'
-                                                fontSize={{ base: "16px", md: "16px", lg: "18px" }}
+                                                fontSize={{ base: "14px", md: "15px", lg: "16px" }}
                                                 fontWeight='semibold'
-                                                bg=''
-                                                borderColor='#E11818'
-                                                color='#ffffff'
-                                                _hover={{ bg: '#E42F2F' }}
-                                                _active={{
-                                                    bg: '#E42F2F',
-                                                    transform: 'scale(0.98)',
-                                                    borderColor: '',
-                                                }}
-                                                _focus={{
-                                                    boxShadow:
-                                                        '0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)',
-                                                }}
-                                            >
-                                                Read more
-                                            </Box>
+                                                bg='#A61212'
+                                                color='#F0F0EE'
+                                                _hover={{ bg: '#c01515' }}>
+                                                Lorem Ipsum
+                                            </Button>
                                         </Box>
                                     </Center>
                                 </Flex>

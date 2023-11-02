@@ -1,30 +1,31 @@
 import React from 'react';
 import '../App.css';
-import { Center} from '@chakra-ui/react';
-import { Box } from '@chakra-ui/react';
-import { Text } from '@chakra-ui/react';
-import { Heading } from '@chakra-ui/react'
-import { Flex } from '@chakra-ui/react';
 import {
     Accordion,
-    AccordionItem,
     AccordionButton,
-    AccordionPanel,
     AccordionIcon,
+    AccordionItem,
+    AccordionPanel,
+    Box,
+    Center,
+    Flex,
+    Heading,
+    Text
 } from '@chakra-ui/react';
+
 function FrontPageThirdSection() {
     return (
     <Box bg='#1A1917' color='#dcdbd8'>
-        <Flex py={{ base: '75px', md: '', lg: '110px' }} alignContent={"center"} justifyContent={"center"}>
+        <Flex py={{ base: '75px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
             <Center>
-                <Box maxW={{ base: '87%', md: '87%', lg: '60%' }}>
-                    <Heading mb={{ base: '4', md: '5', lg: '6' }} fontSize={{ base: "25px", md: "30px", lg: "35px" }}>
+                <Box maxW={{ base: '80vw', md: '', lg: '65vw' }} display="grid" gridGap={{ base: "4", md: "6", lg: "8" }}>
+                    <Heading as='h2' fontSize={{ base: "25px", md: "30px", lg: "35px" }}>
                         FAQ - Frequently Asked Questions
                     </Heading>
-                    <Text mb={{ base: '8', md: '9', lg: '10' }} fontSize={{ base: "16px", md: "17px", lg: "18px" }} lineHeight='1.6'>
+                    <Text  fontSize={{ base: "16px", md: "17px", lg: "18px" }} lineHeight='1.7'>
                         Here, we've compiled answers to the most common questions about our Bingemon. Whether you're looking for information on pricing, streaming or troubleshooting, you'll find it all here. If your question isn't addressed, feel free to reach out to our customer support team for personalized assistance here.
                     </Text>
-                    <Accordion allowMultiple >
+                    <Accordion allowMultiple mt={{ base: '3', md: '', lg: '3' }}>
                         <AccordionItem>
                             <h2>
                                 <AccordionButton>
@@ -41,7 +42,6 @@ function FrontPageThirdSection() {
                                 commodo consequat.
                             </AccordionPanel>
                         </AccordionItem>
-
                         <AccordionItem>
                             {({ isExpanded }) => (
                                 <>
@@ -62,7 +62,6 @@ function FrontPageThirdSection() {
                                 </>
                             )}
                         </AccordionItem>
-
                         <AccordionItem>
                             {({ isExpanded }) => (
                                 <>
@@ -83,7 +82,6 @@ function FrontPageThirdSection() {
                                 </>
                             )}
                         </AccordionItem>
-
                         <AccordionItem>
                             {({ isExpanded }) => (
                                 <>
