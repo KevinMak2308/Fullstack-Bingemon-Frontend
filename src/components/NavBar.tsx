@@ -24,24 +24,12 @@ import SubNav from "./SubNav";
 
 
 export default function NavBar() {
-    const nav = useNavigate();
     const { colorMode, toggleColorMode } = useColorMode()
-    useEffect(() => {
-        const redirectToFrontpage = async() => {
-            const user = localStorage.getItem("user")
-            if(!user) {
-                nav("/")
-            }
-        }
-        redirectToFrontpage()
-    }, [nav]);
+    const user = document.cookie.split(';').find((row) => row.startsWith('user='))?.split('=')[1];
 
-
-
-    if (localStorage.getItem("user")) {
+    if (user) {
         return (
             <div>
-
                 <Box px={4}>
                     <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                         <Box>

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React from 'react'
 
 import {
     Box,
@@ -30,15 +30,7 @@ export default function SubNav() {
     const linkHoverColor = useColorModeValue('gray.800', 'white')
     const popoverContentBgColor = useColorModeValue('white', 'gray.800')
     const { isOpen, onToggle } = useDisclosure()
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
-    useEffect(() => {
-        if(!localStorage.getItem('user')) {
-            console.log("State of the user", isLoggedIn)
-            setIsLoggedIn(true)
-        }
-    }, []);
 
     interface NavItem {
         label: string
@@ -47,7 +39,7 @@ export default function SubNav() {
         href?: string
     }
 
-    const subNavItems : Array<NavItem> = isLoggedIn ?
+    const subNavItems : Array<NavItem> =
         [
             { label:"Discover Movies",
             children: [
@@ -65,15 +57,7 @@ export default function SubNav() {
                         }
                     ]
             }
-        ]:
-        [
-            {
-                label:"Discover Movies",
-            },
-            {
-                label: "Discover Series"
-            }
-        ];
+        ]
 
     return (
         <Flex py={{ base: 2 }}
@@ -82,20 +66,20 @@ export default function SubNav() {
               borderStyle={'solid'}
               borderColor={useColorModeValue('gray.200', 'gray.900')}
               align={'center'}>
-            {isLoggedIn ? (
-                    subNavItems.map((navItem) =>
-                        <Flex
-                            as="a"
-                            p={2}
-                            href={navItem.href ?? '#'}
-                            fontSize={'sm'}
-                            fontWeight={500}
-                            color={linkColor}
-                            _hover={{
-                                textDecoration: 'none',
-                                color: linkHoverColor,
-                            }}>
-                        <Popover trigger={'hover'} placement={'bottom-start'}>
+
+            {subNavItems.map((navItem) =>
+                <Flex
+                    as="a"
+                    p={2}
+                    href={navItem.href ?? '#'}
+                    fontSize={'sm'}
+                    fontWeight={500}
+                    color={linkColor}
+                    _hover={{
+                        textDecoration: 'none',
+                        color: linkHoverColor,
+                    }} key={navItem.label}>
+                    <Popover trigger={'hover'} placement={'bottom-start'}>
                         <PopoverTrigger>
                             <Text>
                                 {navItem.label}
@@ -108,8 +92,8 @@ export default function SubNav() {
                             p={4}
                             rounded={'xl'}
                             minW={'sm'}>
-                            {navItem.children && navItem.children.map((child) => (
-                                <Stack>
+                            {navItem.children && navItem.children.map((child, index) => (
+                                <Stack key={index}>
                                     <ChakraLink as={ReactRouterLink} to="/discover">
                                         {child.label}
                                     </ChakraLink>
@@ -119,19 +103,9 @@ export default function SubNav() {
                                 </Stack>
                             ))}
                         </PopoverContent>
-                        </Popover>
-                        </Flex>
-
-                    )
-
-            ):(
-                    subNavItems.map((item) =>
-                        <Text>
-                            {item.label}
-                        </Text>
-                    )
+                    </Popover>
+                </Flex>
             )}
 
         </Flex>
-
         )}

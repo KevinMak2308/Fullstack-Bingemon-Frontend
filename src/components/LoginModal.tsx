@@ -34,20 +34,23 @@ export default function Login() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const response = await fetch('http://localhost:8080/auth/login', {
+        await fetch('http://localhost:8080/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData)
-        });
+        }).then((response) => {
+            if(!response.ok) {
+                throw Error(response.statusText)
+            }
+            return response.json()
+        }).then(data => {
+            const dataString = JSON.stringify(data.token)
+            console.log("What is in data? ", data)
+            document.cookie = `user=${encodeURIComponent(dataString)}`
 
-        if (response.ok) {
-            localStorage.setItem("user", formData.username)
-            console.log(formData, 'Login successful');
-        } else {
-            console.log(formData, 'Login unsuccessful')
-        }
+        })
     };
 
     const { isOpen, onOpen, onClose } = useDisclosure()

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 import ImageCarousel from "../components/ImageCarousel";
 import {
@@ -17,7 +17,33 @@ import {
 } from '@chakra-ui/react';
 import Signup from "./SignupModal";
 
+interface Movie {
+    original_title: string;
+    overview: string;
+}
+
 function SingleMovieFirstSection() {
+    const [movieData, setMovieData] = useState<Movie | null>(null)
+
+    useEffect(() => {
+        fetch('http://localhost:8080/movie/74')
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText)
+                }
+                return response.json()
+            })
+            .then(data => {
+                console.log("This is the fetched data", data)
+                setMovieData(data)
+            })
+    }, []);
+
+    if(movieData == null) {
+        return <div>Something went wrong... Please Refresh Page...</div>
+    }
+
+
     return (
         <SimpleGrid columns={[1, null, 2]} spacing='0px' bg='#1A1917' color='#F0F0EE'>
             <GridItem bg='blue.500'>
@@ -27,9 +53,13 @@ function SingleMovieFirstSection() {
                 <Flex py={{ base: '80px', md: '', lg: '90px' }} w='100%' minH={{ base: '55vh', md: '90vh', lg: '92.5vh' }} alignContent={"center"} justifyContent={"center"}>
                     <Center>
                         <Box display="grid" gridGap={{ base: "4", md: "6", lg: "8" }} w={{ base: "80vw", md: "40vw", lg: "40vw" }}>
-                            <Heading as='h1' fontSize={{ base: "35px", md: "40px", lg: "45px" }}>
-                                Movie Title Lorem
-                            </Heading>
+
+
+                                <Heading as='h1' fontSize={{ base: "35px", md: "40px", lg: "45px" }}>
+                                     {movieData.original_title}
+                                </Heading>
+
+
                             <Wrap spacing='7px'>
                                 <WrapItem>
                                     <Button
@@ -217,8 +247,8 @@ function SingleMovieFirstSection() {
                                     </HStack>
                                 </Flex>
                                 <Flex>
-                                    <Text fontSize={{ base: "16px", md: "17px", lg: "18px" }} lineHeight='1.7'>Lorem ipsum dolor sit amet consectetur. Duis est eu amet interdum. Scelerisque non turpis dolor tristique duis senectus massa posuere hac. Sodales amet eget pretium nisl eget. Lectus nec arcu arcu quis mi enim nullam nibh. Lorem ipsum dolor sit amet consectetur.
-                                        Duis est eu amet interdum. Scelerisque non turpis dolor tristique duis senectus massa posuere hac. Sodales amet eget pretium nisl eget.</Text>
+                                    <Text fontSize={{ base: "16px", md: "17px", lg: "18px" }} lineHeight='1.7'>
+                                        {movieData.overview}</Text>
                                 </Flex>
                             </Box>
                         </Box>
