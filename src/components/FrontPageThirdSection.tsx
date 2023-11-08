@@ -30,16 +30,13 @@ function FrontPageThirdSection() {
                             <h2>
                                 <AccordionButton>
                                     <Box as="span" flex='1' textAlign='left' my='2' fontWeight='semibold' fontSize={{ base: "16px", md: "17px", lg: "18px" }} >
-                                        Section 1 title
+                                        What is Bingemon?
                                     </Box>
                                     <AccordionIcon />
                                 </AccordionButton>
                             </h2>
                             <AccordionPanel pt={0} pb={8} fontSize={{ base: "13px", md: "14px", lg: "15px" }} lineHeight='1.7'>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                                Bingemon is an application designed for movie enthusiasts who want to discover and share movie experiences with their friends. You can swipe between movies and match them based on your friends' preferences.
                             </AccordionPanel>
                         </AccordionItem>
                         <AccordionItem>
@@ -48,16 +45,13 @@ function FrontPageThirdSection() {
                                     <h2>
                                         <AccordionButton>
                                             <Box as="span" flex='1' textAlign='left' my='2' fontWeight='semibold' fontSize={{ base: "16px", md: "17px", lg: "18px" }} >
-                                                Section 2 title
+                                                How does the swipe feature work?
                                             </Box>
                                             <AccordionIcon />
                                         </AccordionButton>
                                     </h2>
                                     <AccordionPanel pt={0} pb={8} fontSize={{ base: "13px", md: "14px", lg: "15px" }} lineHeight='1.7'>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat.
+                                        Swipe right to "like" a movie, or swipe left to "dislike" it. The app uses these preferences to generate movie recommendations for you.
                                     </AccordionPanel>
                                 </>
                             )}
@@ -68,16 +62,13 @@ function FrontPageThirdSection() {
                                     <h2>
                                         <AccordionButton>
                                             <Box as="span" flex='1' textAlign='left' my='2' fontWeight='semibold' fontSize={{ base: "16px", md: "17px", lg: "18px" }} >
-                                                Section 3 title
+                                                How do I match movies with my friends?
                                             </Box>
                                             <AccordionIcon />
                                         </AccordionButton>
                                     </h2>
                                     <AccordionPanel pt={0} pb={8} fontSize={{ base: "13px", md: "14px", lg: "15px" }} lineHeight='1.7'>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat.
+                                        Swipe through movies and use the app's swipe feature to indicate whether you like or dislike a movie. The app will analyze your likes and compare them to your friends' preferences. This allows you to plan shared movie nights.
                                     </AccordionPanel>
                                 </>
                             )}
@@ -88,16 +79,30 @@ function FrontPageThirdSection() {
                                     <h2>
                                         <AccordionButton>
                                             <Box as="span" flex='1' textAlign='left' my='2' fontWeight='semibold' fontSize={{ base: "16px", md: "17px", lg: "18px" }} >
-                                                Section 4 title
+                                                Can I match with multiple friends for the same movie?
                                             </Box>
                                             <AccordionIcon />
                                         </AccordionButton>
                                     </h2>
                                     <AccordionPanel pt={0} pb={8} fontSize={{ base: "13px", md: "14px", lg: "15px" }} lineHeight='1.7'>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat.
+                                        Yes, you can match with multiple friends for the same movie. If more than one friend likes the same movie you liked, the app will create multiple matches.
+                                    </AccordionPanel>
+                                </>
+                            )}
+                        </AccordionItem>
+                        <AccordionItem>
+                            {({ isExpanded }) => (
+                                <>
+                                    <h2>
+                                        <AccordionButton>
+                                            <Box as="span" flex='1' textAlign='left' my='2' fontWeight='semibold' fontSize={{ base: "16px", md: "17px", lg: "18px" }} >
+                                                How can I view and manage my movie matches?
+                                            </Box>
+                                            <AccordionIcon />
+                                        </AccordionButton>
+                                    </h2>
+                                    <AccordionPanel pt={0} pb={8} fontSize={{ base: "13px", md: "14px", lg: "15px" }} lineHeight='1.7'>
+                                        You can view and manage your movie matches on your profile. There, you can see the movies you've matched on with your friends and easily plan movie nights
                                     </AccordionPanel>
                                 </>
                             )}

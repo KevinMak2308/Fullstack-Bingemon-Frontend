@@ -1,28 +1,16 @@
 import React from 'react'
 
 import {
-    Box,
     Flex,
     Text,
-    IconButton,
     Stack,
-    Collapse,
-    Icon,
     Popover,
     PopoverTrigger,
     PopoverContent,
     useColorModeValue,
-    useBreakpointValue,
     useDisclosure,
     Link as ChakraLink,
-    LinkProps,
 } from '@chakra-ui/react'
-import {
-    HamburgerIcon,
-    CloseIcon,
-    ChevronDownIcon,
-    ChevronRightIcon,
-} from '@chakra-ui/icons'
 import { Link as ReactRouterLink } from 'react-router-dom'
 
 export default function SubNav() {

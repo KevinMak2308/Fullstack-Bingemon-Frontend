@@ -2,7 +2,8 @@ import { Box } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import { HStack, VStack } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
-import { Spacer } from '@chakra-ui/react'
+import { Link } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 function Footer() {
 
     return (
@@ -12,76 +13,59 @@ function Footer() {
         <HStack>
 
             <VStack color={"white"}>
-                <Box>
-                    <img src={process.env.PUBLIC_URL + 'images/bingemon_logo_transparent_red_sm.png'}/>
-                </Box>
+                <Flex justifyContent='center'>
+                    <img width='60%' src={process.env.PUBLIC_URL + 'images/bingemon_logo_transparent_red_sm.png'}/>
+                </Flex>
                 <Text fontSize={{ base: "6px", md: "10px", lg: "14px" }}>
                     Bingemon © All rights reserved.
                 </Text>
             </VStack>
 
-            <Spacer/>
+
             <Box color={"white"} ml={[4, 8, 12, 16, 20]}>
-                <Box>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
+                <Flex flexDirection='column'>
+                <Text fontSize={{ base: "12px", md: "14px", lg: "16px" }} fontWeight='semibold'>
+                    Discover movies
                 </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
+                <Link fontSize={{ base: "12px", md: "14px", lg: "16px" }}>
+                    Browse movies
+                </Link>
+                <Link fontSize={{ base: "12px", md: "14px", lg: "16px" }}>
+                    Start swiping movies
+                </Link>
+                </Flex>
+            </Box>
+
+            <Box color={"white"} ml={[4, 8, 12, 16, 20]}>
+                <Box color={"white"}>
+                    <Flex flexDirection='column'>
+                        <Text fontSize={{ base: "12px", md: "14px", lg: "16px" }} fontWeight='semibold'>
+                            Discover series
+                        </Text>
+                        <Link fontSize={{ base: "12px", md: "14px", lg: "16px" }}>
+                            Browse series
+                        </Link>
+                        <Link fontSize={{ base: "12px", md: "14px", lg: "16px" }}>
+                            Start swiping series
+                        </Link>
+                    </Flex>
                 </Box>
             </Box>
-            <Spacer/>
-            <Spacer/>
+
             <Box color={"white"} ml={[4, 8, 12, 16, 20]}>
-                <Box>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                </Box>
+                <Flex flexDirection='column'>
+                    <Text fontSize={{ base: "12px", md: "14px", lg: "16px" }} fontWeight='semibold'>
+                        Information
+                    </Text>
+                    <Link fontSize={{ base: "12px", md: "14px", lg: "16px" }}>
+                        Privacy policy
+                    </Link>
+                    <Link fontSize={{ base: "12px", md: "14px", lg: "16px" }}>
+                        Terms of use
+                    </Link>
+                </Flex>
             </Box>
-            <Spacer/>
-            <Spacer/>
-            <Box color={"white"} ml={[4, 8, 12, 16, 20]}>
-                <Box>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                <Text fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-                    Hi there, this is a test
-                </Text>
-                </Box>
-            </Box>
+
 
         </HStack>
         </VStack>

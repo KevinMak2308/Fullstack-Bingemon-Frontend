@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 import {
     Box,
@@ -13,8 +12,7 @@ import {
     PopoverContent,
     PopoverBody,
     PopoverArrow,
-    Image,
-    Link as ChakraLink, LinkProps
+    Link as ChakraLink,
 } from '@chakra-ui/react'
 
 import { Link as ReactRouterLink } from 'react-router-dom'
@@ -57,7 +55,7 @@ export default function NavBar() {
                         </Popover>
                     </Flex>
                 </Box>
-
+                <SubNav/>
             </div>
         )
     }

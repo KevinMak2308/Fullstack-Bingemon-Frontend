@@ -54,22 +54,26 @@ export default function Signup() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
-                            <Button onClick={onOpen}
-                                    as={'a'}
-                                    display={{ sm: 'inline-flex', md: 'inline-flex' }}
-                                    fontSize={'md'}
-                                    fontWeight={600}
-                                    color={'white'}
-                                    bg={'red.100'}
-                                    href={'#'}
-                                    borderRadius={'sm'}
-                                    px={'8'}
-                                    mr={'2'}
-                                    _hover={{
-                                        bg: 'red.hover',
-                                    }}>
+
+                            <Button
+                                onClick={onOpen}
+                                as={'a'}
+                                display={{ sm: 'inline-flex', md: 'inline-flex' }}
+                                py={{base: "24px", md: "26px", lg: "25px"}}
+                                px={{base: "28px", md: "29px", lg: "30px"}}
+                                lineHeight='1.2'
+                                transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                                border=''
+                                borderRadius='10px'
+                                fontSize={{ base: "14px", md: "15px", lg: "16px" }}
+                                fontWeight='semibold'
+                                bg='#A61212'
+                                color='#F0F0EE'
+                                _hover={{ bg: '#c01515' }}>
                                 Sign up
                             </Button>
+
+
 
                             <Modal isOpen={isOpen} onClose={onClose} >
                                 <ModalOverlay />
@@ -92,7 +96,13 @@ export default function Signup() {
                                         </FormControl>
                                     </ModalBody>
                                     <ModalFooter>
-                                        <Button type="submit" bg={'red.100'} borderRadius={'sm'} _hover={{bg: 'red.hover'}} px={'8'}>
+                                        <Button type="submit" fontSize={{ base: "14px", md: "15px", lg: "16px" }}
+                                                fontWeight='semibold'
+                                                bg='#A61212'
+                                                color='#F0F0EE'
+                                                borderRadius='10px'
+                                                px={'8'}
+                                                _hover={{ bg: '#c01515' }}>
                                             Sign up
                                         </Button>
                                     </ModalFooter>
