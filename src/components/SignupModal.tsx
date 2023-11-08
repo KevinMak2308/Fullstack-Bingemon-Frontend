@@ -63,7 +63,6 @@ export default function Signup() {
                                 px={{base: "28px", md: "29px", lg: "30px"}}
                                 lineHeight='1.2'
                                 transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                                border=''
                                 borderRadius='10px'
                                 fontSize={{ base: "14px", md: "15px", lg: "16px" }}
                                 fontWeight='semibold'

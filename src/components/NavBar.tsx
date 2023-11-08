@@ -27,7 +27,7 @@ export default function NavBar() {
 
     if (user) {
         return (
-            <div>
+            <Box>
                 <Box px={4}>
                     <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                         <Box>
@@ -56,12 +56,12 @@ export default function NavBar() {
                     </Flex>
                 </Box>
                 <SubNav/>
-            </div>
+            </Box>
         )
     }
         return (
-            <div>
-                <Box px={4}>
+            <Box>
+                <Box px={4} >
                     <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                         <Box>
                             <ChakraLink as={ReactRouterLink} to="/"><img src={process.env.PUBLIC_URL + 'images/bingemon_red_side_xsm.png'}/></ChakraLink>
@@ -90,7 +90,7 @@ export default function NavBar() {
                     </Flex>
                 </Box>
                 <SubNav/>
-                </div>
+                </Box>
         )
 }
 
