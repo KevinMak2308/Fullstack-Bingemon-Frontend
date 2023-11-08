@@ -60,19 +60,18 @@ export default function Login() {
             <Button onClick={onOpen}
                     as={'a'}
                     display={{ sm: 'inline-flex', md: 'inline-flex' }}
-                    fontSize={'md'}
-                    fontWeight={600}
-                    color={'white'}
-                    bg={'red.100'}
+                    fontSize={{ base: "14px", md: "15px", lg: "16px" }}
+                    fontWeight='semibold'
+                    bg='#A61212'
+                    color='#F0F0EE'
                     href={'#'}
-                    borderRadius={'sm'}
+                    borderRadius='10px'
                     px={'8'}
-                    mr={'2'}
-                    _hover={{
-                        bg: 'red.hover',
-                    }}>
+                    _hover={{ bg: '#c01515' }}>
                 Login
             </Button>
+
+
 
             <Modal isOpen={isOpen} onClose={onClose} >
                 <ModalOverlay />
@@ -94,7 +93,13 @@ export default function Login() {
                             </Stack>
                         </ModalBody>
                         <ModalFooter>
-                            <Button type="submit" bg={'red.100'} borderRadius={'sm'} _hover={{bg: 'red.hover'}} px={'8'}>
+                            <Button type="submit" fontSize={{ base: "14px", md: "15px", lg: "16px" }}
+                                    fontWeight='semibold'
+                                    bg='#A61212'
+                                    color='#F0F0EE'
+                                    borderRadius='10px'
+                                    px={'8'}
+                                    _hover={{ bg: '#c01515' }}>
                                 Login
                             </Button>
                         </ModalFooter>

@@ -48,10 +48,12 @@ function FrontPageSecondSection() {
                                         <Box>
                                             <Box display="grid" gridGap={{ base: "4", md: "6", lg: "8" }}>
                                             <Heading as='h2' fontSize={{ base: "25px", md: "30px", lg: "35px" }}>
-                                                Heading 2
+                                                Swipe, Match, Enjoy!
                                             </Heading>
                                             <Text  fontSize={{ base: "16px", md: "17px", lg: "18px" }} lineHeight='1.7'>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque convallis ut nunc quis ullamcorper. Proin id ullamcorper dolor, ac aliquet ex. Vestibulum accumsan gravida elementum. Nunc dolor nibh, facilisis in nibh quis, egestas congue sem.
+                                                With our app, you can swipe through a vast array of movies to discover the ideal film for your next enjoyable evening.
+
+                                                How does it work? It's simple. By swiping right to 'like' a movie and left to 'dislike' it, the app begins to learn your preferences. But that's not where it ends. What truly makes our app unique is the ability to match movies with your friends.
                                             </Text>
                                             </Box>
                                             <Button
@@ -67,7 +69,7 @@ function FrontPageSecondSection() {
                                                 bg='#A61212'
                                                 color='#F0F0EE'
                                                 _hover={{ bg: '#c01515' }}>
-                                                Lorem Ipsum
+                                                Start swiping now
                                             </Button>
                                         </Box>
                                     </Center>
