@@ -13,12 +13,16 @@ import {
     PopoverBody,
     PopoverArrow,
     Link as ChakraLink,
+    Input,
+    InputGroup,
+    InputLeftElement,
 } from '@chakra-ui/react'
 
 import { Link as ReactRouterLink } from 'react-router-dom'
-import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { MoonIcon, SunIcon, SearchIcon } from '@chakra-ui/icons'
 import Login from "./LoginModal";
 import SubNav from "./SubNav";
+import SearchBar from "./Searchbar"
 
 
 export default function NavBar() {
@@ -69,12 +73,22 @@ export default function NavBar() {
 
                         <Flex alignItems={'center'} justifyContent={'space-between'}>
                             <Stack
-                                flex={{md: 0}}
                                 justify={'flex-end'}
                                 direction={'row'}
                                 spacing={6}>
 
+                                <InputGroup size="md"  variant='filled' >
+                                    <InputLeftElement pointerEvents='none'>
+                                        <SearchIcon color='gray.300' />
+                                    </InputLeftElement>
+                                    <Input type='search' placeholder='Search...' focusBorderColor='#A61212' borderRadius='10px' />
+                                </InputGroup>
+
+
+
+
                                 <Login/>
+
 
                                 <Stack direction={'row'} spacing={7}>
                                     <Button onClick={toggleColorMode} borderRadius={'none'} bg={'none'} _hover={{
@@ -83,7 +97,6 @@ export default function NavBar() {
                                         {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                                     </Button>
                                 </Stack>
-
                             </Stack>
 
                         </Flex>

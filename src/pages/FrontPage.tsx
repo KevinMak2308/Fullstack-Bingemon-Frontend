@@ -14,7 +14,10 @@ function FrontPage() {
 
     return (
         <div>
-        <Box style={{ backgroundImage: `url(${hero})` }}>
+        <Box style={{ backgroundImage: `url(${hero})` }}
+             backgroundSize="cover"
+             backgroundRepeat="no-repeat"
+             backgroundPosition={{ base: 'right', md: 'center', lg: 'center' }}>
             <NavBar/>
             <FrontPageFirstSection/>
         </Box>

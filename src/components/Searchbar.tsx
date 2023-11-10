@@ -2,16 +2,9 @@ import React from 'react';
 import '../App.css';
 import {
     Box,
-    Button,
     Center,
     Flex,
-    GridItem,
-    Heading,
-    Image,
-    SimpleGrid,
-    Text,
     Input,
-    VStack
 } from '@chakra-ui/react';
 
 function Searchbar() {
