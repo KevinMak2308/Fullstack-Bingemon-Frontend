@@ -77,15 +77,12 @@ export default function NavBar() {
                                 direction={'row'}
                                 spacing={6}>
 
-                                <InputGroup size="md"  variant='filled' >
+                                <InputGroup size="md"  variant='filled' display={{base:"none", md:"block", lg:"block"}} >
                                     <InputLeftElement pointerEvents='none'>
                                         <SearchIcon color='gray.300' />
                                     </InputLeftElement>
                                     <Input type='search' placeholder='Search...' focusBorderColor='#A61212' borderRadius='10px' />
                                 </InputGroup>
-
-
-
 
                                 <Login/>
 
