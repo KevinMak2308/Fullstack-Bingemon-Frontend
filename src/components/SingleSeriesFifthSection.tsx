@@ -12,7 +12,7 @@ import {
     Text
 } from '@chakra-ui/react';
 
-function SingleSeriesFourthSection() {
+function SingleSeriesFifthSection() {
     return (
         <Box bg='#21201d' color='#dcdbd8'>
             <Flex py={{ base: '75px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
@@ -95,4 +95,4 @@ function SingleSeriesFourthSection() {
     );
 }
 
-export default SingleSeriesFourthSection;
+export default SingleSeriesFifthSection;

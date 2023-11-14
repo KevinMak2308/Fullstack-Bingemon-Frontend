@@ -15,70 +15,14 @@ import {
     Wrap,
     WrapItem
 } from '@chakra-ui/react'
+import {Movie, CastMember} from "../pages/SingleMoviePage";
 
-interface Genre {
-    id: string;
-    name: string;
+interface SingleMovieProps {
+    movie: Movie;
+    directors: CastMember[];
 }
 
-interface Company {
-    id: string;
-    name: string;
-}
-
-interface Country {
-    id: string;
-    name: string;
-}
-
-interface Language {
-    id: string;
-    english_name: string;
-    name: string;
-}
-
-
-interface Movie {
-    title: string;
-    original_title: string;
-    original_language: string;
-    genres: Genre[];
-    collection: string;
-    runtime: string;
-    release_date: string;
-    belongs_to_collection: string;
-    status: string;
-    budget: string;
-    revenue: string;
-    production_companies: Company[];
-    production_countries: Country[];
-    spoken_languages: Language[];
-
-}
-
-
-function SingleMovieFifthSection() {
-
-    const [movieData, setMovieData] = useState<Movie | null>(null)
-
-    useEffect(() => {
-        fetch('http://localhost:8080/movie/74')
-            .then((response) => {
-                if (!response.ok) {
-                    throw Error(response.statusText)
-                }
-                return response.json()
-            })
-            .then(data => {
-                console.log("This is the fetched data", data)
-                setMovieData(data)
-            })
-    }, []);
-
-    if(movieData == null) {
-        return <div>Something went wrong... Please refresh the page</div>
-    }
-
+function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
     return (
         <Box bg='#1A1917' color='#F0F0EE'>
             <Flex py={{ base: '75px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
@@ -94,58 +38,58 @@ function SingleMovieFifthSection() {
                                         <Tbody>
                                             <Tr>
                                                 <Td fontWeight='500'>Original Title</Td>
-                                                <Td textAlign='right'>{movieData.original_title}</Td>
+                                                <Td textAlign='right'>{movie.original_title}</Td>
                                             </Tr>
-                                            <Tr>
-                                                <Td fontWeight='500'>Original Language</Td>
-                                                <Td textAlign='right'>{movieData.original_language.charAt(0).toUpperCase() + movieData.original_language.slice(1)}</Td>
-                                            </Tr>
-
                                             <Tr w='100%'>
                                                 <Td fontWeight='500'>Spoken Language(s)</Td>
                                                 <Td w='full'>
                                                     <Wrap w='full' justify='end' spacing='7px' lineHeight="1.7">
-                                                        {movieData.spoken_languages.map((language, i) => (
-                                                            <WrapItem width='fit-content' key={language.name}>
-                                                                <span>{language.name}</span>
-                                                                {movieData.spoken_languages.length > 1 && i < movieData.spoken_languages.length - 1 ? <span>,</span> : null}
-                                                            </WrapItem>
-                                                        ))}
+                                                        {movie.spoken_languages && movie.spoken_languages.length > 0 ? (
+                                                            <>
+                                                                {movie.spoken_languages.map((language) => (
+                                                                    <WrapItem width='fit-content'>
+                                                                        <span>{language.name}</span>
+                                                                    </WrapItem>
+                                                                ))}
+                                                            </>
+                                                        ) : (
+                                                            <span>No spoken languages available</span>
+                                                        )}
                                                     </Wrap>
                                                 </Td>
                                             </Tr>
-
                                             <Tr w='100%'>
                                                 <Td fontWeight='500'>Genre(s)</Td>
                                                 <Td w='full'>
                                                     <Wrap w='full' justify='end' spacing='7px' lineHeight="1.7">
-                                                        {movieData.genres.map((genre, i) => (
+                                                        {movie.genres.map((genre, i) => (
                                                             <WrapItem width='fit-content' key={genre.name}>
                                                                 <span>{genre.name}</span>
-                                                                {movieData.genres.length > 1 && i < movieData.genres.length - 1 ? <span>,</span> : null}
+                                                                {movie.genres.length > 1 && i < movie.genres.length - 1 ? <span>,</span> : null}
                                                             </WrapItem>
                                                         ))}
                                                     </Wrap>
                                                 </Td>
                                             </Tr>
-
-                                            <Tr>
-                                                <Td fontWeight='500'>Belongs to Collection</Td>
-                                                <Td textAlign='right'>{movieData.belongs_to_collection}</Td>
-                                            </Tr>
-
+                                            {movie.belongs_to_collection ?
+                                                <Tr>
+                                                    <Td fontWeight='500'>Belongs to Collection</Td>
+                                                    <Td textAlign='right'>{movie.belongs_to_collection.name}</Td>
+                                                </Tr>
+                                                :
+                                                null
+                                            }
                                             <Tr>
                                                 <Td fontWeight='500'>Release Date</Td>
-                                                <Td textAlign='right'>{movieData.release_date}</Td>
+                                                <Td textAlign='right'>{movie.release_date}</Td>
                                             </Tr>
-
                                             <Tr>
                                                 <Td fontWeight='500'>Runtime</Td>
-                                                <Td textAlign='right'>{movieData.runtime} minutes</Td>
+                                                <Td textAlign='right'>{movie.runtime} minutes</Td>
                                             </Tr>
                                             <Tr>
                                                 <Td fontWeight='500'>Status</Td>
-                                                <Td textAlign='right'>{movieData.status}</Td>
+                                                <Td textAlign='right'>{movie.status}</Td>
                                             </Tr>
                                         </Tbody>
                                     </Table>
@@ -157,95 +101,59 @@ function SingleMovieFifthSection() {
                                         <Tbody>
                                             <Tr>
                                                 <Td fontWeight='500'>Budget</Td>
-                                                <Td textAlign='right'>{new Intl.NumberFormat('en-US').format(parseFloat(movieData.budget))} $</Td>
+                                                <Td textAlign='right'>{new Intl.NumberFormat('en-US').format(parseFloat(movie.budget.toString()))} $</Td>
                                             </Tr>
                                             <Tr>
                                                 <Td fontWeight='500'>Revenue</Td>
-                                                <Td textAlign='right'>{new Intl.NumberFormat('en-US').format(parseFloat(movieData.revenue))} $</Td>
+                                                <Td textAlign='right'>{new Intl.NumberFormat('en-US').format(parseFloat(movie.revenue.toString()))} $</Td>
                                             </Tr>
-
                                             <Tr w='100%'>
                                                 <Td fontWeight='500'>Production Companies</Td>
                                                 <Td w='full'>
                                                     <Wrap w='full' justify='end' spacing='7px' lineHeight="1.7" >
-                                                        {movieData.production_companies.map((company, i) => (
-                                                            <WrapItem width='fit-content' key={company.name}>
-                                                                <span>{company.name}</span>
-                                                                {movieData.production_companies.length > 1 && i < movieData.production_companies.length - 1 ? <span>,</span> : null}
-                                                            </WrapItem>
-                                                        ))}
+                                                        {movie.production_companies && movie.production_companies.length > 0 ? (
+                                                            <>
+                                                                {movie.production_companies.map((company, i) => (
+                                                                    <WrapItem width='fit-content' key={company.id}>
+                                                                        <span>{company.name}</span>
+                                                                        {movie.production_companies.length > 1 && i < movie.production_companies.length - 1 ? <span>,</span> : null}
+                                                                    </WrapItem>
+                                                                ))}
+                                                            </>
+                                                        ) : null
+                                                        }
                                                     </Wrap>
                                                 </Td>
                                             </Tr>
-
                                             <Tr w='100%'>
                                                 <Td fontWeight='500'>Production Countries</Td>
                                                 <Td w='full'>
                                                     <Wrap w='full' justify='end' spacing='7px' lineHeight="1.7" >
-                                                        {movieData.production_countries.map((country, i) => (
-                                                            <WrapItem width='fit-content' key={country.name}>
-                                                                <span>{country.name}</span>
-                                                                {movieData.production_countries.length > 1 && i < movieData.production_countries.length - 1 ? <span>,</span> : null}
-                                                            </WrapItem>
-                                                        ))}
+                                                        {movie.production_countries && movie.production_countries.length > 0 ? (
+                                                            <>
+                                                                {movie.production_countries.map((country, i) => (
+                                                                    <WrapItem width='fit-content' key={country.iso_3166_1}>
+                                                                        <span>{country.name}</span>
+                                                                        {movie.production_countries.length > 1 && i < movie.production_countries.length - 1 ? <span>,</span> : null}
+                                                                    </WrapItem>
+                                                                ))}
+                                                            </>
+                                                        ) : null
+                                                        }
                                                     </Wrap>
                                                 </Td>
                                             </Tr>
-                                            
                                             <Tr>
                                                 <Td fontWeight='500'>Director(s)</Td>
                                                 <Td>
-                                                    <Flex>
-                                                        <Wrap justify='end' width='fit-content' spacing='7px' lineHeight="1.7" >
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
+                                                    <Wrap justify='flex-end' align='center' spacing='7px' lineHeight="1.7">
+                                                        {directors.map((director, i) => (
+                                                            <WrapItem key={director.id}>
+                                                                <span>{director.name}</span>
+                                                                {directors.length > 1 && i < directors.length - 1 ? <span>,</span> : null}
                                                             </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                            </WrapItem>
-                                                        </Wrap>
-                                                    </Flex>
-                                                </Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td fontWeight='500'>Writer(s)</Td>
-                                                <Td>
-                                                    <Flex>
-                                                        <Wrap justify='end' width='fit-content' spacing='7px' lineHeight="1.7" >
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                            </WrapItem>
-                                                        </Wrap>
-                                                    </Flex>
+                                                        ))}
+                                                    </Wrap>
                                                 </Td>
                                             </Tr>
                                         </Tbody>

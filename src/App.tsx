@@ -15,8 +15,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<FrontPage/>}/>
                 <Route path="/profilepage" element={<ProfilePage/>}/>
-                <Route path="/singlemoviepage" element={<SingleMoviePage/>}/>
-                <Route path="/singleseriespage" element={<SingleSeriesPage/>}/>
+                <Route path="/singlemoviepage/:id" element={<SingleMoviePage/>}/>
+                <Route path="/singleseriespage/:id" element={<SingleSeriesPage/>}/>
                 <Route path="/discover" element={<Discover/>}/>
             </Routes>
         </BrowserRouter>
