@@ -14,7 +14,7 @@ function Footer() {
 
             <VStack color={"white"}>
                 <Flex justifyContent='center' placeItems={{base:"center", md:"normal", lg:"normal"}} maxW="60%">
-                    <img src={process.env.PUBLIC_URL + 'images/bingemon_logo_transparent_red_sm.png'}/>
+                    <img src='http://localhost:3000/images/bingemon_logo_transparent_red_sm.png'/>
                 </Flex>
                 <Text fontSize={{ base: "12px", md: "12px", lg: "14px" }}>
                     Bingemon © All rights reserved.
@@ -72,7 +72,7 @@ function Footer() {
             flexDirection="column"
             mt="30px"
         >
-            <Image  maxW="125px"  src={process.env.PUBLIC_URL + 'images/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg'}/>
+            <Image  maxW="125px"  src='http://localhost:3000/images/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg'/>
             <Text mt="10px" fontSize={{ base: "12px", md: "12px", lg: "12px" }}>This product uses the TMDB API but is not endorsed or certified by TMDB.</Text>
         </Flex>
     </Box>

@@ -1,7 +1,24 @@
 import React, { useState } from "react";
 import { Box, Flex, HStack, Image, Text } from "@chakra-ui/react";
 
-export default function ImageCarousel(){
+export interface ApiImage {
+    aspect_ratio: number;
+    height: number;
+    iso_639_1: string;
+    file_path: string;
+    vote_average: number;
+    vote_count: number;
+    width: number;
+}
+
+interface Slides {
+    images: ApiImage[];
+}
+
+export default function ImageCarousel({ images }: Slides) {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const slidesCount = images.length;
+
     const arrowStyles = {
         cursor: "pointer",
         pos: "absolute",
@@ -21,28 +38,6 @@ export default function ImageCarousel(){
         },
     } as const;
 
-    const slides = [
-        {
-            img: "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=2973&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        },
-        {
-            img: "https://images.unsplash.com/photo-1623179007436-1d366e78ba68?auto=format&fit=crop&q=80&w=2874&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        },
-        {
-            img: "https://images.unsplash.com/photo-1580712941584-760d19f1c187?auto=format&fit=crop&q=80&w=3132&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        },
-        {
-            img: "https://images.unsplash.com/photo-1585647347384-2593bc35786b?auto=format&fit=crop&q=80&w=2970&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        },
-        {
-            img: "https://images.unsplash.com/photo-1578849278619-e73505e9610f?auto=format&fit=crop&q=80&w=3024&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        },
-    ];
-
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const slidesCount = slides.length;
-
     const prevSlide = () => {
         setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
     };
@@ -60,8 +55,8 @@ export default function ImageCarousel(){
     return (
         <Flex>
             <Flex overflow="hidden" pos="relative">
-                    <Flex w='100%'  h={{ base: '45vh', md: '90vh', lg: '92.5vh' }} {...carouselStyle}>
-                    {slides.map((slide, sid) => (
+                <Flex w='100%'  h={{ base: '45vh', md: '90vh', lg: '92.5vh' }} {...carouselStyle}>
+                    {images.map((slide, sid) => (
                         <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none">
                             <Text
                                 color="white"
@@ -73,7 +68,7 @@ export default function ImageCarousel(){
                                 {sid + 1} / {slidesCount}
                             </Text>
                             <Image
-                                src={slide.img}
+                                src={slide.file_path}
                                 alt="carousel image"
                                 boxSize="full"
                                 width='100%'

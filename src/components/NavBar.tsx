@@ -28,14 +28,13 @@ import SearchBar from "./Searchbar"
 export default function NavBar() {
     const { colorMode, toggleColorMode } = useColorMode()
     const user = document.cookie.split(';').find((row) => row.startsWith('user='))?.split('=')[1];
-
     if (user) {
         return (
             <Box>
                 <Box px={4}>
                     <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                         <Box>
-                            <ChakraLink as={ReactRouterLink} to="/"><img src={process.env.PUBLIC_URL + 'images/bingemon_red_side_xsm.png'}/></ChakraLink>
+                            <ChakraLink as={ReactRouterLink} to="/"><img src={'http://localhost:3000/images/bingemon_red_side_xsm.png'}/></ChakraLink>
                         </Box>
 
                         <Popover>
@@ -68,7 +67,7 @@ export default function NavBar() {
                 <Box px={4} >
                     <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                         <Box>
-                            <ChakraLink as={ReactRouterLink} to="/"><img src={process.env.PUBLIC_URL + 'images/bingemon_red_side_xsm.png'}/></ChakraLink>
+                            <ChakraLink as={ReactRouterLink} to="/"><img src={'http://localhost:3000/images/bingemon_red_side_xsm.png'}/></ChakraLink>
                         </Box>
 
                         <Flex alignItems={'center'} justifyContent={'space-between'}>
@@ -100,7 +99,7 @@ export default function NavBar() {
                     </Flex>
                 </Box>
                 <SubNav/>
-                </Box>
+            </Box>
         )
 }
 
