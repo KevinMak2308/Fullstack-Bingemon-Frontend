@@ -15,7 +15,6 @@ import {
     Wrap,
     WrapItem
 } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
 
 
 interface SingleSeriesFirstSectionProps {

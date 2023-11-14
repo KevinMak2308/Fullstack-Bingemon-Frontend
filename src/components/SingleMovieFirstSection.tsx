@@ -13,7 +13,6 @@ import {
     Wrap,
     WrapItem
 } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
 import ImageCarousel, {ApiImage} from "../components/ImageCarousel";
 import {Movie} from "../pages/SingleMoviePage";
 
