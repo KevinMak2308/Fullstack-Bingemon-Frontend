@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import '../App.css';
 import {
     Box,
@@ -144,7 +144,11 @@ function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
                                                 </Td>
                                             </Tr>
                                             <Tr>
-                                                <Td fontWeight='500'>Director(s)</Td>
+                                                {directors.length === 1 ? (
+                                                        <Td fontWeight='500'>Director</Td>)
+                                                    :
+                                                    <Td fontWeight='500'>Directors</Td>
+                                                }
                                                 <Td>
                                                     <Wrap justify='flex-end' align='center' spacing='7px' lineHeight="1.7">
                                                         {directors.map((director, i) => (
