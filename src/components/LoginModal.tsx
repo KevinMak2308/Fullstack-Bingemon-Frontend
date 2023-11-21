@@ -18,10 +18,8 @@ import {
 
 export default function Login() {
 
-    const [formData, setFormData] = useState({
-        username: '',
-        password: ''
-    });
+    const [formData, setFormData] = useState({ username: '', password: ''});
+    const [token, setToken] = useState(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
@@ -38,6 +36,7 @@ export default function Login() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(formData)
         }).then((response) => {
@@ -46,9 +45,9 @@ export default function Login() {
             }
             return response.json()
         }).then(data => {
-            const dataString = JSON.stringify(data.token)
+            setToken(data.token)
             console.log("What is in data? ", data)
-            document.cookie = `user=${encodeURIComponent(dataString)}`
+            document.cookie = `user=${token}`
 
         })
     };
