@@ -33,33 +33,69 @@ interface Country {
     name: string;
 }
 
+export interface CastMember {
+    id: number;
+    name: string;
+    profile_path: string;
+}
+
+export interface Cast {
+    actors: CastMember[];
+}
+
+export interface Trailer {
+    key: string;
+}
+
+export interface Season {
+    id: number;
+    name: string;
+    poster_path: string;
+}
+
+export interface SeasonList {
+    seasons: Season[];
+}
+
 export interface Series {
     name: string;
-    original_title: string;
+    original_name: string;
     genres: Genre[];
     tagline: string;
     first_air_date: string;
     spoken_languages: Language[];
+    production_companies: Company[];
+    production_countries: Country[];
     vote_average: string;
     overview: string;
+    status: string;
+    created_by: CastMember[];
 }
 
 function SingleSeriesPage() {
     const { id } = useParams();
-
     const [seriesData, setSeriesData] = useState<Series | null>(null);
+    const [castData, setCastData] = useState<CastMember[]>([]);
     const [imageData, setImageData] = useState<ApiImage[]>([]);
+    const [trailerData, setTrailerData] = useState<Trailer | null>(null);
+    const [seasonsData, setSeasonsData] = useState<Season[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [seriesResult, imagesResult] = await Promise.all([
+                const [seriesResult, castResult, imagesResult, trailerResult, seasonsResult] = await Promise.all([
                     fetch(`http://localhost:8080/series/${id}`).then(res => res.json()),
+                    fetch(`http://localhost:8080/series/${id}/cast`).then(res => res.json()),
                     fetch(`http://localhost:8080/series/${id}/backdrops`).then(res => res.json()),
+                    fetch(`http://localhost:8080/series/${id}/trailer`).then(res => res.json()),
+                    fetch(`http://localhost:8080/series/${id}/seasons`).then(res => res.json()),
                 ]);
                 setSeriesData(seriesResult);
+                setCastData(castResult);
                 setImageData(imagesResult);
+                setTrailerData(trailerResult);
+                setSeasonsData(seasonsResult);
                 setIsLoading(false);
             } catch (error) {
                 console.error("Error fetching data", error);
@@ -76,16 +112,17 @@ function SingleSeriesPage() {
         }
         return <div>Something went wrong... Please refresh the page</div>;
     }
-    
+    console.log(trailerData);
     return (
         <div>
             <NavBar/>
             <SingleSeriesFirstSection series={seriesData} images={imageData} />
-            <SingleSeriesSecondSection/>
-            <SingleSeriesThirdSection/>
-            <SingleSeriesFourthSection/>
+            <SingleSeriesSecondSection actors={castData} />
+            {/*{!trailerData?.key || !trailerData ? (null) : <SingleSeriesThirdSection series={seriesData} trailer={trailerData} />}*/}
+            <SingleSeriesThirdSection series={seriesData} trailer={trailerData} />
+            <SingleSeriesFourthSection seasons={seasonsData}/>
             <SingleSeriesFifthSection/>
-            <SingleSeriesSixthSection/>
+            <SingleSeriesSixthSection series={seriesData} />
             <Footer/>
         </div>
 

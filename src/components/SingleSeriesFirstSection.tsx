@@ -22,8 +22,6 @@ interface SingleSeriesFirstSectionProps {
     images: ApiImage[];
 }
 
-
-
 function SingleSeriesFirstSection({ series, images }: SingleSeriesFirstSectionProps) {
     return (
         <SimpleGrid columns={[1, null, 2]} spacing='0px' bg='#1A1917' color='#F0F0EE'>
@@ -34,11 +32,9 @@ function SingleSeriesFirstSection({ series, images }: SingleSeriesFirstSectionPr
                 <Flex py={{ base: '80px', md: '', lg: '90px' }} w='100%' minH={{ base: '55vh', md: '90vh', lg: '92.5vh' }} alignContent={"center"} justifyContent={"center"}>
                     <Center>
                         <Box display="grid" gridGap={{ base: "4", md: "6", lg: "8" }} w={{ base: "80vw", md: "40vw", lg: "40vw" }}>
-
                             <Heading as='h1' fontSize={{ base: "35px", md: "40px", lg: "45px" }}>
                                 {series.name}
                             </Heading>
-
                             <Wrap spacing='7px'>
                                 {series.genres.map((genre) => (
                                     <WrapItem key={genre.id}>

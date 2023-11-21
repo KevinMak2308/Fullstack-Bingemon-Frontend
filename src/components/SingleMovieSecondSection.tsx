@@ -32,24 +32,23 @@ function SingleMovieSecondSection({ actors }: Cast) {
                         <Heading as='h2' fontSize={{ base: "25px", md: "30px", lg: "35px" }}>
                             Stars
                         </Heading>
-                        <SimpleGrid columns={[3, null, 6]} gap={6} fontWeight='400' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
+                        <SimpleGrid columns={[3, null, 6]} gap={6} minWidth="100px" fontWeight='400' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
                             {showFullCast ? (
-                                actors.map((actor) => (
+                                actors.slice(0, 24).map((actor) => (
                                     <GridItem w='100%' display="grid" gridGap="2" key={actor.id}>
-                                        <Image src={actor.profile_path} fallbackSrc={'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} />
+                                        <Image src={actor.profile_path} fallbackSrc={'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} borderRadius="7px" />
                                         <Text fontSize={{ base: "15px", md: "17px", lg: "19px" }} fontWeight="600" textAlign="center">{actor.name}</Text>
                                     </GridItem>
                                 ))
                             ) : (
                                 actors.slice(0, 6).map((actor) => (
                                     <GridItem w='100%' display="grid" gridGap="2" key={actor.id}>
-                                        <Image src={actor.profile_path} fallbackSrc={'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} />
+                                        <Image src={actor.profile_path} fallbackSrc={'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} borderRadius="7px" />
                                         <Text fontSize={{ base: "15px", md: "17px", lg: "19px" }} fontWeight="600" textAlign="center">{actor.name}</Text>
                                     </GridItem>
                                 ))
                             )}
                         </SimpleGrid>
-
                         <Flex alignContent={"center"} justifyContent={"center"}>
                             <Button
                                 py={{ base: "24px", md: "26px", lg: "25px" }}
@@ -66,7 +65,7 @@ function SingleMovieSecondSection({ actors }: Cast) {
                                 _hover={{ bg: '#c01515' }}
                                 onClick={handleShowLessClick}
                             >
-                                {showFullCast ? 'Show less' : 'View full cast and crew'}
+                                {showFullCast ? 'Show less' : 'Show more'}
                             </Button>
                         </Flex>
                     </Box>

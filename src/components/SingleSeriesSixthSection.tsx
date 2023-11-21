@@ -16,7 +16,13 @@ import {
     WrapItem
 } from '@chakra-ui/react';
 
-function SingleSeriesFifthSection() {
+import {Series, CastMember} from "../pages/SingleSeriesPage";
+
+interface SingleSeriesProps {
+    series: Series;
+}
+
+function SingleSeriesSixthSection({ series }: SingleSeriesProps) {
     return (
         <Box bg='#1A1917' color='#F0F0EE'>
             <Flex py={{ base: '75px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
@@ -32,79 +38,46 @@ function SingleSeriesFifthSection() {
                                         <Tbody>
                                             <Tr>
                                                 <Td fontWeight='500'>Original Title</Td>
-                                                <Td textAlign='right'>Lorem ipsum</Td>
+                                                <Td textAlign='right'>{series.original_name}</Td>
                                             </Tr>
-                                            <Tr>
-                                                <Td fontWeight='500'>Original Language</Td>
-                                                <Td textAlign='right'>Lorem ipsum</Td>
-                                            </Tr>
-                                            <Tr>
+                                            <Tr w='100%'>
                                                 <Td fontWeight='500'>Spoken Language(s)</Td>
-                                                <Td>
-                                                    <Flex>
-                                                        <Wrap justify='end' width='fit-content' spacing='7px' lineHeight="1.7" >
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                            </WrapItem>
-                                                        </Wrap>
-                                                    </Flex>
+                                                <Td w='full'>
+                                                    <Wrap w='full' justify='end' spacing='7px' lineHeight="1.7">
+                                                        {series.spoken_languages && series.spoken_languages.length > 0 ? (
+                                                            <>
+                                                                {series.spoken_languages.map((language) => (
+                                                                    <WrapItem width='fit-content'>
+                                                                        <span>{language.name}</span>
+                                                                    </WrapItem>
+                                                                ))}
+                                                            </>
+                                                        ) : (
+                                                            <span>No spoken languages available</span>
+                                                        )}
+                                                    </Wrap>
                                                 </Td>
                                             </Tr>
-                                            <Tr>
+                                            <Tr w='100%'>
                                                 <Td fontWeight='500'>Genre(s)</Td>
-                                                <Td>
-                                                    <Flex >
-                                                        <Wrap justify='end' width='fit-content' spacing='7px' lineHeight="1.7" >
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
+                                                <Td w='full'>
+                                                    <Wrap w='full' justify='end' spacing='7px' lineHeight="1.7">
+                                                        {series.genres.map((genre, i) => (
+                                                            <WrapItem width='fit-content' key={genre.name}>
+                                                                <span>{genre.name}</span>
+                                                                {series.genres.length > 1 && i < series.genres.length - 1 ? <span>,</span> : null}
                                                             </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                            </WrapItem>
-                                                        </Wrap>
-                                                    </Flex>
+                                                        ))}
+                                                    </Wrap>
                                                 </Td>
                                             </Tr>
                                             <Tr>
-                                                <Td fontWeight='500'>Belonging Collection</Td>
-                                                <Td textAlign='right'>Lorem ipsum</Td>
+                                                <Td fontWeight='500'>First aired</Td>
+                                                <Td textAlign='right'>{series.first_air_date}</Td>
                                             </Tr>
                                             <Tr>
-                                                <Td fontWeight='500'>Release Date</Td>
-                                                <Td textAlign='right'>Lorem ipsum</Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td fontWeight='500'>Runtime</Td>
-                                                <Td textAlign='right'>Lorem ipsum</Td>
+                                                <Td fontWeight='500'>Status</Td>
+                                                <Td textAlign='right'>{series.status}</Td>
                                             </Tr>
                                         </Tbody>
                                     </Table>
@@ -114,128 +87,57 @@ function SingleSeriesFifthSection() {
                                 <TableContainer>
                                     <Table variant='simple'>
                                         <Tbody>
-                                            <Tr>
-                                                <Td fontWeight='500'>Status</Td>
-                                                <Td textAlign='right'>Lorem ipsum</Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td fontWeight='500'>Budget</Td>
-                                                <Td textAlign='right'>Lorem ipsum</Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td fontWeight='500'>Revenue</Td>
-                                                <Td textAlign='right'>Lorem ipsum</Td>
-                                            </Tr>
-                                            <Tr>
+                                            <Tr w='100%'>
                                                 <Td fontWeight='500'>Production Companies</Td>
-                                                <Td>
-                                                    <Flex>
-                                                        <Wrap justify='end' width='fit-content' spacing='7px' lineHeight="1.7" >
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                            </WrapItem>
-                                                        </Wrap>
-                                                    </Flex>
+                                                <Td w='full'>
+                                                    <Wrap w='full' justify='end' spacing='7px' lineHeight="1.7" >
+                                                        {series.production_companies && series.production_companies.length > 0 ? (
+                                                            <>
+                                                                {series.production_companies.map((company, i) => (
+                                                                    <WrapItem width='fit-content' key={company.id}>
+                                                                        <span>{company.name}</span>
+                                                                        {series.production_companies.length > 1 && i < series.production_companies.length - 1 ? <span>,</span> : null}
+                                                                    </WrapItem>
+                                                                ))}
+                                                            </>
+                                                        ) : null
+                                                        }
+                                                    </Wrap>
+                                                </Td>
+                                            </Tr>
+                                            <Tr w='100%'>
+                                                <Td fontWeight='500'>Production Countries</Td>
+                                                <Td w='full'>
+                                                    <Wrap w='full' justify='end' spacing='7px' lineHeight="1.7" >
+                                                        {series.production_countries && series.production_countries.length > 0 ? (
+                                                            <>
+                                                                {series.production_countries.map((country, i) => (
+                                                                    <WrapItem width='fit-content' key={country.iso_3166_1}>
+                                                                        <span>{country.name}</span>
+                                                                        {series.production_countries.length > 1 && i < series.production_countries.length - 1 ? <span>,</span> : null}
+                                                                    </WrapItem>
+                                                                ))}
+                                                            </>
+                                                        ) : null
+                                                        }
+                                                    </Wrap>
                                                 </Td>
                                             </Tr>
                                             <Tr>
-                                                <Td fontWeight='500'>Production Contries</Td>
-                                                <Td>
-                                                    <Flex>
-                                                        <Wrap justify='end' width='fit-content' spacing='7px' lineHeight="1.7" >
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
+                                                {series.created_by.length === 1 ? (
+                                                    <Td fontWeight='500'>Creator</Td>)
+                                                    :
+                                                    <Td fontWeight='500'>Creators</Td>
+                                                }
+                                                    <Td>
+                                                    <Wrap justify='flex-end' align='center' spacing='7px' lineHeight="1.7">
+                                                        {series.created_by.map((creator, i) => (
+                                                            <WrapItem key={creator.id}>
+                                                                <span>{creator.name}</span>
+                                                                {series.created_by.length > 1 && i < series.created_by.length - 1 ? <span>,</span> : null}
                                                             </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                            </WrapItem>
-                                                        </Wrap>
-                                                    </Flex>
-                                                </Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td fontWeight='500'>Director(s)</Td>
-                                                <Td>
-                                                    <Flex>
-                                                        <Wrap justify='end' width='fit-content' spacing='7px' lineHeight="1.7" >
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                            </WrapItem>
-                                                        </Wrap>
-                                                    </Flex>
-                                                </Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td fontWeight='500'>Writer(s)</Td>
-                                                <Td>
-                                                    <Flex>
-                                                        <Wrap justify='end' width='fit-content' spacing='7px' lineHeight="1.7" >
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                                <span>,</span>
-                                                            </WrapItem>
-                                                            <WrapItem>
-                                                                <span>Lorem ipsum</span>
-                                                            </WrapItem>
-                                                        </Wrap>
-                                                    </Flex>
+                                                        ))}
+                                                    </Wrap>
                                                 </Td>
                                             </Tr>
                                         </Tbody>
@@ -250,4 +152,4 @@ function SingleSeriesFifthSection() {
     );
 }
 
-export default SingleSeriesFifthSection;
+export default SingleSeriesSixthSection;
