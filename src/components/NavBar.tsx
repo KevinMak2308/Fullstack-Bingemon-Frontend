@@ -20,14 +20,16 @@ import {
 
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { MoonIcon, SunIcon, SearchIcon } from '@chakra-ui/icons'
-import Login from "./LoginModal";
+import Login from "./authentication/LoginModal";
 import SubNav from "./SubNav";
+import Logout from "./authentication/Logout";
 import SearchBar from "./Searchbar"
 
 
 export default function NavBar() {
     const { colorMode, toggleColorMode } = useColorMode()
     const user = document.cookie.split(';').find((row) => row.startsWith('user='))?.split('=')[1];
+
     if (user) {
         return (
             <Box>
@@ -52,7 +54,7 @@ export default function NavBar() {
                                     <ChakraLink>My movies & series</ChakraLink>
                                 </PopoverBody>
                                 <PopoverBody>
-                                    <ChakraLink>Log out</ChakraLink>
+                                    <button onClick={() => Logout()}>Logout</button>
                                 </PopoverBody>
                             </PopoverContent>
                         </Popover>

@@ -14,10 +14,22 @@ import {
     FormLabel,
     Input,
 } from '@chakra-ui/react'
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
+interface signupProps {
+    openModal: boolean,
 
-export default function Signup() {
+}
+
+export default function Signup({openModal}: signupProps) {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    useEffect(() => {
+        if(openModal) {
+            onOpen()
+        }
+    }, [openModal])
+
 
         const [formData, setFormData] = useState({
             email: '',
@@ -51,10 +63,10 @@ export default function Signup() {
             }
         };
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
+
+
     return (
         <>
-
                             <Button
                                 onClick={onOpen}
                                 as={'a'}
@@ -71,8 +83,6 @@ export default function Signup() {
                                 _hover={{ bg: '#c01515' }}>
                                 Sign up
                             </Button>
-
-
 
                             <Modal isOpen={isOpen} onClose={onClose} >
                                 <ModalOverlay />

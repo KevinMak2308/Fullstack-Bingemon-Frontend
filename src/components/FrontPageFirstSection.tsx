@@ -9,7 +9,7 @@ import {
     SimpleGrid,
     Text
 } from '@chakra-ui/react';
-import Signup from "./SignupModal";
+import Signup from "./authentication/SignupModal";
 
 
 function FrontPageFirstSection() {
@@ -29,7 +29,7 @@ function FrontPageFirstSection() {
                                     Join us today and let the cinematic matchmaking begin!
                                 </Text>
                             </Box>
-                            <Signup/>
+                            <Signup openModal={false}/>
                         </Box>
                     </Center>
                 </Flex>

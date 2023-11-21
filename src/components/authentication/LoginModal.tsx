@@ -1,4 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import Signup from "./SignupModal";
+import httpService from "../../services/httpService";
+
 import {
     Button,
     useDisclosure,
@@ -12,14 +15,27 @@ import {
     FormControl,
     FormLabel,
     Input,
-    Link,
     Stack
 } from '@chakra-ui/react'
 
+interface Credentials {
+    username: string,
+    password: string
+}
 export default function Login() {
 
+    const authUrl = "auth/login";
     const [formData, setFormData] = useState({ username: '', password: ''});
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState();
+    const [show, setShow] = useState(false);
+
+
+    const login = async(credentials: Credentials) => {
+        const {data} = await httpService.post(authUrl, credentials);
+        console.log("Did we get any data?: ", data)
+        document.cookie = `user=${data.token}`
+    }
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
@@ -30,6 +46,17 @@ export default function Login() {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            await login(formData);
+            console.log("What does the cookie look like?: ", document.cookie)
+        } catch (error) {
+            console.error("Login Failed", error);
+        }
+    }
+
+    /*const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         await fetch('http://localhost:8080/auth/login', {
@@ -50,7 +77,7 @@ export default function Login() {
             document.cookie = `user=${token}`
 
         })
-    };
+    };*/
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -88,7 +115,7 @@ export default function Login() {
                                 <Input type="password" id="password" name="password" value={formData.password} onChange={handleChange} borderRadius={'sm'} placeholder="Password" />
                             </FormControl>
                             <Stack mt={4} fontSize={'sm'}>
-                                <p>Are you new on Bingemon? <Link fontWeight={600}>Sign up now</Link></p>
+                                <p>Are you new on Bingemon? <button onClick={() => setShow(true)}>{show ? <Signup openModal={true}/> : "Sign up now"}</button></p>
                             </Stack>
                         </ModalBody>
                         <ModalFooter>
