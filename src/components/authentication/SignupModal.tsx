@@ -17,19 +17,14 @@ import {
 import React, {useState, useEffect} from "react";
 
 interface signupProps {
-    openModal: boolean,
+    isOpen: boolean,
+    onClose: () => void;
+    onOpen: () => void;
 
 }
 
-export default function Signup({openModal}: signupProps) {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    useEffect(() => {
-        if(openModal) {
-            onOpen()
-        }
-    }, [openModal])
-
+export default function Signup({isOpen, onClose, onOpen}: signupProps) {
+   /* const { isOpen, onOpen, onClose } = useDisclosure()*/
 
         const [formData, setFormData] = useState({
             email: '',

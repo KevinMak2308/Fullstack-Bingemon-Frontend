@@ -32,7 +32,6 @@ export default function Login() {
 
     const login = async(credentials: Credentials) => {
         const {data} = await httpService.post(authUrl, credentials);
-        console.log("Did we get any data?: ", data)
         document.cookie = `user=${data.token}`
     }
 
@@ -81,6 +80,10 @@ export default function Login() {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    const closeModal = () => {
+        setShow(false)
+    }
+
     return (
         <>
             <Button onClick={onOpen}
@@ -115,7 +118,7 @@ export default function Login() {
                                 <Input type="password" id="password" name="password" value={formData.password} onChange={handleChange} borderRadius={'sm'} placeholder="Password" />
                             </FormControl>
                             <Stack mt={4} fontSize={'sm'}>
-                                <p>Are you new on Bingemon? <button onClick={() => setShow(true)}>{show ? <Signup openModal={true}/> : "Sign up now"}</button></p>
+                                <p>Are you new on Bingemon? <button onClick={() => setShow(true)}>{show ? <Signup isOpen={show} onClose={closeModal} onOpen={onOpen}/> : "Sign up now"}</button></p>
                             </Stack>
                         </ModalBody>
                         <ModalFooter>

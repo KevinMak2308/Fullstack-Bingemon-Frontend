@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../App.css';
 import {
+    useDisclosure,
     Box,
     Center,
     Flex,
@@ -11,8 +12,23 @@ import {
 } from '@chakra-ui/react';
 import Signup from "./authentication/SignupModal";
 
+interface frontpageProps {
+    isOpen: boolean,
+    onOpen: () => void;
+    onClose: () => void;
+}
 
 function FrontPageFirstSection() {
+    const [show, setShow] = useState(false)
+
+   const openModal = () => {
+        setShow(true)
+    }
+
+    const closeModal = () => {
+        setShow(false)
+    }
+
     return (
         <SimpleGrid columns={[1, null, 2]} spacing='0px' color='#dcdbd8'>
             <GridItem>
@@ -29,7 +45,7 @@ function FrontPageFirstSection() {
                                     Join us today and let the cinematic matchmaking begin!
                                 </Text>
                             </Box>
-                            <Signup openModal={false}/>
+                            <Signup isOpen={show} onClose={closeModal} onOpen={openModal}/>
                         </Box>
                     </Center>
                 </Flex>
