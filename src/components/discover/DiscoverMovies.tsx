@@ -15,7 +15,7 @@ interface MovieData {
 function DiscoverMovies() {
     const movieUrl = "movie/discover"
     const [movieData, setMovieData] = useState<Movie[]>([]);
-    const genres = '878'
+    const genres = '12'
 
     const fetchAllMovies = async(genres: string) => {
         try {

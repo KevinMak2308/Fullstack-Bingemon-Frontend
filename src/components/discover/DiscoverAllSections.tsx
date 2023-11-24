@@ -92,7 +92,7 @@ function DiscoverAllSections() {
                                     </Heading>
                                     {/* Use DiscoverSecondaryFilterLanguage here */}
                                     <DiscoverSecondaryFilterLanguage
-                                        selectedFilters={selectedSecondaryFilters}
+                                        languageNames={selectedSecondaryFilters}
                                         onChange={handleSecondaryFilterChange}
                                     />
                                 </>

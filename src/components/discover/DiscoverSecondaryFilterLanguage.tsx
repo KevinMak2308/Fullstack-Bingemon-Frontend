@@ -1,65 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { Box, GridItem, SimpleGrid, Text } from '@chakra-ui/react';
+import httpService from "../../services/httpService";
 
-interface DiscoverSecondaryFilterLanguageProps {
-    selectedFilters: string[];
+interface languageFilterProps {
+    languageNames: string[],
     onChange: (selectedFilters: string[]) => void;
 }
 
-const DiscoverSecondaryFilterLanguage: React.FC<DiscoverSecondaryFilterLanguageProps> = ({
-                                                                                             selectedFilters,
-                                                                                             onChange,
-                                                                                         }) => {
-    const boxNames = ["All Languages", "English", "Mandarin", "Hindi", "Spanish", "French", "Arabic", "Bengali", "Russian", "Portuguese", "Urdu", "Indonesian", "German", "Japanese", "Marathi", "Turkish"];
-    const [selectedBoxes, setSelectedBoxes] = useState<boolean[]>([true, ...new Array(boxNames.length - 1).fill(false)]);
+interface Language {
+    name: string
+    subname?: Array<Language>
+}
 
-    const handleBoxClick = (boxId: number) => {
-        const newSelectedBoxes = [...selectedBoxes];
+export default function LanguageFilter ({languageNames, onChange}: languageFilterProps) {
+    const [selectedItem, setSelectedItem] = useState("")
 
-        // If "All Decades" is clicked, reset all other boxes
-        if (boxId === 0) {
-            newSelectedBoxes.fill(false);
-            newSelectedBoxes[0] = true; // Select "All Decades"
-        } else {
-            // Toggle the clicked box
-            newSelectedBoxes[boxId] = !newSelectedBoxes[boxId];
+    const languages : Array<Language> = [
+        {name:'English',
+            subname: [{name:'en'}]
+        },
+        {name:'Dansk',
+            subname: [{name:'dk'}]
+        },
 
-            // Unselect "All Decades" if any other box is selected
-            if (newSelectedBoxes[0]) {
-                newSelectedBoxes[0] = false;
-            }
+    ]
+
+    const handleSelectionChange = (option: string) => {
+        if(option) {
+            setSelectedItem(option)
+            console.log("Selected Genre ID: ", selectedItem)
         }
+    }
 
-        setSelectedBoxes(newSelectedBoxes);
-
-        const selectedFilters = newSelectedBoxes.reduce((filters, isSelected, index) => {
-            if (isSelected) {
-                filters.push(boxNames[index]);
-            }
-            return filters;
-        }, [] as string[]);
-
-        onChange(selectedFilters);
-    };
-
-    useEffect(() => {
-        // Trigger onChange with the default selected option if no box is selected
-        if (!selectedBoxes.some(box => box)) {
-            onChange([boxNames[0]]);
-        }
-    }, [selectedBoxes]);
 
     return (
         <SimpleGrid columns={[3, null, 6]} gap={{ base: "4", md: "5", lg: "auto" }} textTransform="capitalize" fontWeight='500' fontSize={{ base: "14px", md: "15px", lg: "16px" }}>
-            {boxNames.map((name, index) => (
+            {languages.map((language, index) => (
                 <GridItem key={index} w='100%' display="grid" gridGap="2">
+                    {language.subname && language.subname.map((subLanguages, index) =>
                     <Box
-                        bg={selectedBoxes[index] ? '#A61212' : '#21201d'}
+                        bg={selectedItem === subLanguages.name ? '#A61212' : '#21201d'}
                         cursor='pointer'
                         p='10px'
                         border='2px'
                         borderColor='#A61212'
-                        _hover={{ bg: selectedBoxes[index] ? '#c01515' : '#262521' }}
+                        _hover={{ bg: selectedItem === subLanguages.name ? '#c01515' : '#262521' }}
                         transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                         borderRadius='10px'
                         color='#F0F0EE'
@@ -68,16 +53,15 @@ const DiscoverSecondaryFilterLanguage: React.FC<DiscoverSecondaryFilterLanguageP
                         textAlign='center'
                         alignItems='center'
                         justifyContent='center'
-                        onClick={() => handleBoxClick(index)}
-                    >
+
+                        onClick={() => handleSelectionChange(subLanguages.name)}>
                         <Text>
-                            {name}
+                            {language.name}
                         </Text>
                     </Box>
+                        )}
                 </GridItem>
             ))}
         </SimpleGrid>
     );
-};
-
-export default DiscoverSecondaryFilterLanguage;
+}
