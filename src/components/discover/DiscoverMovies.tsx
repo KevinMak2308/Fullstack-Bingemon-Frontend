@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './../../App.css';
 import { Box, Image, SimpleGrid, Text } from '@chakra-ui/react';
+import httpService from "../../services/httpService";
 
 interface Movie {
     id: string;
@@ -12,9 +13,30 @@ interface MovieData {
 }
 
 function DiscoverMovies() {
+    const movieUrl = "movie/discover"
     const [movieData, setMovieData] = useState<Movie[]>([]);
+    const genres = '878'
+
+    const fetchAllMovies = async(genres: string) => {
+        try {
+            const {data} = await httpService.get(movieUrl, {
+                params: {
+                    genres: genres
+                }
+            });
+            setMovieData(data)
+        } catch (error) {
+            console.error("Something went wrong fetching: ", error)
+        }
+    }
 
     useEffect(() => {
+        fetchAllMovies(genres)
+    }, []);
+
+
+
+    /*useEffect(() => {
         fetch('http://localhost:8080/movie/discover')
             .then((response) => {
                 if (!response.ok) {
@@ -26,13 +48,13 @@ function DiscoverMovies() {
                 console.log('This is the fetched data', data);
                 setMovieData(data);
             });
-    }, []);
+    }, []);*/
 
-    if (movieData == null) {
+    /*if (movieData == null) {
         return <div>Something went wrong... Please refresh the page</div>;
-    }
+    }*/
 
-    console.log(movieData);
+    console.log("This is the movieData:", movieData);
 
     return (
         <SimpleGrid

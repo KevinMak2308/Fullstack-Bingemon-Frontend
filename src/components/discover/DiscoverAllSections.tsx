@@ -109,7 +109,7 @@ function DiscoverAllSections() {
                                     </Heading>
                                     {/* Use DiscoverSecondaryFilterGenre here */}
                                     <DiscoverSecondaryFilterGenre
-                                        selectedFilters={selectedSecondaryFilters}
+                                        genreNames={selectedSecondaryFilters}
                                         onChange={handleSecondaryFilterChange}
                                     />
                                 </>
