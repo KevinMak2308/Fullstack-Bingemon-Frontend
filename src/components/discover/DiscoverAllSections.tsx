@@ -75,7 +75,7 @@ function DiscoverAllSections() {
                                         All decades
                                     </Heading>
                                     <DiscoverSecondaryFilterDecade
-                                        selectedFilters={selectedSecondaryFilters}
+                                        decadeYears={selectedSecondaryFilters}
                                         onChange={handleSecondaryFilterChange}
                                     />
                                 </>

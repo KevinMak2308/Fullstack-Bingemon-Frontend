@@ -1,65 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { Box, GridItem, SimpleGrid, Text } from '@chakra-ui/react';
 
-interface DiscoverSecondaryFilterDecadeProps {
-    selectedFilters: string[];
+interface decadeFilterProps {
+    decadeYears: string[],
     onChange: (selectedFilters: string[]) => void;
 }
 
-const DiscoverSecondaryFilterDecade: React.FC<DiscoverSecondaryFilterDecadeProps> = ({
-                                                                                         selectedFilters,
-                                                                                         onChange,
-                                                                                     }) => {
-    const boxNames = ["All Decades", "1920’s", "1930’s", "1940’s", "1950’s", "1960’s", "1970’s", "1980’s", "1990’s", "2000’s", "2010’s", "2020’s"];
-    const [selectedBoxes, setSelectedBoxes] = useState<boolean[]>([true, ...new Array(boxNames.length - 1).fill(false)]);
+interface Decades {
+    decades: string[]
+    years?: Array<Decades>
+}
 
-    const handleBoxClick = (boxId: number) => {
-        const newSelectedBoxes = [...selectedBoxes];
 
-        // If "All Decades" is clicked, reset all other boxes
-        if (boxId === 0) {
-            newSelectedBoxes.fill(false);
-            newSelectedBoxes[0] = true; // Select "All Decades"
-        } else {
-            // Toggle the clicked box
-            newSelectedBoxes[boxId] = !newSelectedBoxes[boxId];
+export default function DecadeFilter({decadeYears, onChange}: decadeFilterProps ) {
+    const [selectedItem, setSelectedItem] = useState<Decades[]>([])
 
-            // Unselect "All Decades" if any other box is selected
-            if (newSelectedBoxes[0]) {
-                newSelectedBoxes[0] = false;
-            }
+    const decades : Array<Decades> = [
+        {decades:['1990'],
+        years: [{decades: ['1990', '1991', '1992', '1993']}]
+        },
+        {decades:['2000'],
+            years: [{decades: ['2000', '2001', '2002', '2003']}]
         }
+        ]
 
-        setSelectedBoxes(newSelectedBoxes);
-
-        const selectedFilters = newSelectedBoxes.reduce((filters, isSelected, index) => {
-            if (isSelected) {
-                filters.push(boxNames[index]);
-            }
-            return filters;
-        }, [] as string[]);
-
-        onChange(selectedFilters);
-    };
-
-    useEffect(() => {
-        // Trigger onChange with the default selected option if no box is selected
-        if (!selectedBoxes.some(box => box)) {
-            onChange([boxNames[0]]);
+    const handleSelectionChange = (option: string[]) => {
+        if(option) {
+            setSelectedItem([{decades: option}])
+            console.log("Selected Decades: ", selectedItem)
         }
-    }, [selectedBoxes]);
+    }
 
     return (
         <SimpleGrid columns={[3, null, 6]} gap={{ base: "4", md: "5", lg: "auto" }} textTransform="capitalize" fontWeight='500' fontSize={{ base: "14px", md: "15px", lg: "16px" }}>
-            {boxNames.map((name, index) => (
-                <GridItem key={index} w='100%' display="grid" gridGap="2">
+            {decades.map((decade, decadeIndex) => (
+                <GridItem key={decadeIndex} w='100%' display="grid" gridGap="2">
+                    {decade.years && decade.years.map((year, yearIndex) =>
                     <Box
-                        bg={selectedBoxes[index] ? '#A61212' : '#21201d'}
+                        bg={selectedItem.some(item => item.decades === year.decades) ? '#A61212' : '#21201d'}
                         cursor='pointer'
                         p='10px'
                         border='2px'
                         borderColor='#A61212'
-                        _hover={{ bg: selectedBoxes[index] ? '#c01515' : '#262521' }}
+                        _hover={{ bg: selectedItem.some(item => item.decades === year.decades) ? '#c01515' : '#262521' }}
                         transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                         borderRadius='10px'
                         color='#F0F0EE'
@@ -68,16 +51,15 @@ const DiscoverSecondaryFilterDecade: React.FC<DiscoverSecondaryFilterDecadeProps
                         textAlign='center'
                         alignItems='center'
                         justifyContent='center'
-                        onClick={() => handleBoxClick(index)}
-                    >
+                        key={yearIndex}
+                        onClick={() => handleSelectionChange(year.decades)}>
                         <Text>
-                            {name}
+                            {decade.decades}
                         </Text>
                     </Box>
+                    )}
                 </GridItem>
             ))}
         </SimpleGrid>
     );
-};
-
-export default DiscoverSecondaryFilterDecade;
+}
