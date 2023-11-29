@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, GridItem, SimpleGrid, Text } from '@chakra-ui/react';
 import httpService from "../../services/httpService";
 
-interface genreFilterProps {
-    onChange: (selectedFilters: number) => void;
+interface DiscoverSecondaryFilterGenreProps {
+    onChange: (selectedGenre: number) => void;
 }
 
 interface Genre {
@@ -11,32 +11,29 @@ interface Genre {
     name: string
 }
 
-export default function GenreFilter ({onChange}: genreFilterProps) {
-    const genreUrl = "/movie/genres"
-    const [genreList, setGenreList] = useState<Genre[]>([])
-    const [selectedGenre, setSelectedGenre] = useState(0)
+export default function DiscoverSecondaryFilterGenre({onChange}: DiscoverSecondaryFilterGenreProps ) {
+    const genreUrl = "/movie/genres";
+    const [genreList, setGenreList] = useState<Genre[]>([]);
+    const [selectedGenre, setSelectedGenre] = useState(0);
 
-
-    const fetchAllGenres = async() => {
+    const fetchAllGenres = async () => {
         try {
-            const {data} = await httpService.get(genreUrl);
-                setGenreList(data.genres)
+            const { data } = await httpService.get(genreUrl);
+            setGenreList(data.genres);
         } catch (error) {
-            console.error("Something went wrong fetching: ", error)
+            console.error("Something went wrong fetching: ", error);
         }
     }
 
     useEffect(() => {
-        fetchAllGenres()
-    }, [])
-
-    console.log("This is our genre list: ", genreList)
+        fetchAllGenres();
+    }, []);
 
     const handleSelectionChange = (option: number) => {
-        if(option) {
-            setSelectedGenre(option)
-            onChange(selectedGenre)
-            console.log("Selected Genre ID: ", selectedGenre)
+        if (option) {
+            setSelectedGenre(option);
+            onChange(option);
+            console.log("Selected Genre ID: ", option);
         }
     }
 
@@ -59,8 +56,8 @@ export default function GenreFilter ({onChange}: genreFilterProps) {
                         textAlign='center'
                         alignItems='center'
                         justifyContent='center'
-
-                        onClick={() => handleSelectionChange(genre.id)}>
+                        onClick={() => handleSelectionChange(genre.id)}
+                    >
                         <Text>
                             {genre.name}
                         </Text>
