@@ -11,7 +11,6 @@ export default function DecadeFilter({onChange}: DiscoverSecondaryFilterDecadePr
     const decades: Array<{ decades: string; years?: Array<{ decades: string }> }> = [
         { decades: '1990', years: [{ decades: '1990,1991,1992,1993,1994,1995,1996,1997,1998,1999' }] },
         { decades: '2000', years: [{ decades: '2000,2001,2002,2003,2004,2005,2006,2007,2008,2009' }] },
-        // Add more decades if needed
     ];
 
     const handleSelectionChange = (option: string) => {

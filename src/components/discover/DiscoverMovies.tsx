@@ -158,11 +158,12 @@ function DiscoverMovies() {
                                     display="grid" gap="3"
                                     _hover={{ filter: 'brightness(115%)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' cursor="pointer"
                                 >
-
-                                    <Image
-                                        src={movie.poster_path}
-                                        fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'
-                                    />
+                                    {movie.poster_path ? (
+                                        <Image src={movie.poster_path}/>
+                                        )
+                                    :
+                                    <Image src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'/>
+                                    }
                                     <Text textAlign='center' fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>{movie.title}</Text>
                                 </Box>
                             ))}

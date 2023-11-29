@@ -16,7 +16,6 @@ export default function LanguageFilter ({onChange}: DiscoverSecondaryFilterLangu
     const languages: Array<Language> = [
         { name: 'English', subname: [{ name: 'en' }] },
         { name: 'Dansk', subname: [{ name: 'da' }] },
-        // Add more languages if needed
     ];
 
     const handleSelectionChange = (option: string) => {
