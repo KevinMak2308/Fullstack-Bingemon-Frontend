@@ -7,26 +7,26 @@ interface decadeFilterProps {
 }
 
 interface Decades {
-    decades: string[]
+    decades: string
     years?: Array<Decades>
 }
 
 
 export default function DecadeFilter({decadeYears, onChange}: decadeFilterProps ) {
-    const [selectedItem, setSelectedItem] = useState<Decades[]>([])
+    const [selectedItem, setSelectedItem] = useState("")
 
     const decades : Array<Decades> = [
-        {decades:['1990'],
-        years: [{decades: ['1990', '1991', '1992', '1993']}]
+        {decades:'1990',
+            years: [{decades: '1990,1991,1992,1993'}]
         },
-        {decades:['2000'],
-            years: [{decades: ['2000', '2001', '2002', '2003']}]
+        {decades:'2000',
+            years: [{decades: '2000,2001,2002,2003'}]
         }
-        ]
+    ]
 
-    const handleSelectionChange = (option: string[]) => {
+    const handleSelectionChange = (option: string) => {
         if(option) {
-            setSelectedItem([{decades: option}])
+            setSelectedItem(option)
             console.log("Selected Decades: ", selectedItem)
         }
     }
@@ -37,12 +37,12 @@ export default function DecadeFilter({decadeYears, onChange}: decadeFilterProps 
                 <GridItem key={decadeIndex} w='100%' display="grid" gridGap="2">
                     {decade.years && decade.years.map((year, yearIndex) =>
                     <Box
-                        bg={selectedItem.some(item => item.decades === year.decades) ? '#A61212' : '#21201d'}
+                        bg={selectedItem === year.decades ? '#A61212' : '#21201d'}
                         cursor='pointer'
                         p='10px'
                         border='2px'
                         borderColor='#A61212'
-                        _hover={{ bg: selectedItem.some(item => item.decades === year.decades) ? '#c01515' : '#262521' }}
+                        _hover={{ bg: selectedItem === year.decades ? '#c01515' : '#262521' }}
                         transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                         borderRadius='10px'
                         color='#F0F0EE'

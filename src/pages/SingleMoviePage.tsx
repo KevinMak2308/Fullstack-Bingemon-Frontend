@@ -85,11 +85,11 @@ function SingleMoviePage() {
         const fetchData = async () => {
             try {
                 const [movieResult, castResult, directorResult, imagesResult, trailerResult] = await Promise.all([
-                    fetch(`http://localhost:8080/movie/${id}`).then(res => res.json()),
-                    fetch(`http://localhost:8080/movie/${id}/cast`).then(res => res.json()),
-                    fetch(`http://localhost:8080/movie/${id}/directors`).then(res => res.json()),
-                    fetch(`http://localhost:8080/movie/${id}/backdrops`).then(res => res.json()),
-                    fetch(`http://localhost:8080/movie/${id}/trailer`).then(res => res.json()),
+                    fetch(`http://localhost:8080/api/movie/${id}`).then(res => res.json()),
+                    fetch(`http://localhost:8080/api/movie/${id}/cast`).then(res => res.json()),
+                    fetch(`http://localhost:8080/api/movie/${id}/directors`).then(res => res.json()),
+                    fetch(`http://localhost:8080/api/movie/${id}/backdrops`).then(res => res.json()),
+                    fetch(`http://localhost:8080/api/movie/${id}/trailer`).then(res => res.json()),
                 ]);
                 setMovieData(movieResult);
                 setCastData(castResult);

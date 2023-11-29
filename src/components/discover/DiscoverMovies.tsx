@@ -6,10 +6,7 @@ import httpService from "../../services/httpService";
 interface Movie {
     id: string;
     title: string;
-}
-
-interface MovieData {
-    movies: Movie[];
+    poster_path: string;
 }
 
 function DiscoverMovies() {
@@ -72,7 +69,7 @@ function DiscoverMovies() {
                 >
 
                         <Image
-                            src='gibbresh.png'
+                            src={movie.poster_path}
                             fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'
                         />
                     <Text textAlign='center' fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>{movie.title}</Text>
