@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import NavBar from "../components/NavBar"
-import DiscoverAllSections from "../components/discover/DiscoverAllSections"
+import DiscoverMovies from "../components/discover/DiscoverMovies"
 import Footer from "../components/Footer"
 
 function Discover() {
@@ -9,7 +9,7 @@ function Discover() {
     return (
         <div>
             <NavBar/>
-            <DiscoverAllSections/>
+            <DiscoverMovies/>
             <Footer/>
         </div>
 
