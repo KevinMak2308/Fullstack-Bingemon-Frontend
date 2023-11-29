@@ -3,8 +3,7 @@ import { Box, GridItem, SimpleGrid, Text } from '@chakra-ui/react';
 import httpService from "../../services/httpService";
 
 interface languageFilterProps {
-    languageNames: string[],
-    onChange: (selectedFilters: string[]) => void;
+    onChange: (selectedFilters: string) => void;
 }
 
 interface Language {
@@ -12,23 +11,24 @@ interface Language {
     subname?: Array<Language>
 }
 
-export default function LanguageFilter ({languageNames, onChange}: languageFilterProps) {
-    const [selectedItem, setSelectedItem] = useState("")
+export default function LanguageFilter ({onChange}: languageFilterProps) {
+    const [selectedLanguage, setSelectedLanguage] = useState("")
 
     const languages : Array<Language> = [
         {name:'English',
             subname: [{name:'en'}]
         },
         {name:'Dansk',
-            subname: [{name:'dk'}]
+            subname: [{name:'da'}]
         },
 
     ]
 
     const handleSelectionChange = (option: string) => {
         if(option) {
-            setSelectedItem(option)
-            console.log("Selected Genre ID: ", selectedItem)
+            setSelectedLanguage(option)
+            onChange(selectedLanguage)
+            console.log("Selected language variable: ", selectedLanguage)
         }
     }
 
@@ -39,12 +39,12 @@ export default function LanguageFilter ({languageNames, onChange}: languageFilte
                 <GridItem key={index} w='100%' display="grid" gridGap="2">
                     {language.subname && language.subname.map((subLanguages, index) =>
                     <Box
-                        bg={selectedItem === subLanguages.name ? '#A61212' : '#21201d'}
+                        bg={selectedLanguage === subLanguages.name ? '#A61212' : '#21201d'}
                         cursor='pointer'
                         p='10px'
                         border='2px'
                         borderColor='#A61212'
-                        _hover={{ bg: selectedItem === subLanguages.name ? '#c01515' : '#262521' }}
+                        _hover={{ bg: selectedLanguage === subLanguages.name ? '#c01515' : '#262521' }}
                         transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                         borderRadius='10px'
                         color='#F0F0EE'

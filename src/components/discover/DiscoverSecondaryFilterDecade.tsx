@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, GridItem, SimpleGrid, Text } from '@chakra-ui/react';
 
 interface decadeFilterProps {
-    decadeYears: string[],
-    onChange: (selectedFilters: string[]) => void;
+    onChange: (selectedFilters: string) => void;
 }
 
 interface Decades {
@@ -12,22 +11,23 @@ interface Decades {
 }
 
 
-export default function DecadeFilter({decadeYears, onChange}: decadeFilterProps ) {
-    const [selectedItem, setSelectedItem] = useState("")
+export default function DecadeFilter({onChange}: decadeFilterProps ) {
+    const [selectedDecade, setSelectedDecade] = useState("")
 
     const decades : Array<Decades> = [
         {decades:'1990',
-            years: [{decades: '1990,1991,1992,1993'}]
+            years: [{decades: '1990,1991,1992,1993,1994,1995,1996,1997,1998,1999'}]
         },
         {decades:'2000',
-            years: [{decades: '2000,2001,2002,2003'}]
+            years: [{decades: '2000,2001,2002,2003,2004,2005,2006,2007,2008,2009'}]
         }
     ]
 
     const handleSelectionChange = (option: string) => {
         if(option) {
-            setSelectedItem(option)
-            console.log("Selected Decades: ", selectedItem)
+            setSelectedDecade(option)
+            onChange(selectedDecade)
+            console.log("Selected Decades: ", selectedDecade)
         }
     }
 
@@ -37,12 +37,12 @@ export default function DecadeFilter({decadeYears, onChange}: decadeFilterProps 
                 <GridItem key={decadeIndex} w='100%' display="grid" gridGap="2">
                     {decade.years && decade.years.map((year, yearIndex) =>
                     <Box
-                        bg={selectedItem === year.decades ? '#A61212' : '#21201d'}
+                        bg={selectedDecade === year.decades ? '#A61212' : '#21201d'}
                         cursor='pointer'
                         p='10px'
                         border='2px'
                         borderColor='#A61212'
-                        _hover={{ bg: selectedItem === year.decades ? '#c01515' : '#262521' }}
+                        _hover={{ bg: selectedDecade === year.decades ? '#c01515' : '#262521' }}
                         transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                         borderRadius='10px'
                         color='#F0F0EE'

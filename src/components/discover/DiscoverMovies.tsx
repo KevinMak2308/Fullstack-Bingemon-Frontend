@@ -9,31 +9,38 @@ import DiscoverSecondaryFilterLanguage from './DiscoverSecondaryFilterLanguage';
 import DiscoverSortBy from './DiscoverSortBy';
 
 
-
 interface Movie {
     id: string;
     title: string;
     poster_path: string;
 }
 
-interface DiscoverMovieProps {
-    languageNames: string[]
-}
-
 function DiscoverMovies() {
     const movieUrl = "movie/discover"
     const [movieData, setMovieData] = useState<Movie[]>([]);
-    const genres = '12'
-    const decade = ''
-    const language = ''
+    const [selectedLanguage, setSelectedLanguage] = useState<string | null>()
+    const [selectedGenre, setSelectedGenre] = useState<number | null>()
+    const [selectedDecade, setSelectedDecade] = useState<string | null>()
 
-    const fetchAllMovies = async(genres: string) => {
+    const handleLanguageSelection = (selectedLanguage: string) => {
+        setSelectedLanguage(selectedLanguage)
+    }
+
+    const handleGenreSelection = (selectedGenre: number) => {
+        setSelectedGenre(selectedGenre)
+    }
+
+    const handleDecadeSelection = (selectedDecade: string) => {
+        setSelectedDecade(selectedDecade)
+    }
+
+    const fetchAllMovies = async() => {
         try {
             const {data} = await httpService.get(movieUrl, {
                 params: {
-                    genres: genres,
-                    decade: decade,
-                    original_language: language
+                    genres: selectedGenre,
+                    decade: selectedDecade,
+                    original_language: selectedLanguage
                 }
             });
             setMovieData(data)
@@ -42,41 +49,20 @@ function DiscoverMovies() {
         }
     }
 
+
     useEffect(() => {
-        fetchAllMovies(genres)
-    }, []);
+        fetchAllMovies()
+        console.log("What is in genre param?: ", selectedGenre)
+        console.log("What is in decade param?: ", selectedDecade)
+        console.log("What is in language param?: ", selectedLanguage)
+
+    }, [selectedGenre, selectedDecade, selectedLanguage]);
 
     const [selectedPrimaryFilter, setSelectedPrimaryFilter] = useState<string | null>(null);
-    const [selectedSecondaryFilters, setSelectedSecondaryFilters] = useState<string[]>([]);
 
     const handlePrimaryFilterChange = (selectedOption: string) => {
         setSelectedPrimaryFilter(selectedOption);
-        // Clear secondary filters when changing the primary filter
-        setSelectedSecondaryFilters([]);
     };
-
-    const handleSecondaryFilterChange = (selectedFilters: string[]) => {
-        // Update the selected secondary filters
-        setSelectedSecondaryFilters(selectedFilters);
-    };
-
-    /*useEffect(() => {
-        fetch('http://localhost:8080/movie/discover')
-            .then((response) => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log('This is the fetched data', data);
-                setMovieData(data);
-            });
-    }, []);*/
-
-    /*if (movieData == null) {
-        return <div>Something went wrong... Please refresh the page</div>;
-    }*/
 
     console.log("This is the movieData:", movieData);
 
@@ -127,8 +113,7 @@ function DiscoverMovies() {
                                                 All decades
                                             </Heading>
                                             <DiscoverSecondaryFilterDecade
-                                                decadeYears={selectedSecondaryFilters}
-                                                onChange={handleSecondaryFilterChange}
+                                                onChange={handleDecadeSelection}
                                             />
                                         </>
                                     )}
@@ -144,8 +129,7 @@ function DiscoverMovies() {
                                             </Heading>
                                             {/* Use DiscoverSecondaryFilterLanguage here */}
                                             <DiscoverSecondaryFilterLanguage
-                                                languageNames={selectedSecondaryFilters}
-                                                onChange={handleSecondaryFilterChange}
+                                                onChange={handleLanguageSelection}
                                             />
                                         </>
                                     )}
@@ -161,8 +145,7 @@ function DiscoverMovies() {
                                             </Heading>
                                             {/* Use DiscoverSecondaryFilterGenre here */}
                                             <DiscoverSecondaryFilterGenre
-                                                genreNames={selectedSecondaryFilters}
-                                                onChange={handleSecondaryFilterChange}
+                                                onChange={handleGenreSelection}
                                             />
                                         </>
                                     )}
