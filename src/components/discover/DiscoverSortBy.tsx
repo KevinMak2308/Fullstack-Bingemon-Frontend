@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
     Menu,
     MenuButton,
@@ -18,25 +18,37 @@ import {
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
+function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any) {
+    const [tags, setTags] = useState<any[]>([]);
 
+    useEffect(() => {
+        const updatedTags = [];
 
-function DiscoverSortBy() {
+        if (selectedGenre) {
+            updatedTags.push(`Genre: ${selectedGenre}`);
+        }
+        if (selectedDecade) {
+            updatedTags.push(`Decade: ${selectedDecade}`);
+        }
+        if (selectedLanguage) {
+            updatedTags.push(`Language: ${selectedLanguage}`);
+        }
 
-    const [tags, setTags] = useState<string[]>(['lg']);
+        setTags(updatedTags);
+    }, [selectedGenre, selectedDecade, selectedLanguage]);
 
-    const removeTag = (tag: string) => {
-        const updatedTags = tags.filter((t) => t !== tag);
+    const removeTag = (tagToRemove: string) => {
+        const updatedTags = tags.filter((tag) => tag !== tagToRemove);
         setTags(updatedTags);
     };
-
     return (
         <SimpleGrid columns={[2, null, 2]} w='80vw'>
             <Flex justify={"start"}>
                 <Wrap spacing='7px'>
-                    {tags.map((size) => (
-                        <WrapItem key={size}>
+                    {tags.map((tag, index) => (
+                        <WrapItem key={index}>
                             <Tag
-                                size={size}
+                                size="md"
                                 py={{ base: "8px", md: "9px", lg: "10px" }}
                                 px={{ base: "18px", md: "19px", lg: "20px" }}
                                 lineHeight='1.2'
@@ -51,8 +63,8 @@ function DiscoverSortBy() {
                                 color='#F0F0EE'
                                 _hover={{ bg: '#3b3b3b' }}
                             >
-                                Input
-                                <TagCloseButton onClick={() => removeTag(size)} />
+                                {tag}
+                                <TagCloseButton onClick={() => removeTag(tag)} />
                             </Tag>
                         </WrapItem>
                     ))}

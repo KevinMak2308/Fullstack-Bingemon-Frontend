@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Image, SimpleGrid, Text, Flex, Center, Heading } from '@chakra-ui/react';
+import { Box, Image, SimpleGrid, Text, Flex, Center, Heading, Link as ChakraLink } from '@chakra-ui/react';
 import httpService from "../../services/httpService";
 import DiscoverPrimaryFilter from './DiscoverPrimaryFilter';
 import DiscoverSecondaryFilterDecade from './DiscoverSecondaryFilterDecade';
 import DiscoverSecondaryFilterGenre from './DiscoverSecondaryFilterGenre';
 import DiscoverSecondaryFilterLanguage from './DiscoverSecondaryFilterLanguage';
 import DiscoverSortBy from './DiscoverSortBy';
+import { Link as ReactRouterLink } from 'react-router-dom'
 
 interface Movie {
     id: string;
@@ -141,7 +142,10 @@ function DiscoverMovies() {
                                 </>
                             )}
 
-                            <DiscoverSortBy />
+                            <DiscoverSortBy
+                                selectedGenre={selectedGenre}
+                                selectedDecade={selectedDecade}
+                                selectedLanguage={selectedLanguage}/>
 
                         </Box>
 
@@ -153,6 +157,7 @@ function DiscoverMovies() {
                             fontSize={{ base: '13px', md: '14px', lg: '15px' }}
                         >
                             {movieData.map((movie) => (
+                                <ChakraLink as={ReactRouterLink} key={movie.id} to={`/singlemoviepage/${movie.id}`}>
                                 <Box
                                     key={movie.id}
                                     display="grid" gap="3"
@@ -166,6 +171,7 @@ function DiscoverMovies() {
                                     }
                                     <Text textAlign='center' fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>{movie.title}</Text>
                                 </Box>
+                                </ChakraLink>
                             ))}
                         </SimpleGrid>
 
