@@ -4,19 +4,52 @@ import {
     MenuButton,
     MenuList,
     MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
     Button,
     GridItem,
     SimpleGrid,
-    Text,
-    Tag, TagLabel, TagCloseButton,
-    Box, Flex, Center,     Wrap,
+    Tag, TagCloseButton,
+    Flex, Wrap,
     WrapItem
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+
+const genreMap: Record<string, string> = {
+    '28': 'Action',
+    '12': 'Adventure',
+    '16': 'Animation',
+    '35': 'Comedy',
+    '80': 'Crime',
+    '99': 'Documentary',
+    '18': 'Drama',
+    '10751': 'Family',
+    '14': 'Fantasy',
+    '36': 'History',
+    '27': 'Horror',
+    '10402': 'Music',
+    '9648': 'Mystery',
+    '10749': 'Romance',
+    '878': 'Science Fiction',
+    '10770': 'TV Movie',
+    '53': 'Thriller',
+    '10752': 'War',
+    '37': 'Western',
+};
+
+const decadeMap: Record<string, string> = {
+    '1950,1951,1952,1953,1954,1955,1956,1957,1958,1959': '1950s',
+    '1960,1961,1962,1963,1964,1965,1966,1967,1968,1969': '1960s',
+    '1970,1971,1972,1973,1974,1975,1976,1977,1978,1979': '1970s',
+    '1980,1981,1982,1983,1984,1985,1986,1987,1988,1989': '1980s',
+    '1990,1991,1992,1993,1994,1995,1996,1997,1998,1999': '1990s',
+    '2000,2001,2002,2003,2004,2005,2006,2007,2008,2009': '2000s',
+    '2010,2011,2012,2013,2014,2015,2016,2017,2018,2019': '2010s',
+    '2020,2021,2022,2023': '2020s (up to 2023)'
+};
+
+const languageMap: Record<string, string> = {
+    'en': 'English',
+    'da': 'Dansk'
+};
 
 function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any) {
     const [tags, setTags] = useState<any[]>([]);
@@ -24,14 +57,14 @@ function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any
     useEffect(() => {
         const updatedTags = [];
 
-        if (selectedGenre) {
-            updatedTags.push(`Genre: ${selectedGenre}`);
+        if (selectedGenre && genreMap[selectedGenre]) {
+            updatedTags.push(`Genre: ${genreMap[selectedGenre]}`);
         }
-        if (selectedDecade) {
-            updatedTags.push(`Decade: ${selectedDecade}`);
+        if (selectedDecade && decadeMap[selectedDecade]) {
+            updatedTags.push(`Decade: ${decadeMap[selectedDecade]}`);
         }
-        if (selectedLanguage) {
-            updatedTags.push(`Language: ${selectedLanguage}`);
+        if (selectedLanguage && languageMap[selectedLanguage]) {
+            updatedTags.push(`Language: ${languageMap[selectedLanguage]}`);
         }
 
         setTags(updatedTags);

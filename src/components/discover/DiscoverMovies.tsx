@@ -169,7 +169,7 @@ function DiscoverMovies() {
                                     :
                                     <Image src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'/>
                                     }
-                                    <Text textAlign='center' fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>{movie.title}</Text>
+                                    <Text textAlign='center' fontWeight='500' fontSize={{ base: "13px", md: "13px", lg: "15px" }}>{movie.title}</Text>
                                 </Box>
                                 </ChakraLink>
                             ))}
