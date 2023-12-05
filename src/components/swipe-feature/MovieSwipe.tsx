@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import httpService from "../../services/httpService";
-import {Heading} from "@chakra-ui/react";
-import DiscoverSecondaryFilterGenre from "../discover/DiscoverSecondaryFilterGenre";
+import { Box } from '@chakra-ui/react';
+import Genre from "./Genre";
 
 interface Movie {
     id: string;
@@ -58,4 +58,10 @@ export default function MovieSwipe() {
         }
         fetchAllMovies()
     }, [selectedGenre])
+
+    return (
+        <Box>
+            <Genre onChange={handleGenreSelection}/>
+        </Box>
+    )
 }
