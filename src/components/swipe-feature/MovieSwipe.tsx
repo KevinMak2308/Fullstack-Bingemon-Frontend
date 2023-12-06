@@ -46,11 +46,11 @@ export default function MovieSwipe() {
         setSelectedGenre(selectedGenre);
     }
 
-    const handleLanguageSelection = (selectedGenre: string) => {
+    const handleLanguageSelection = (selectedLanguage: string) => {
         setSelectedLanguage(selectedLanguage);
     }
 
-    const handleDecadesSelection = (selectedGenre: string) => {
+    const handleDecadesSelection = (selectedDecades: string) => {
         setSelectedDecades(selectedDecades);
     }
 
