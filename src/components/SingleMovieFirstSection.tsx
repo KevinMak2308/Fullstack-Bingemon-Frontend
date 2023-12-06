@@ -7,6 +7,7 @@ import {
     Flex,
     GridItem,
     HStack,
+    Image,
     Heading,
     SimpleGrid,
     Text,
@@ -22,10 +23,16 @@ interface SingleMovieFirstSectionProps {
 }
 
 function SingleMovieFirstSection({ movie, images }: SingleMovieFirstSectionProps) {
+    const defaultImgUrl = "http://127.0.0.1:8080/default/backdrop_unavailable.jpg";
+
     return (
         <SimpleGrid columns={[1, null, 2]} spacing='0px' bg='#1A1917' color='#F0F0EE'>
             <GridItem bg='blue.500'>
-                <ImageCarousel images={images} />
+                {images.length > 1 ? (
+                    <ImageCarousel images={images} />
+                ):(
+                    <Image src={defaultImgUrl}/>
+                )}
             </GridItem>
             <GridItem>
                 <Flex py={{ base: '80px', md: '', lg: '90px' }} w='100%' minH={{ base: '55vh', md: '90vh', lg: '92.5vh' }} alignContent={"center"} justifyContent={"center"}>

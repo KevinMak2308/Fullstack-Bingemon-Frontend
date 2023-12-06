@@ -32,7 +32,8 @@ export default function Login() {
 
     const login = async(credentials: Credentials) => {
         const {data} = await httpService.post(authUrl, credentials);
-        document.cookie = `user=${data.token}`
+        document.cookie = `user=${data.token}`;
+        document.cookie = `user_id=${data.user_id}`;
     }
 
 

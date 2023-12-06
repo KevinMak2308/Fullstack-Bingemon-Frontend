@@ -6,6 +6,7 @@ import SingleMoviePage from "./pages/SingleMoviePage"
 import SingleSeriesPage from "./pages/SingleSeriesPage"
 import Discover from "./pages/Discover"
 import MovieSwipe from "./components/swipe-feature/MovieSwipe"
+import ProfileLiked from './pages/ProfileLiked';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/singleseriespage/:id" element={<SingleSeriesPage/>}/>
                 <Route path="/discover" element={<Discover/>}/>
                 <Route path="/movieswipe" element={<MovieSwipe/>}/>
+                <Route path="/liked/:id" element={<ProfileLiked/>}/>
             </Routes>
         </BrowserRouter>
 

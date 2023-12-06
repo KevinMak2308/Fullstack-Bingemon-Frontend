@@ -24,6 +24,9 @@ function SingleMovieSecondSection({ actors }: Cast) {
             sectionRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
+    const defaultImgUrl = "http://127.0.0.1:8080/default/user_unavailable.jpg";
+
     return (
         <Box ref={sectionRef} bg='#21201d' color='#dcdbd8'>
             <Flex py={{ base: '75px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
@@ -36,14 +39,14 @@ function SingleMovieSecondSection({ actors }: Cast) {
                             {showFullCast ? (
                                 actors.slice(0, 24).map((actor) => (
                                     <GridItem w='100%' display="grid" gridGap="2" key={actor.id}>
-                                        <Image src={actor.profile_path} fallbackSrc={'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} borderRadius="7px" />
+                                        <Image src={actor.profile_path} fallbackSrc={defaultImgUrl} borderRadius="7px" />
                                         <Text fontSize={{ base: "15px", md: "17px", lg: "19px" }} fontWeight="600" textAlign="center">{actor.name}</Text>
                                     </GridItem>
                                 ))
                             ) : (
                                 actors.slice(0, 6).map((actor) => (
                                     <GridItem w='100%' display="grid" gridGap="2" key={actor.id}>
-                                        <Image src={actor.profile_path} fallbackSrc={'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} borderRadius="7px" />
+                                        <Image src={actor.profile_path} fallbackSrc={defaultImgUrl} borderRadius="7px" />
                                         <Text fontSize={{ base: "15px", md: "17px", lg: "19px" }} fontWeight="600" textAlign="center">{actor.name}</Text>
                                     </GridItem>
                                 ))

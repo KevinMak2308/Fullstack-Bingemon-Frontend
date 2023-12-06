@@ -9,6 +9,7 @@ import SingleMovieFifthSection from "../components/SingleMovieFifthSection"
 import Footer from "../components/Footer"
 import { useParams } from 'react-router-dom';
 import {ApiImage} from "../components/ImageCarousel";
+import httpService from '../services/httpService';
 
 interface Genre {
     id: number;
@@ -74,6 +75,11 @@ export interface Movie {
 
 function SingleMoviePage() {
     const { id } = useParams();
+    const movieUrl = `movie/${id}`;
+    const castUrl = `movie/${id}/cast`;
+    const directorUrl = `movie/${id}/directors`;
+    const backdropsUrl = `movie/${id}/backdrops`;
+    const trailerUrl = `movie/${id}/trailer`;
     const [movieData, setMovieData] = useState<Movie | null>(null);
     const [castData, setCastData] = useState<CastMember[]>([]);
     const [directorData, setDirectorData] = useState<CastMember[]>([]);
@@ -84,13 +90,11 @@ function SingleMoviePage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [movieResult, castResult, directorResult, imagesResult, trailerResult] = await Promise.all([
-                    fetch(`http://localhost:8080/api/movie/${id}`).then(res => res.json()),
-                    fetch(`http://localhost:8080/api/movie/${id}/cast`).then(res => res.json()),
-                    fetch(`http://localhost:8080/api/movie/${id}/directors`).then(res => res.json()),
-                    fetch(`http://localhost:8080/api/movie/${id}/backdrops`).then(res => res.json()),
-                    fetch(`http://localhost:8080/api/movie/${id}/trailer`).then(res => res.json()),
-                ]);
+                const { data: movieResult } = await httpService.get(movieUrl, {});
+                const { data: castResult } = await httpService.get(castUrl, {});
+                const { data: directorResult } = await httpService.get(directorUrl, {});
+                const { data: imagesResult } = await httpService.get(backdropsUrl, {});
+                const { data: trailerResult } = await httpService.get(trailerUrl, {});
                 setMovieData(movieResult);
                 setCastData(castResult);
                 setDirectorData(directorResult);
@@ -118,7 +122,7 @@ function SingleMoviePage() {
             <NavBar />
             <SingleMovieFirstSection movie={movieData} images={imageData} />
             <SingleMovieSecondSection actors={castData} />
-            <SingleMovieThirdSection movie={movieData} trailer={trailerData!} />
+            {trailerData && <SingleMovieThirdSection movie={movieData} trailer={trailerData} />}
             <SingleMovieFourthSection />
             <SingleMovieFifthSection movie={movieData} directors={directorData} />
             <Footer />

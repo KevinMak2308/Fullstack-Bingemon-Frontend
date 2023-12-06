@@ -10,6 +10,7 @@ import SingleSeriesSixthSection from "../components/SingleSeriesSixthSection"
 import Footer from "../components/Footer"
 import { useParams } from 'react-router-dom';
 import {ApiImage} from "../components/ImageCarousel";
+import httpService from '../services/httpService';
 
 
 interface Genre {
@@ -74,6 +75,11 @@ export interface Series {
 
 function SingleSeriesPage() {
     const { id } = useParams();
+    const seriesUrl = `series/${id}`;
+    const castUrl = `series/${id}/cast`;
+    const backdropsUrl = `series/${id}/backdrops`;
+    const trailerUrl = `series/${id}/trailer`;
+    const seasonsUrl = `series/${id}/seasons`;
     const [seriesData, setSeriesData] = useState<Series | null>(null);
     const [castData, setCastData] = useState<CastMember[]>([]);
     const [imageData, setImageData] = useState<ApiImage[]>([]);
@@ -84,13 +90,11 @@ function SingleSeriesPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [seriesResult, castResult, imagesResult, trailerResult, seasonsResult] = await Promise.all([
-                    fetch(`http://localhost:8080/series/${id}`).then(res => res.json()),
-                    fetch(`http://localhost:8080/series/${id}/cast`).then(res => res.json()),
-                    fetch(`http://localhost:8080/series/${id}/backdrops`).then(res => res.json()),
-                    fetch(`http://localhost:8080/series/${id}/trailer`).then(res => res.json()),
-                    fetch(`http://localhost:8080/series/${id}/seasons`).then(res => res.json()),
-                ]);
+                const { data: seriesResult } = await httpService.get(seriesUrl, {});
+                const { data: castResult } = await httpService.get(castUrl, {});
+                const { data: imagesResult } = await httpService.get(backdropsUrl, {});
+                const { data: trailerResult } = await httpService.get(trailerUrl, {});
+                const { data: seasonsResult } = await httpService.get(seasonsUrl, {});
                 setSeriesData(seriesResult);
                 setCastData(castResult);
                 setImageData(imagesResult);
@@ -102,7 +106,6 @@ function SingleSeriesPage() {
                 setIsLoading(false);
             }
         };
-
         fetchData();
     }, [id]);
 

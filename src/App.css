@@ -36,3 +36,61 @@
     transform: rotate(360deg);
   }
 }
+
+.avatar-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.avatar-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 50px;
+
+}
+
+/* md /
+@media (min-width: 768px) {
+  h2 {
+    font-size: 124px;
+  }
+}
+
+/ lg */
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 124px;
+  }
+}
+
+.movie {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  border: solid 1.5px transparent;
+  border-radius: 5px;
+  transition: all 0.5s cubic-bezier(.08,.52,.52,1);
+  width: 100%;
+}
+
+.movie:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 15px 1px rgba(192, 21, 21, 0.75);
+  border: solid 1.5px #A61212;
+}
