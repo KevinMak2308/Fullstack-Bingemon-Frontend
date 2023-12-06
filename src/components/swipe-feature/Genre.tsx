@@ -50,13 +50,29 @@ export default function Genre({onChange}: GenreProps ) {
     return (
     <div>
         <Menu>
-            <MenuButton  as={Button} rightIcon={<ChevronDownIcon />}>
+            <MenuButton
+                as={Button} rightIcon={<ChevronDownIcon />}
+                bg='#A61212'
+                _hover={{bg: '#A61212'}}
+                cursor='pointer'
+                borderRadius='10px'
+                color='#F0F0EE'
+                width='200px'
+                         >
                 Genre
             </MenuButton>
-            <MenuList>
-                {genreData.map((genre, index) => (
-                    <MenuItem>{genre.name}</MenuItem>
-                            ))}
+            <MenuList
+            bg='#21201d'
+            color='#F0F0EE'
+            border='2px'
+            borderColor='#21201d'
+            borderRadius='10px'>
+                    <div>
+                        {genreData.map((genre, index) => (
+                    <MenuItem
+                        onClick={() => handleSelectionChange(genre.id)}>{genre.name}</MenuItem>
+                        ))}
+                    </div>
             </MenuList>
         </Menu>
         </div>
