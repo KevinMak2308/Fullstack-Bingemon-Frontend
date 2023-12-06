@@ -31,7 +31,12 @@ function SingleMovieFirstSection({ movie, images }: SingleMovieFirstSectionProps
                 {images.length > 1 ? (
                     <ImageCarousel images={images} />
                 ):(
-                    <Image src={defaultImgUrl}/>
+                    <Image
+                        src={defaultImgUrl}
+                        h="100%"
+                        w="100%"
+                        objectFit="cover"
+                    />
                 )}
             </GridItem>
             <GridItem>

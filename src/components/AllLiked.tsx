@@ -15,6 +15,7 @@ import {
     Image,
     useMediaQuery,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom'
 import '../App.css';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { LoggedInId, Movie, Series, User } from "../pages/ProfileLiked";
@@ -87,6 +88,7 @@ export default function AllLiked({ commonMovies, commonSeries, movies, series, u
     };
 
     const svgSize = isSmallerThan600 ? '32.5px' : '42.5px';
+    let route = "";
 
     return (
         <Box bg='#1A1917' color='#dcdbd8'>
@@ -236,47 +238,49 @@ export default function AllLiked({ commonMovies, commonSeries, movies, series, u
                                 </GridItem>
                             </Flex>
                         </Box>
-                        <SimpleGrid columns={[2, 3, 3, 4, 5, 6]} gap={{base: "6", md: "", lg: "6"}} fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
+                        <SimpleGrid columns={[2, 3, 3, 4, 5, 6]} gap={{ base: "6", md: "", lg: "6" }} fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
                             {data[selectedBox].map((data, index) => (
-                                <GridItem key={data.id} w='100%' h='100%' display="grid" gridGap="1.5" cursor='pointer' position="relative">
-                                    <Image
-                                        src={data.poster_path}
-                                        fallbackSrc={defaultImgUrl}
-                                        alt="Name Lorem Ipsum"
-                                        h={{ base: "22vh", md: "26vh", lg: "40vh" }}
-                                        className="movie"
-                                    />
-                                    <div
-                                        className="svg-container"
-                                        onClick={toggleSvg}
-                                        onMouseEnter={() => handleMouseEnter(index)}
-                                        onMouseLeave={handleMouseLeave}
-                                        style={{
-                                            position: 'absolute',
-                                            top: 10,
-                                            right: 10,
-                                            zIndex: 1,
-                                        }}
-                                    >
-                                        {isClicked ? (
-                                            <svg key={`clicked-${data.id}`} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256">
-                                                <path fill="#c01515" d="M178 32c-20.65 0-38.73 8.88-50 23.89C116.73 40.88 98.65 32 78 32a62.07 62.07 0 0 0-62 62c0 70 103.79 126.66 108.21 129a8 8 0 0 0 7.58 0C136.21 220.66 240 164 240 94a62.07 62.07 0 0 0-62-62m-50 174.8C109.74 196.16 32 147.69 32 94a46.06 46.06 0 0 1 46-46c19.45 0 35.78 10.36 42.6 27a8 8 0 0 0 14.8 0c6.82-16.67 23.15-27 42.6-27a46.06 46.06 0 0 1 46 46c0 53.61-77.76 102.15-96 112.8"/>
-                                            </svg>
-                                        ) : isHovered ? (
-                                            <svg key={`hovered-${data.id}`} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256">
-                                                <path fill="#c01515" d="M239.81 99.5c-5.19 67.42-103.7 121.23-108 123.54a8 8 0 0 1-7.58 0C119.8 220.67 16 164 16 94a62 62 0 0 1 96.47-51.55a4 4 0 0 1 .61 6.17L99.72 62a8 8 0 0 0 0 11.31l32.53 32.53L111 127a8 8 0 1 0 11.31 11.31l26.88-26.87a8 8 0 0 0 0-11.31l-32.49-32.5l17.47-17.47A61.63 61.63 0 0 1 178.41 32c36.32.23 64.18 31.29 61.4 67.5"/>
-                                            </svg>
-                                        ) : (
-                                            <svg key={`default-${data.id}`} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256">
-                                                <path fill="#c01515" d="M240 94c0 70-103.79 126.66-108.21 129a8 8 0 0 1-7.58 0C119.79 220.66 16 164 16 94a62.07 62.07 0 0 1 62-62c20.65 0 38.73 8.88 50 23.89C139.27 40.88 157.35 32 178 32a62.07 62.07 0 0 1 62 62"/>
-                                            </svg>
-                                        )}
-                                    </div>
-                                    {selectedBox === 0 && 'title' in data ? <Text textAlign="center">{data.title}</Text> : null}
-                                    {selectedBox === 1 && 'name' in data ? <Text textAlign="center">{data.name}</Text> : null}
-                                    {selectedBox === 2 && 'title' in data ? <Text textAlign="center">{data.title}</Text> : null}
-                                    {selectedBox === 3 && 'name' in data ? <Text textAlign="center">{data.name}</Text> : null}
-                                </GridItem>
+                                <Link key={data.id} to={selectedBox === 0 || selectedBox === 2 ? "/singlemoviepage/" + data.id : "/singleseriespage/" + data.id}>
+                                    <GridItem key={data.id} w='100%' h='100%' display="grid" gridGap="1.5" cursor='pointer' position="relative">
+                                        <Image
+                                            src={data.poster_path}
+                                            fallbackSrc={defaultImgUrl}
+                                            alt="Name Lorem Ipsum"
+                                            h={{ base: "22vh", md: "26vh", lg: "40vh" }}
+                                            className="movie"
+                                        />
+                                        <div
+                                            className="svg-container"
+                                            onClick={toggleSvg}
+                                            onMouseEnter={() => handleMouseEnter(index)}
+                                            onMouseLeave={handleMouseLeave}
+                                            style={{
+                                                position: 'absolute',
+                                                top: 10,
+                                                right: 10,
+                                                zIndex: 1,
+                                            }}
+                                        >
+                                            {isClicked ? (
+                                                <svg key={`clicked-${data.id}`} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256">
+                                                    <path fill="#c01515" d="M178 32c-20.65 0-38.73 8.88-50 23.89C116.73 40.88 98.65 32 78 32a62.07 62.07 0 0 0-62 62c0 70 103.79 126.66 108.21 129a8 8 0 0 0 7.58 0C136.21 220.66 240 164 240 94a62.07 62.07 0 0 0-62-62m-50 174.8C109.74 196.16 32 147.69 32 94a46.06 46.06 0 0 1 46-46c19.45 0 35.78 10.36 42.6 27a8 8 0 0 0 14.8 0c6.82-16.67 23.15-27 42.6-27a46.06 46.06 0 0 1 46 46c0 53.61-77.76 102.15-96 112.8"/>
+                                                </svg>
+                                            ) : isHovered ? (
+                                                <svg key={`hovered-${data.id}`} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256">
+                                                    <path fill="#c01515" d="M239.81 99.5c-5.19 67.42-103.7 121.23-108 123.54a8 8 0 0 1-7.58 0C119.8 220.67 16 164 16 94a62 62 0 0 1 96.47-51.55a4 4 0 0 1 .61 6.17L99.72 62a8 8 0 0 0 0 11.31l32.53 32.53L111 127a8 8 0 1 0 11.31 11.31l26.88-26.87a8 8 0 0 0 0-11.31l-32.49-32.5l17.47-17.47A61.63 61.63 0 0 1 178.41 32c36.32.23 64.18 31.29 61.4 67.5"/>
+                                                </svg>
+                                            ) : (
+                                                <svg key={`default-${data.id}`} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256">
+                                                    <path fill="#c01515" d="M240 94c0 70-103.79 126.66-108.21 129a8 8 0 0 1-7.58 0C119.79 220.66 16 164 16 94a62.07 62.07 0 0 1 62-62c20.65 0 38.73 8.88 50 23.89C139.27 40.88 157.35 32 178 32a62.07 62.07 0 0 1 62 62"/>
+                                                </svg>
+                                            )}
+                                        </div>
+                                        {selectedBox === 0 && 'title' in data ? <Text textAlign="center">{data.title}</Text> : null}
+                                        {selectedBox === 1 && 'name' in data ? <Text textAlign="center">{data.name}</Text> : null}
+                                        {selectedBox === 2 && 'title' in data ? <Text textAlign="center">{data.title}</Text> : null}
+                                        {selectedBox === 3 && 'name' in data ? <Text textAlign="center">{data.name}</Text> : null}
+                                    </GridItem>
+                                </Link>
                             ))}
                         </SimpleGrid>
                     </Box>
