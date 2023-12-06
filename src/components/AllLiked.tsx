@@ -51,7 +51,6 @@ export default function AllLiked({ commonMovies, commonSeries, movies, series, u
 
     const handleMouseEnter = useCallback((index: number) => {
         setIsHovered(index)
-        console.log("index", index);
     }, [isClicked]);
 
     const handleMouseLeave = useCallback(() => {
@@ -89,7 +88,6 @@ export default function AllLiked({ commonMovies, commonSeries, movies, series, u
 
     const svgSize = isSmallerThan600 ? '32.5px' : '42.5px';
 
-    console.log("LOGGEDIN", loggedInId);
     return (
         <Box bg='#1A1917' color='#dcdbd8'>
             <Box
@@ -238,8 +236,9 @@ export default function AllLiked({ commonMovies, commonSeries, movies, series, u
                                 </GridItem>
                             </Flex>
                         </Box>
-                        <SimpleGrid columns={[2, 3, 3, 4, 5, 6]} gap={{base: "6", md: "", lg: "6"}} fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>                            {data[selectedBox].map((data, index) => (
-                            <GridItem key={data.id} w='100%' h='100%' display="grid" gridGap="1.5" cursor='pointer' position="relative">
+                        <SimpleGrid columns={[2, 3, 3, 4, 5, 6]} gap={{base: "6", md: "", lg: "6"}} fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
+                            {data[selectedBox].map((data, index) => (
+                                <GridItem key={data.id} w='100%' h='100%' display="grid" gridGap="1.5" cursor='pointer' position="relative">
                                     <Image
                                         src={data.poster_path}
                                         fallbackSrc={defaultImgUrl}
