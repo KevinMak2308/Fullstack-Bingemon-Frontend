@@ -5,6 +5,7 @@ import DiscoverPrimaryFilter from './DiscoverPrimaryFilter';
 import DiscoverSecondaryFilterDecade from './DiscoverSecondaryFilterDecade';
 import DiscoverSecondaryFilterGenre from './DiscoverSecondaryFilterGenre';
 import DiscoverSecondaryFilterLanguage from './DiscoverSecondaryFilterLanguage';
+import DiscoverSecondaryFilterActor from './DiscoverSecondaryFilterActor';
 import DiscoverSortBy from './DiscoverSortBy';
 import { Link as ReactRouterLink } from 'react-router-dom'
 
@@ -20,6 +21,7 @@ function DiscoverMovies() {
     const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
     const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
     const [selectedDecade, setSelectedDecade] = useState<string | null>(null);
+    const [selectedActor, setSelectedActor] = useState<number | null>(null);
     const [selectedPrimaryFilter, setSelectedPrimaryFilter] = useState<string | null>(null);
 
     const handleLanguageSelection = (selectedLanguage: string) => {
@@ -34,13 +36,19 @@ function DiscoverMovies() {
         setSelectedDecade(selectedDecade);
     }
 
+    const handleActorSelection = (selectedActor: number) => {
+        setSelectedActor(selectedActor);
+    }
+
+
     const fetchAllMovies = async () => {
         try {
             const { data } = await httpService.get(movieUrl, {
                 params: {
                     genres: selectedGenre,
                     decade: selectedDecade,
-                    original_language: selectedLanguage
+                    original_language: selectedLanguage,
+                    cast: selectedActor
                 }
             });
             setMovieData(data);
@@ -54,10 +62,19 @@ function DiscoverMovies() {
         console.log("What is in genre param?: ", selectedGenre);
         console.log("What is in decade param?: ", selectedDecade);
         console.log("What is in language param?: ", selectedLanguage);
-    }, [selectedGenre, selectedDecade, selectedLanguage]);
+        console.log("What is in actor param?: ", selectedActor);
+    }, [selectedGenre, selectedDecade, selectedLanguage, selectedActor]);
 
     const handlePrimaryFilterChange = (selectedOption: string) => {
         setSelectedPrimaryFilter(selectedOption);
+    };
+
+    const resetFilters = () => {
+        setSelectedLanguage(null);
+        setSelectedGenre(null);
+        setSelectedDecade(null);
+        setSelectedActor(null);
+        setSelectedPrimaryFilter(null);
     };
 
     return (
@@ -96,6 +113,26 @@ function DiscoverMovies() {
                             <DiscoverPrimaryFilter
                                 onChange={handlePrimaryFilterChange}
                             />
+                            {selectedPrimaryFilter === 'Popular' && (
+                                <>
+                                    {resetFilters()}
+                                </>
+                            )}
+
+                            {selectedPrimaryFilter === 'Actor' && (
+                                <>
+                                    <Heading
+                                        as='h3'
+                                        pt='15px'
+                                        fontSize={{ base: '20px', md: '22px', lg: '25px' }}
+                                    >
+                                        All actors
+                                    </Heading>
+                                    <DiscoverSecondaryFilterActor
+                                        onChange={handleActorSelection}
+                                    />
+                                </>
+                            )}
 
                             {selectedPrimaryFilter === 'Decade' && (
                                 <>
@@ -143,6 +180,7 @@ function DiscoverMovies() {
                             )}
 
                             <DiscoverSortBy
+                                selectedCast={selectedActor}
                                 selectedGenre={selectedGenre}
                                 selectedDecade={selectedDecade}
                                 selectedLanguage={selectedLanguage}/>

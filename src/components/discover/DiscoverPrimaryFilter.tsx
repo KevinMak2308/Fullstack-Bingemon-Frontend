@@ -11,7 +11,7 @@ interface DiscoverPrimaryFilterProps {
 }
 
 function DiscoverPrimaryFilter({ onChange }: DiscoverPrimaryFilterProps) {
-    const boxNames = ["New & Trending", "Actor", "Decade", "Genre", "Language"];
+    const boxNames = ["Popular", "Actor", "Decade", "Genre", "Language"];
     const [selectedBox, setSelectedBox] = useState<number | null>(0);
 
     const handleBoxClick = (boxId: number) => {
