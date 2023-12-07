@@ -30,13 +30,22 @@ function SingleMovieFirstSection({ movie, images }: SingleMovieFirstSectionProps
             <GridItem bg='blue.500'>
                 {images.length > 1 ? (
                     <ImageCarousel images={images} />
-                ):(
-                    <Image
-                        src={defaultImgUrl}
-                        h="100%"
-                        w="100%"
-                        objectFit="cover"
-                    />
+                ) : (
+                    (movie.backdrop_path ? (
+                        <Image
+                            src={"https://image.tmdb.org/t/p/original/" + movie.backdrop_path}
+                            h="100%"
+                            w="100%"
+                            objectFit="cover"
+                        />
+                    ) : (
+                        <Image
+                            src={defaultImgUrl}
+                            h="100%"
+                            w="100%"
+                            objectFit="cover"
+                        />
+                    ))
                 )}
             </GridItem>
             <GridItem>
