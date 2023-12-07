@@ -59,24 +59,7 @@
   justify-content: center;
 }
 
-h2 {
-  font-size: 50px;
 
-}
-
-/* md /
-@media (min-width: 768px) {
-  h2 {
-    font-size: 124px;
-  }
-}
-
-/ lg */
-@media (min-width: 1024px) {
-  h2 {
-    font-size: 124px;
-  }
-}
 
 .movie {
   background-position: center;

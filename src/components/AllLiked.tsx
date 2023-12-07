@@ -14,6 +14,7 @@ import {
     Button,
     Image,
     useMediaQuery,
+    AspectRatio
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom'
 import '../App.css';
@@ -156,8 +157,6 @@ export default function AllLiked({ commonMovies, commonSeries, movies, series, u
                                     {loggedInId !== 0 && (user.id !== Number(loggedInId) && selectedBox === 2) || loggedInId !== 0 && (user.id !== Number(loggedInId) && selectedBox === 3) ? (
                                         <Text textAlign="center">{user.username}'s liked {selectedBox === 2 ? 'movies' : 'series'}</Text>
                                     ) : null}
-
-
                                 </Heading>
                             </Center>
                         </Flex>
@@ -238,17 +237,19 @@ export default function AllLiked({ commonMovies, commonSeries, movies, series, u
                                 </GridItem>
                             </Flex>
                         </Box>
-                        <SimpleGrid columns={[2, 3, 3, 4, 5, 6]} gap={{ base: "6", md: "", lg: "6" }} fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
+                        <SimpleGrid columns={[2, 3, 3, 4, 5, 6]} gap={{base: "3", sm:"4", md: "5", lg: "6", xl:"7", "2xl":"8"}} fontWeight='500' fontSize={{ base: "11px", sm: "12px", md: "13px", lg: "14px", xl: "15px", "2xl": "16px" }}>
                             {data[selectedBox].map((data, index) => (
                                 <Link key={data.id} to={selectedBox === 0 || selectedBox === 2 ? "/singlemoviepage/" + data.id : "/singleseriespage/" + data.id}>
-                                    <GridItem key={data.id} w='100%' h='100%' display="grid" gridGap="1.5" cursor='pointer' position="relative">
-                                        <Image
-                                            src={data.poster_path}
-                                            fallbackSrc={defaultImgUrl}
-                                            alt="Name Lorem Ipsum"
-                                            h={{ base: "22vh", md: "26vh", lg: "40vh" }}
-                                            className="movie"
-                                        />
+                                    <GridItem key={data.id} w='100%' h='100%' display="grid" gap={{base: "1.5", sm:"1.5", md: "1.5", lg: "1.5", xl:"2", "2xl":"3"}} cursor='pointer' position="relative">
+                                        <AspectRatio ratio={2 / 3}>
+                                            <Image
+                                                objectFit="cover"
+                                                className='movie'
+                                                src={data.poster_path}
+                                                fallbackSrc={defaultImgUrl}
+                                                alt={`Poster for: ${'title' in data ? data.title : ''}`}
+                                            />
+                                        </AspectRatio>
                                         <div
                                             className="svg-container"
                                             onClick={toggleSvg}
@@ -275,10 +276,63 @@ export default function AllLiked({ commonMovies, commonSeries, movies, series, u
                                                 </svg>
                                             )}
                                         </div>
-                                        {selectedBox === 0 && 'title' in data ? <Text textAlign="center">{data.title}</Text> : null}
-                                        {selectedBox === 1 && 'name' in data ? <Text textAlign="center">{data.name}</Text> : null}
-                                        {selectedBox === 2 && 'title' in data ? <Text textAlign="center">{data.title}</Text> : null}
-                                        {selectedBox === 3 && 'name' in data ? <Text textAlign="center">{data.name}</Text> : null}
+
+                                        {selectedBox === 0 && 'title' in data ?
+                                            <Text
+                                                textAlign="center"
+                                                h='7vh'
+                                                lineHeight='1.5'
+                                                overflow="hidden"
+                                                display="-webkit-box"
+                                                style={{
+                                                    WebkitBoxOrient: 'vertical',
+                                                    WebkitLineClamp: 2,
+                                                    maxWidth: '100%',
+                                                }}>
+                                                {data.title}
+                                            </Text> : null}
+                                        {selectedBox === 1 && 'name' in data ?
+                                            <Text
+                                                textAlign="center"
+                                                h='7vh'
+                                                lineHeight='1.5'
+                                                overflow="hidden"
+                                                display="-webkit-box"
+                                                style={{
+                                                    WebkitBoxOrient: 'vertical',
+                                                    WebkitLineClamp: 2,
+                                                    maxWidth: '100%',
+                                                }}>
+                                                {data.name}
+                                            </Text> : null}
+                                        {selectedBox === 2 && 'title' in data ?
+                                            <Text
+                                                textAlign="center"
+                                                h='7vh'
+                                                lineHeight='1.5'
+                                                overflow="hidden"
+                                                display="-webkit-box"
+                                                style={{
+                                                    WebkitBoxOrient: 'vertical',
+                                                    WebkitLineClamp: 2,
+                                                    maxWidth: '100%',
+                                                }}>
+                                                {data.title}
+                                            </Text> : null}
+                                        {selectedBox === 3 && 'name' in data ?
+                                            <Text
+                                                textAlign="center"
+                                                h='7vh'
+                                                lineHeight='1.5'
+                                                overflow="hidden"
+                                                display="-webkit-box"
+                                                style={{
+                                                    WebkitBoxOrient: 'vertical',
+                                                    WebkitLineClamp: 2,
+                                                    maxWidth: '100%',
+                                                }}>
+                                                {data.name}
+                                            </Text> : null}
                                     </GridItem>
                                 </Link>
                             ))}
