@@ -39,18 +39,6 @@ export default function ProfileCards({ user, movies, series }: ProfileProps) {
 
     return (
         <Box bg={useColorModeValue('#e5e5e5', '#21201D')} color={useColorModeValue('#21201D', '#F0F0EE')} >
-
-            <Text as='h1' fontSize={{ base: "25px", sm: "30px", md: "35px", lg: "40px", xl: "45px", "2xl": "50px" }}>H1 lorem ipsum 123</Text>
-            <Text fontSize={{ base: "19x", sm: "20px", md: "21px", lg: "22px", xl: "23px", "2xl": "24px" }}>Subheader H1 Test lorem ipsum 123</Text>
-
-            <Text as='h2' fontSize={{ base: "20px", sm: "25px", md: "30px", lg: "35px", xl: "40px", "2xl": "45px" }}>H2 lorem ipsum 123</Text>
-            <Text fontSize={{ base: "16x", sm: "17px", md: "18px", lg: "19px", xl: "20px", "2xl": "21px" }}>Subheader H2 Test lorem ipsum 123</Text>
-
-            <Text as='h3' fontSize={{ base: "15px", sm: "20px", md: "25px", lg: "30px", xl: "35px", "2xl": "40px" }}>H3 lorem ipsum 123</Text>
-            <Text as='h4' fontSize={{ base: "10x", sm: "15px", md: "20px", lg: "25px", xl: "30px", "2xl": "35px" }}>H4 lorem ipsum 123</Text>
-
-            <Text fontSize={{ base: "15px", sm: "16px", md: "17px", lg: "18px", xl: "19px", "2xl": "20px" }}>P lorem ipsum 123</Text>
-
             <Flex py={{ base: '75px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
                 <Center>
                     <Box w='80vw'>
