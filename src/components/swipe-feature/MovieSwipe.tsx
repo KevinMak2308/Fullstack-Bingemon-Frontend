@@ -71,7 +71,7 @@ export default function MovieSwipe() {
             }
         }
 
-    const handleNextMovie = () => {
+    const handleSingleMovie = () => {
             if(currentMovie < movieData.length -1) {
                 const movie = movieData[currentMovie]
                 const title = movie.title
@@ -86,7 +86,7 @@ export default function MovieSwipe() {
         fetchAllMovies()
         console.log("What is in genre param?: ", selectedGenre);
         console.log("What is in language param?: ", selectedLanguage);
-        handleNextMovie()
+        handleSingleMovie()
     }, [selectedGenre, selectedLanguage, selectedDecades])
 
     return (
