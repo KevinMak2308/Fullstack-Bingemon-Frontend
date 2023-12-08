@@ -19,8 +19,7 @@ export default function LanguageFilter ({onChange}: DiscoverSecondaryFilterLangu
     ];
 
     const handleSelectionChange = (option: string) => {
-        if (option) {
-            setSelectedLanguage(option);
+        if (option) {setSelectedLanguage(option);
             onChange(option);
             console.log("Selected Language: ", option);
         }
