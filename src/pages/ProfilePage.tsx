@@ -47,10 +47,11 @@ function ProfilePage() {
     const fetchUserMovies = async(id: string) => {
         try {
             const { data: userResponse } = await httpService.get(userUrl, {});
+            console.log(userResponse, "Test");
             const { data: avatarResponse } = await httpService.get(avatarUrl, {});
             const { data: movieResponse } = await httpService.get(userMoviesUrl, {});
             const { data: seriesResponse } = await httpService.get(userSeriesUrl, {});
-            
+
             setUserData(userResponse);
             setAvatarData(avatarResponse);
             setMovieData(movieResponse);
@@ -65,7 +66,7 @@ function ProfilePage() {
             fetchUserMovies(id);
         }
     }, [id]);
-    
+
     return (
         <div>
             <NavBar/>

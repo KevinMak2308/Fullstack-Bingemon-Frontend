@@ -13,8 +13,11 @@ import {
     FormControl,
     FormLabel,
     Input,
+    Center,
+    useColorModeValue
 } from '@chakra-ui/react'
 import React, {useState, useEffect} from "react";
+import PrimaryButton from "../buttons/PrimaryButton"
 
 interface signupProps {
     isOpen: boolean,
@@ -58,62 +61,82 @@ export default function Signup({isOpen, onClose, onOpen}: signupProps) {
             }
         };
 
-
+    const searchBarBgColor = useColorModeValue("#e5e5e5", "#21201D");
 
     return (
         <>
-                            <Button
-                                onClick={onOpen}
-                                as={'a'}
-                                display={{ sm: 'inline-flex', md: 'inline-flex' }}
-                                py={{base: "24px", md: "26px", lg: "25px"}}
-                                px={{base: "28px", md: "29px", lg: "30px"}}
-                                lineHeight='1.2'
-                                transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                                borderRadius='10px'
-                                fontSize={{ base: "14px", md: "15px", lg: "16px" }}
-                                fontWeight='semibold'
-                                bg='#A61212'
-                                color='#F0F0EE'
-                                _hover={{ bg: '#c01515' }}>
-                                Sign up
-                            </Button>
-
-                            <Modal isOpen={isOpen} onClose={onClose} >
-                                <ModalOverlay />
-                                <ModalContent bg={'grey.100'}>
-                                    <ModalHeader fontSize={'2xl'}>Sign up</ModalHeader>
-                                    <ModalCloseButton />
-                                    <form onSubmit={handleSubmit}>
-                                    <ModalBody>
-                                        <FormControl mb={'4'} id="email" isRequired >
-                                            <FormLabel>E-mail</FormLabel>
-                                            <Input type="email" id="email" name="email" value={formData.email} onChange={handleChange} borderRadius={'sm'} placeholder="E-mail" />
-                                        </FormControl>
-                                        <FormControl mb={'4'} id="username" isRequired>
-                                            <FormLabel>Username</FormLabel>
-                                            <Input type="username" id="username" name="username" value={formData.username} onChange={handleChange} borderRadius={'sm'} placeholder="Username" />
-                                        </FormControl>
-                                        <FormControl id="password" isRequired>
-                                            <FormLabel>Password</FormLabel>
-                                            <Input type="password" id="password" name="password" value={formData.password} onChange={handleChange} borderRadius={'sm'} placeholder="Password" />
-                                        </FormControl>
-                                    </ModalBody>
-                                    <ModalFooter>
-                                        <Button type="submit" fontSize={{ base: "14px", md: "15px", lg: "16px" }}
-                                                fontWeight='semibold'
-                                                bg='#A61212'
-                                                color='#F0F0EE'
-                                                borderRadius='10px'
-                                                px={'8'}
-                                                _hover={{ bg: '#c01515' }}>
-                                            Sign up
-                                        </Button>
-                                    </ModalFooter>
-                                </form>
-                                </ModalContent>
-                            </Modal>
-
+            {/* Sign up button */}
+            <Button onClick={onOpen}
+                    as={'a'}
+                    cursor='pointer'
+                    py={{base: "19px", sm: "20px", md: "21px", lg: "22px", xl: "23px", "2xl": "24px"}}
+                    px={{base: "27px", sm: "28px", md: "29px", lg: "30px", xl: "31px", "2xl": "32px"}}
+                    w="fit-content"
+                    lineHeight='1.2'
+                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                    border=''
+                    borderRadius='10px'
+                    fontSize={{ base: "12px", sm:"13px", md: "13px", lg: "14px", xl: "15px", "2xl": "16px" }}
+                    fontFamily='Roboto'
+                    fontWeight='semibold'
+                    letterSpacing='0.75px'
+                    bg='#A61212'
+                    color='#F0F0EE'
+                    _hover={{ filter: 'brightness(1.2)' }}
+                    _active={{ bg: '#A61212', filter: 'brightness(1.2)' }}
+                    _focus={{ boxShadow: 'none' }}
+            >
+                Sign up
+            </Button>
+            {/* Sign up modal */}
+            <Center>
+                <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
+                    <ModalOverlay />
+                    <ModalContent p='4' bg={searchBarBgColor}>
+                        <ModalHeader className='SubheaderLgReg'>Sign up</ModalHeader>
+                        <ModalCloseButton />
+                        <form onSubmit={handleSubmit}>
+                            <ModalBody display='grid' gap='6'>
+                                <FormControl id="email" isRequired >
+                                    <FormLabel className='BodyBold' fontWeight='600'>E-mail</FormLabel>
+                                    <Input className='BodyReg' borderRadius="10px" type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="E-mail" />
+                                </FormControl>
+                                <FormControl id="username" isRequired>
+                                    <FormLabel className='BodyBold' fontWeight='600'>Username</FormLabel>
+                                    <Input className='BodyReg' borderRadius="10px" type="username" id="username" name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
+                                </FormControl>
+                                <FormControl id="password" isRequired>
+                                    <FormLabel className='BodyBold' fontWeight='600'>Password</FormLabel>
+                                    <Input className='BodyReg' borderRadius="10px" type="password" id="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+                                </FormControl>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button type="submit"
+                                        cursor='pointer'
+                                        py={{base: "19px", sm: "20px", md: "21px", lg: "22px", xl: "23px", "2xl": "24px"}}
+                                        px={{base: "27px", sm: "28px", md: "29px", lg: "30px", xl: "31px", "2xl": "32px"}}
+                                        w="fit-content"
+                                        lineHeight='1.2'
+                                        transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                                        border=''
+                                        borderRadius='10px'
+                                        fontSize={{ base: "12px", sm:"13px", md: "13px", lg: "14px", xl: "15px", "2xl": "16px" }}
+                                        fontFamily='Roboto'
+                                        fontWeight='semibold'
+                                        letterSpacing='0.75px'
+                                        bg='#A61212'
+                                        color='#F0F0EE'
+                                        _hover={{ filter: 'brightness(1.2)' }}
+                                        _active={{ bg: '#A61212', filter: 'brightness(1.2)' }}
+                                        _focus={{ boxShadow: 'none' }}
+                                >
+                                    Sign up
+                                </Button>
+                            </ModalFooter>
+                        </form>
+                    </ModalContent>
+                </Modal>
+            </Center>
         </>
     )
 }

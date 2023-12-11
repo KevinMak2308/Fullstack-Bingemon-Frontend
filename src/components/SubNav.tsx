@@ -8,6 +8,10 @@ import {
     PopoverTrigger,
     PopoverContent,
     useColorModeValue,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
     useDisclosure,
     Link as ChakraLink,
 } from '@chakra-ui/react'
@@ -48,53 +52,72 @@ export default function SubNav() {
         ]
 
     return (
-        <Flex py={{ base: 2 }}
-              px={{ base: 4 }}
-              borderBottom={1}
-              borderStyle={'none'}
-              borderColor={useColorModeValue('gray.200', 'gray.900')}
-              align={'center'}
-       >
-
-            {subNavItems.map((navItem) =>
-                <Flex
-                    as="a"
-                    p={2}
-                    href={navItem.href ?? '#'}
-                    fontSize={'sm'}
-                    fontWeight={500}
-                    color={linkColor}
-                    _hover={{
-                        textDecoration: 'none',
-                        color: linkHoverColor,
-                    }} key={navItem.label}>
-                    <Popover trigger={'hover'} placement={'bottom-start'}>
-                        <PopoverTrigger>
-                            <Text>
-                                {navItem.label}
-                            </Text>
-                        </PopoverTrigger>
-                        <PopoverContent
-                            border={0}
-                            boxShadow={'xl'}
-                            bg={popoverContentBgColor}
-                            p={4}
-                            rounded={'xl'}
-                            minW={'sm'}>
-                            {navItem.children && navItem.children.map((child, index) => (
-                                <Stack key={index}>
-                                    <ChakraLink as={ReactRouterLink} to="/discover">
-                                        {child.label}
-                                    </ChakraLink>
-                                    <ChakraLink as={ReactRouterLink} to="/">
-                                        {child.subLabel}
-                                    </ChakraLink>
-                                </Stack>
-                            ))}
-                        </PopoverContent>
-                    </Popover>
-                </Flex>
-            )}
-
+        <Flex
+            color={useColorModeValue('#21201D', '#F0F0EE')}
+            h='8vh'
+            gap={{ base: "40px", sm:"45px", md: "50px", lg: "55px", xl:"60px", "2xl":"65px" }}
+            borderStyle={'none'}
+            borderColor={useColorModeValue('gray.200', 'gray.900')}
+            borderRadius='10px'
+            align={'center'}
+            justify={'start'} // Center the content horizontally
+            w={'90vw'} // Set the width to 90vw
+            mx={'auto'} // Center the content horizontally
+        >
+            {subNavItems.map((navItem) => (
+                <Menu key={navItem.label}>
+                    <MenuButton
+                        as={Flex}
+                        className="SubheaderSmBold"
+                        cursor='pointer'
+                        py={{ base: 2 }}
+                        _hover={{ filter: 'brightness(1.2)' }}
+                    >
+                        <Text as={ReactRouterLink} to={navItem.href ?? '#'}>
+                            {navItem.label}
+                        </Text>
+                    </MenuButton>
+                    {navItem.children &&
+                        navItem.children.map((child, index) => (
+                            <MenuList
+                                key={index}
+                                boxShadow="xl"
+                                py='4'
+                                bg="#343434"
+                                border="#343434"
+                                color="#F0F0EE"
+                                zIndex="2000"
+                                rounded="10px"
+                                minW="xs"
+                            >
+                                <MenuItem
+                                    as={ReactRouterLink}
+                                    to="/discover"
+                                    bg="#343434"
+                                    py='3'
+                                    px='6'
+                                    className='BodyReg'
+                                    _hover={{ filter: 'brightness(1.4)' }}
+                                    transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
+                                >
+                                    {child.label}
+                                </MenuItem>
+                                <MenuItem
+                                    as={ReactRouterLink}
+                                    to="/"
+                                    bg="#343434"
+                                    py='3'
+                                    px='6'  
+                                    className='BodyReg'
+                                    _hover={{ filter: 'brightness(1.4)' }}
+                                    transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
+                                >
+                                    {child.subLabel}
+                                </MenuItem>
+                            </MenuList>
+                        ))}
+                </Menu>
+            ))}
         </Flex>
-        )}
+    );
+}

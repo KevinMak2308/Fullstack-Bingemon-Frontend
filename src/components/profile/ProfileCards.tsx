@@ -1,16 +1,9 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import '../../App.css';
 import {
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    Heading,
-    Button,
     Image,
     Text,
     Box,
-    useColorMode,
     useColorModeValue,
     Flex,
     Center,
@@ -18,9 +11,10 @@ import {
     GridItem,
     AspectRatio
 } from '@chakra-ui/react'
-import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom'
 import { User, Movie, Series } from "../../pages/ProfilePage";
+import PrimaryButton from "../buttons/PrimaryButton";
+import SortButton from '../buttons/SortButton';
 
 interface ProfileProps {
     user: User;
@@ -33,42 +27,49 @@ function selectedBox(id: number) {
 }
 
 export default function ProfileCards({ user, movies, series }: ProfileProps) {
-    const { colorMode, toggleColorMode } = useColorMode();
-
+    // Default img if movie doesn't have any movie poster
     const defaultImgUrl = "http://127.0.0.1:8080/default/poster_unavailable.jpg";
 
+    // SORT BUTTON
+    const handleSortChange = (sortOption: string) => {
+        console.log('Sorting option selected:', sortOption);
+    };
+    const sortingOptions = [
+        'Popularity ascending',
+        'Popularity descending',
+        'Release Date ascending',
+        'Release Date descending',
+        'Title (A-Z)',
+        'Title (Z-A)',
+    ];
+
     return (
-        <Box bg={useColorModeValue('#e5e5e5', '#21201D')} color={useColorModeValue('#21201D', '#F0F0EE')} >
-            <Flex py={{ base: '75px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
+        <Box bg={useColorModeValue('#e5e5e5', '#21201D')} color={useColorModeValue('#21201D', '#F0F0EE')}>
+            <Flex py={{ base: '75px', sm:'80px', md: '85px', lg: '90px', xl:'95px', "2xl":'100px' }} alignContent={"center"} justifyContent={"center"}>
                 <Center>
-                    <Box w='80vw'>
-                        <Heading className="h2"  mb={{ base: "4", md: "6", lg: "8" }}>
+                    <Box w='80vw' display='grid' gap={{ base: "12px", sm:"14px", md: "16px", lg: "18px", xl:"20px", "2xl":"22px" }}>
+                        {/* Heading */}
+                        <Text as="h2">
                             Liked movies and series
-                        </Heading>
-                        <SimpleGrid columns={[1, 1, 1, 2, 2, 2]} gap={{ base: 14, md: 0, lg: 20 }} fontSize={{ base: "13px", md: "14px", lg: "15px" }} lineHeight='1.7'>
-                            <GridItem w='100%'>
-                                <Flex justifyContent='space-between' alignItems="center" mb={{ base: "4", md: "6", lg: "8" }}>
-                                    <Heading as='h3' fontSize={{ base: '20px', md: '22px', lg: '25px' }}>
-                                        {movies.length} liked movies
-                                    </Heading>
-                                    <Menu placement="bottom-end">
-                                        <MenuButton as={Button} bg='#343434' color="#F0F0EE" _hover={{ filter: 'brightness(1.4)' }} _active={{ bg: '#484848', color: '#F0F0EE' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' rightIcon={<ChevronDownIcon />}>
-                                            Sort by
-                                        </MenuButton>
-                                        <MenuList bg='#343434' border='#343434' color='#F0F0EE'>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Popularity ascending</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Popularity descending</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Release Date ascending</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Release Date descending</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Title (A-Z)</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Title (Z-A)</MenuItem>
-                                        </MenuList>
-                                    </Menu>
-                                </Flex>
-                                <SimpleGrid columns={[3, 3, 3, 3, 3, 4]} gap={{base: "3", sm:"4", md: "5", lg: "6", xl:"7", "2xl":"8"}} fontWeight='500' fontSize={{ base: "11px", sm: "12px", md: "13px", lg: "14px", xl: "15px", "2xl": "16px" }}>
+                        </Text>
+                        {/* Liked movies and series */}
+                        <SimpleGrid columns={[1, 1, 1, 2, 2, 2]} display='grid' gap='20' >
+                            {/* Liked movies */}
+                            <GridItem w='100%' display='grid' gap={{ base: "12px", sm:"14px", md: "16px", lg: "18px", xl:"20px", "2xl":"22px" }}>
+                                {/* H3 + sort button */}
+                                <Box alignItems="top">
+                                    <Flex justifyContent='space-between' alignItems="center">
+                                        <Text as='h3'>
+                                            {movies.length} liked movies
+                                        </Text>
+                                        <SortButton onSortChange={handleSortChange} sortingOptions={sortingOptions} />
+                                    </Flex>
+                                </Box>
+                                {/* Movie loop */}
+                                <SimpleGrid columns={[3, 3, 4, 3, 3, 4]} gap={{ base: "12px", sm:"14px", md: "16px", lg: "18px", xl:"22px", "2xl":"26px" }} className="SubheaderSm">
                                     {movies.slice(0, 6).map((movie) => (
                                         <Link to={"/singlemoviepage/" + movie.id}>
-                                            <GridItem key={movie.id} w='100%' h='100%' display="grid" gap={{base: "1.5", sm:"1.5", md: "1.5", lg: "2", xl:"3", "2xl":"4"}} cursor='pointer' >
+                                            <GridItem key={movie.id} w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
                                                 <AspectRatio ratio={2 / 3}>
                                                     <Image
                                                         objectFit="cover"
@@ -78,9 +79,9 @@ export default function ProfileCards({ user, movies, series }: ProfileProps) {
                                                         alt={"Poster for: " + movie.title}
                                                     />
                                                 </AspectRatio>
-                                                <Box textAlign="center" alignItems="top" h='5vh' overflow="hidden">
+                                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
                                                     <Text
-                                                        lineHeight='1.5'
+                                                        className='MovieTitle'
                                                         overflow="hidden"
                                                         display="-webkit-box"
                                                         style={{
@@ -96,56 +97,39 @@ export default function ProfileCards({ user, movies, series }: ProfileProps) {
                                         </Link>
                                     ))}
                                 </SimpleGrid>
-                                <Flex alignContent={"center"} justifyContent={"center"} mt={{ base: "6", md: "8", lg: "10" }}>
+                                {/* View all button */}
+                                <Flex alignContent={"center"} justifyContent={"center"} mt={{ base: '15px', sm:'15px', md: '15px', lg: '15px', xl:'20px', "2xl":'25px' }}>
                                     {movies.length <= 6 ? (null)
                                         :
                                         (
                                         <Flex alignContent={"center"} justifyContent={"center"}>
                                             <Link to={"/liked/" + user.id}>
-                                                <Button
+                                                <PrimaryButton
                                                     onClick={() => selectedBox(0)}
-                                                    py={{base: "24px", md: "26px", lg: "25px"}}
-                                                    px={{base: "28px", md: "29px", lg: "30px"}}
-                                                    lineHeight='1.2'
-                                                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                                                    border=''
-                                                    borderRadius='10px'
-                                                    fontSize={{ base: "14px", md: "15px", lg: "16px" }}
-                                                    fontWeight='semibold'
-                                                    bg='#A61212'
-                                                    color='#F0F0EE'
-                                                    _hover={{ bg: '#c01515' }}>
-                                                    View all liked movies
-                                                </Button>
+                                                    buttonText="View all liked movies"
+                                                />
                                             </Link>
                                         </Flex>
                                         )
                                     }
                                 </Flex>
                             </GridItem>
-                            <GridItem w='100%'>
-                                <Flex justifyContent='space-between' alignItems="center" mb={{ base: "4", md: "6", lg: "8" }}>
-                                    <Heading as='h3' fontSize={{ base: '20px', md: '22px', lg: '25px' }}>
-                                        {series.length} liked series
-                                    </Heading>
-                                    <Menu placement="bottom-end">
-                                        <MenuButton as={Button} bg='#343434' color="#F0F0EE" _hover={{ filter: 'brightness(1.4)' }} _active={{ bg: '#484848', color: '#F0F0EE' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' rightIcon={<ChevronDownIcon />}>
-                                            Sort by
-                                        </MenuButton>
-                                        <MenuList bg='#343434' border='#343434' color='#F0F0EE'>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Popularity ascending</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Popularity descending</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Release Date ascending</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Release Date descending</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Title (A-Z)</MenuItem>
-                                            <MenuItem bg='#343434' _hover={{ filter: 'brightness(1.4)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>Title (Z-A)</MenuItem>
-                                        </MenuList>
-                                    </Menu>
-                                </Flex>
-                                <SimpleGrid columns={[3, 3, 3, 3, 3, 4]} gap={{base: "3", sm:"4", md: "5", lg: "6", xl:"7", "2xl":"8"}} fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
+                            {/* Liked series */}
+                            <GridItem w='100%' display='grid' justifyContent='top' gap={{ base: "12px", sm:"14px", md: "16px", lg: "18px", xl:"20px", "2xl":"22px" }}>
+                                {/* H3 + sort button */}
+                                <Box alignItems="top">
+                                    <Flex justifyContent='space-between' alignItems="center">
+                                        <Text as='h3'>
+                                            {series.length} liked series
+                                        </Text>
+                                        <SortButton onSortChange={handleSortChange} sortingOptions={sortingOptions} />
+                                    </Flex>
+                                </Box>
+                                {/* Series loop */}
+                                <SimpleGrid columns={[3, 3, 4, 3, 3, 4]} gap={{ base: "12px", sm:"14px", md: "16px", lg: "18px", xl:"22px", "2xl":"26px" }} className="SubheaderSm">
                                     {series.slice(0, 6).map((singleSeries) => (
                                         <Link to={"/singleseriespage/" + singleSeries.id}>
-                                            <GridItem key={singleSeries.id} w='100%' h={{ base: "22vh", md: "26vh", lg: "30vh" }} display="grid" gridGap="1.5" cursor='pointer'>
+                                            <GridItem key={singleSeries.id} w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
                                                 <AspectRatio ratio={2 / 3}>
                                                     <Image
                                                         objectFit="cover"
@@ -155,9 +139,9 @@ export default function ProfileCards({ user, movies, series }: ProfileProps) {
                                                         alt={"Poster for: " + singleSeries.name}
                                                     />
                                                 </AspectRatio>
-                                                <Box textAlign="center" alignItems="top" h='5vh' overflow="hidden">
+                                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
                                                     <Text
-                                                        lineHeight='1.5'
+                                                        className='MovieTitle'
                                                         overflow="hidden"
                                                         display="-webkit-box"
                                                         style={{
@@ -173,27 +157,19 @@ export default function ProfileCards({ user, movies, series }: ProfileProps) {
                                         </Link>
                                     ))}
                                 </SimpleGrid>
-                                <Flex alignContent={"center"} justifyContent={"center"} mt={{ base: "6", md: "8", lg: "10" }}>
+                                {/* View all button */}
+                                <Flex alignContent={"center"} justifyContent={"center"} mt={{ base: '15px', sm:'15px', md: '15px', lg: '15px', xl:'20px', "2xl":'25px' }}>
                                     {series.length <= 6 ? (null)
                                         :
                                         (
-                                            <Link to={"/liked/"+user.id}>
-                                                <Button
-                                                    onClick={() => selectedBox(1)}
-                                                    py={{base: "24px", md: "26px", lg: "25px"}}
-                                                    px={{base: "28px", md: "29px", lg: "30px"}}
-                                                    lineHeight='1.2'
-                                                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                                                    border=''
-                                                    borderRadius='10px'
-                                                    fontSize={{ base: "14px", md: "15px", lg: "16px" }}
-                                                    fontWeight='semibold'
-                                                    bg='#A61212'
-                                                    color='#F0F0EE'
-                                                    _hover={{ filter: 'brightness(1.2)' }}>
-                                                    View all liked series
-                                                </Button>
-                                            </Link>
+                                            <Flex alignContent={"center"} justifyContent={"center"}>
+                                                <Link to={"/liked/" + user.id}>
+                                                    <PrimaryButton
+                                                        onClick={() => selectedBox(0)}
+                                                        buttonText="View all liked series"
+                                                    />
+                                                </Link>
+                                            </Flex>
                                         )
                                     }
                                 </Flex>

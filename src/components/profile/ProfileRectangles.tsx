@@ -16,16 +16,16 @@ import {
 
 export default function ProfileCards() {
     return (
-        <Box bg={useColorModeValue('#dbdbdb', '#1A1917')} color={useColorModeValue('#21201D', '#F0F0EE')} >
-            <Flex py={{ base: '75px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
+        <Box bg={useColorModeValue('#dbdbdb', '#1A1917')} color={useColorModeValue('#21201D', '#F0F0EE')}>
+            <Flex py={{ base: '75px', sm:'80px', md: '85', lg: '90px', xl:'95px', "2xl":'100px' }} alignContent={"center"} justifyContent={"center"}>
                 <Center>
-                    <Box w='80vw' display="grid" gridGap={{ base: "12", md: "14", lg: "16" }}>
-                        <Box>
-                            <Heading as='h2' fontSize={{ base: "25px", md: "30px", lg: "35px" }} mb={{ base: "4", md: "6", lg: "8" }}>
+                    <Box w='80vw' display="grid" gap='60px'>
+                        <Box display='grid' gap={{ base: "12px", sm:"14px", md: "16px", lg: "18px", xl:"20px", "2xl":"22px" }}>
+                            <Text as='h2'>
                                 Liked genres
-                            </Heading>
-                            <Flex justifyContent='space-between' alignItems="center" gap="6" flexDirection={{base:'column', lg:'row'}}>
-                                <SimpleGrid columns={[4, null, 4]} gap={{base: "3", md: "", lg: "6"}} maxW={{ lg:'50vw' }} fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
+                            </Text>
+                            <Flex justifyContent='space-between' alignItems="center" gap="10" flexDirection={{base:'column', lg:'row'}}>
+                                <SimpleGrid columns={[2, 2, 4, 4, 4, 4]} className="SubheaderSm" gap={{ base: "15px", sm:"16px", md: "17px", lg: "18px", xl:"19px", "2xl":"20px" }} maxW={{ lg:'50vw' }}>
                                     <GridItem w='100%' display="grid" gridGap="2" cursor='pointer' >
                                         <Image
                                             src='gibbresh.png'
@@ -45,7 +45,6 @@ export default function ProfileCards() {
                                                 border:'solid 1.5px #A61212',
                                             }}
                                         />
-                                        <Text textAlign="center" > Name Lorem Ipsum</Text>
                                     </GridItem>
                                     <GridItem w='100%' display="grid" gridGap="2" cursor='pointer' >
                                         <Image
@@ -66,7 +65,6 @@ export default function ProfileCards() {
                                                 border:'solid 1.5px #A61212',
                                             }}
                                         />
-                                        <Text textAlign="center" > Name Lorem Ipsum</Text>
                                     </GridItem>
                                     <GridItem w='100%' display="grid" gridGap="2" cursor='pointer' >
                                         <Image
@@ -87,7 +85,6 @@ export default function ProfileCards() {
                                                 border:'solid 1.5px #A61212',
                                             }}
                                         />
-                                        <Text textAlign="center" > Name Lorem Ipsum</Text>
                                     </GridItem>
                                     <GridItem w='100%' display="grid" gridGap="2" cursor='pointer' >
                                         <Image
@@ -108,15 +105,14 @@ export default function ProfileCards() {
                                                 border:'solid 1.5px #A61212',
                                             }}
                                         />
-                                        <Text textAlign="center" > Name Lorem Ipsum</Text>
                                     </GridItem>
                                 </SimpleGrid>
-                                <Flex alignItems="center" gap="2" cursor="pointer" fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }} >
+                                <Flex alignItems="center" gap="2" cursor="pointer">
                                     <Center gap='4'>
                                         <HStack
                                             cursor="pointer"
                                             position="relative"
-                                            marginBottom="4px"
+                                            w='fit-content'
                                             _before={{
                                                 content: '""',
                                                 position: 'absolute',
@@ -133,7 +129,7 @@ export default function ProfileCards() {
                                                 },
                                             }}
                                         >
-                                            <Text fontWeight='500' marginBottom="2px">Edit liked genres</Text>
+                                            <Text className="BodyBold" marginBottom="2px">Edit liked genres</Text>
                                         </HStack>
                                         <Box
                                             transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
@@ -147,13 +143,13 @@ export default function ProfileCards() {
                                 </Flex>
                             </Flex>
                         </Box>
-                        <Box>
-                            <Heading as='h2' fontSize={{ base: "25px", md: "30px", lg: "35px" }} mb={{ base: "4", md: "6", lg: "8" }}>
+                        <Box display='grid' gap={{ base: "12px", sm:"14px", md: "16px", lg: "18px", xl:"20px", "2xl":"22px" }}>
+                            <Text as='h2'>
                                 Liked actors
-                            </Heading>
-                            <Flex justifyContent='space-between' alignItems="center" gap="6" flexDirection={{base:'column', lg:'row'}}>
-                                <SimpleGrid columns={[4, null, 4]} gap={{base: "3", md: "", lg: "6"}} maxW={{ lg:'50vw' }} fontWeight='500' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
-                                    <GridItem w='100%' display="grid" gridGap="2" cursor='pointer' >
+                            </Text>
+                            <Flex justifyContent='space-between' alignItems="center" gap="10" flexDirection={{base:'column', lg:'row'}}>
+                                <SimpleGrid columns={[2, 2, 4, 4, 4, 4]} className="SubheaderSm" gap={{ base: "15px", sm:"16px", md: "17px", lg: "18px", xl:"19px", "2xl":"20px" }} maxW={{ lg:'50vw' }}>
+                                    <GridItem w='100%' display="grid" gridGap="2" cursor='pointer'>
                                         <Image
                                             src='gibbresh.png'
                                             fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'
@@ -243,7 +239,7 @@ export default function ProfileCards() {
                                         <HStack
                                             cursor="pointer"
                                             position="relative"
-                                            marginBottom="4px"
+                                            w='fit-content'
                                             _before={{
                                                 content: '""',
                                                 position: 'absolute',
@@ -260,7 +256,7 @@ export default function ProfileCards() {
                                                 },
                                             }}
                                         >
-                                            <Text fontWeight='500' marginBottom="2px">Edit liked actors</Text>
+                                            <Text className="BodyBold" marginBottom="2px">Edit liked actors</Text>
                                         </HStack>
                                         <Box
                                             transition='all 0.5s cubic-bezier(.08,.52,.52,1)'

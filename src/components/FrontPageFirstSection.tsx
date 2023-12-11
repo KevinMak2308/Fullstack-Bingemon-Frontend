@@ -1,56 +1,110 @@
-import React, {useState} from 'react';
-import '../App.css';
+import React, { useState, useEffect } from 'react';
 import {
-    useDisclosure,
     Box,
     Center,
     Flex,
-    GridItem,
-    Heading,
-    SimpleGrid,
-    Text
+    Text,
+    useColorModeValue
 } from '@chakra-ui/react';
-import Signup from "./authentication/SignupModal";
-
-interface frontpageProps {
-    isOpen: boolean,
-    onOpen: () => void;
-    onClose: () => void;
-}
+import Signup from './authentication/SignupModal';
 
 function FrontPageFirstSection() {
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(false);
 
-   const openModal = () => {
-        setShow(true)
-    }
+    const [loggedIn, setLoggedIn] = useState(!!document.cookie.split(';').find((row) => row.startsWith('user=')));
+
+    const openModal = () => {
+        setShow(true);
+    };
 
     const closeModal = () => {
-        setShow(false)
-    }
+        setShow(false);
+    };
+
+    useEffect(() => {
+        // Check the 'user' cookie when the component mounts
+        const userCookie = document.cookie.split(';').find((row) => row.trim().startsWith('user='));
+        setLoggedIn(!!userCookie);
+    }, []); // Empty dependency array to run the effect only once when the component mounts
 
     return (
-        <SimpleGrid columns={[1, null, 2]} spacing='0px' color='#dcdbd8'>
-            <GridItem>
-                <Flex py={{ base: '80px', md: '', lg: '90px' }} w='100%' minH={{ base: '55vh', md: '90vh', lg: '92.5vh' }} alignContent={"center"} justifyContent={"center"}>
-                    <Center >
-                        <Box maxW={{base:"80%", lg:"87%"}}>
-                            <Box display="grid" gridGap={{ base: "4", md: "6", lg: "8" }}>
-                                <Heading as='h1' fontSize={{ base: "35px", md: "40px", lg: "45px" }}>
-                                    Start Swiping Today!
-                                </Heading>
-                                <Text fontSize={{ base: "20px", md: "21px", lg: "22px" }}  maxW={{base:"100%", lg:"80%"}} lineHeight='1.9' mb={{ base: "4", md: "6", lg: "8" }}>
-                                    Fed up with the endless scrolling and disagreements when trying to pick a movie to watch with friends or family?
-                                    Look no further – welcome to the ultimate platform for matching your movie interests.
-                                    Join us today and let the cinematic matchmaking begin!
-                                </Text>
+
+        <Box color='#dcdbd8'>
+            <Flex
+                py={{
+                    base: '75px',
+                    sm: '80px',
+                    md: '85px',
+                    lg: '90px',
+                    xl: '95px',
+                    '2xl': '100px',
+                }}
+                h={loggedIn ? '82vh' : '90vh'}
+                alignContent={"center"} justifyContent={"center"}
+            >
+                <Center>
+                    <Box
+                        display="grid"
+                        gap={{
+                            base: '12px',
+                            sm: '14px',
+                            md: '16px',
+                            lg: '18px',
+                            xl: '20px',
+                            '2xl': '22px',
+                        }}
+                        w="90vw"
+                        alignContent='center'
+                    >
+                        <Box
+                            w={{
+                                base: '90vw',
+                                sm: '90vw',
+                                md: '65vw',
+                                lg: '55vw',
+                                xl: '45vw',
+                                '2xl': '30vw',
+                            }}
+                            display='grid'
+                            gap={{
+                                base: '12px',
+                                sm: '14px',
+                                md: '16px',
+                                lg: '18px',
+                                xl: '20px',
+                                '2xl': '22px',
+                            }}
+                            style={{
+                                backgroundColor: 'rgba(26, 25, 23, 0.6)',
+                                padding: '30px',
+                                borderRadius: '10px',
+                                backdropFilter: 'blur(5px)',
+                                boxShadow: `0 0 40px 20px rgba(26, 25, 23, 0.5)`,
+                            }}
+                        >
+                            <Text as='h1'>Start Swiping Today!</Text>
+                            <Text className='SubheaderLgReg'>
+                                Fed up with the endless scrolling and disagreements when trying to pick a movie to watch with friends
+                                or family? Look no further – welcome to the ultimate platform for matching your movie interests. Join
+                                us today and let the cinematic matchmaking begin!
+                            </Text>
+                            <Box
+                                mt={{
+                                    base: '15px',
+                                    sm: '15px',
+                                    md: '15px',
+                                    lg: '15px',
+                                    xl: '20px',
+                                    '2xl': '25px',
+                                }}
+                            >
+                                <Signup isOpen={show} onClose={closeModal} onOpen={openModal} />
                             </Box>
-                            <Signup isOpen={show} onClose={closeModal} onOpen={openModal}/>
                         </Box>
-                    </Center>
-                </Flex>
-            </GridItem>
-        </SimpleGrid>
+                    </Box>
+                </Center>
+            </Flex>
+        </Box>
     );
 }
 
