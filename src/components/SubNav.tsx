@@ -54,7 +54,7 @@ export default function SubNav() {
     return (
         <Flex
             color={useColorModeValue('#21201D', '#F0F0EE')}
-            h='8vh'
+            h={{ base: "6vh", sm:"6vh", md: "6vh", lg: "8vh", xl:"8vh", "2xl":"8vh" }}
             gap={{ base: "40px", sm:"45px", md: "50px", lg: "55px", xl:"60px", "2xl":"65px" }}
             borderStyle={'none'}
             borderColor={useColorModeValue('gray.200', 'gray.900')}

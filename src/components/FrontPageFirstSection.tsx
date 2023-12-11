@@ -39,7 +39,7 @@ function FrontPageFirstSection() {
                     xl: '95px',
                     '2xl': '100px',
                 }}
-                h={loggedIn ? '82vh' : '90vh'}
+                h={{ base: "84vh", sm:"84vh", md: "84vh", lg: "82vh", xl:"82vh", "2xl":"82vh" }}
                 alignContent={"center"} justifyContent={"center"}
             >
                 <Center>
@@ -56,7 +56,7 @@ function FrontPageFirstSection() {
                         w="90vw"
                         alignContent='center'
                     >
-                        <Box
+                        <Box p={{ base: "15px", sm:"20px", md: "25px", lg: "30px", xl:"35px", "2xl":"40px" }}
                             w={{
                                 base: '90vw',
                                 sm: '90vw',
@@ -76,7 +76,6 @@ function FrontPageFirstSection() {
                             }}
                             style={{
                                 backgroundColor: 'rgba(26, 25, 23, 0.6)',
-                                padding: '30px',
                                 borderRadius: '10px',
                                 backdropFilter: 'blur(5px)',
                                 boxShadow: `0 0 40px 20px rgba(26, 25, 23, 0.5)`,

@@ -137,9 +137,7 @@
                         </Flex>
                     </Center>
                 </Flex>
-                {user && <SubNav />}
+                <SubNav />
             </Box>
         )
     }
-
-
