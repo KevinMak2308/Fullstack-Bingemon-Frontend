@@ -92,7 +92,7 @@ export default function AllLiked({ commonMovies, commonSeries, movies, series, u
             {/* Back button */}
             <BackButton />
             <Flex
-                py={{ base: '75px', md: '', lg: '90px' }}
+                py={{ base: '75px', sm:'80px', md: '85px', lg: '90px', xl:'95px', "2xl":'100px' }}
                 alignContent={'center'}
                 justifyContent={'center'}
             >

@@ -21,7 +21,7 @@ function DiscoverPrimaryFilter({ onChange }: DiscoverPrimaryFilterProps) {
     };
 
     return (
-        <SimpleGrid  columns={[5]} gap={{ base: "4", md: "5", lg: "auto" }} fontWeight='500' fontSize={{ base: "16px", md: "18px", lg: "20px" }}>
+        <SimpleGrid columns={[2, 3, 3, 5, 5, 5]} gap={{ base: "4", md: "5", lg: "auto" }} fontWeight='500' fontSize={{ base: "16px", md: "18px", lg: "20px" }}>
             {boxNames.map((name, index) => (
                 <GridItem key={index} w='100%'>
                     <Box

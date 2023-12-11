@@ -12,6 +12,7 @@ import {
     WrapItem
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import SortButton from '../buttons/SortButton';
 
 const genreMap: Record<string, string> = {
     '28': 'Action',
@@ -74,26 +75,44 @@ function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any
         const updatedTags = tags.filter((tag) => tag !== tagToRemove);
         setTags(updatedTags);
     };
+
+    // SORT BUTTON
+    const handleSortChange = (sortOption: string) => {
+        console.log('Sorting option selected:', sortOption);
+    };
+    const sortingOptions = [
+        'Popularity ascending',
+        'Popularity descending',
+        'Release Date ascending',
+        'Release Date descending',
+        'Title (A-Z)',
+        'Title (Z-A)',
+    ];
+
     return (
         <SimpleGrid columns={[2, null, 2]} w='80vw'>
             <Flex justify={"start"}>
-                <Wrap spacing='7px'>
+                <Wrap spacing={{ base: "8px", sm:"8px", md: "8px", lg: "10px", xl:"10px", "2xl":"10px" }}>
                     {tags.map((tag, index) => (
                         <WrapItem key={index}>
                             <Tag
-                                size="md"
-                                py={{ base: "8px", md: "9px", lg: "10px" }}
-                                px={{ base: "18px", md: "19px", lg: "20px" }}
-                                lineHeight='1.2'
+                                fontFamily='Roboto'
+                                fontSize={{
+                                    base: '10px',
+                                    sm: '11px',
+                                    md: '12px',
+                                    lg: '13px',
+                                    xl: '14px',
+                                    '2xl': '15px',
+                                }}
+                                py={{ base: "7px", sm:"9", md: "9px", lg: "10px", xl:"11px", "2xl":"12px" }}
+                                px={{ base: "17px", sm: "19px", md: "19px", lg: "20px", xl:"21px", "2xl":"22px" }}
                                 transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                                 borderRadius='100px'
                                 border=''
-                                fontSize={{ base: "13px", md: "14px", lg: "15px" }}
-                                fontWeight='normal'
                                 cursor='default'
                                 bg='#343434'
                                 borderColor=''
-                                color='#F0F0EE'
                                 _hover={{ bg: '#3b3b3b' }}
                             >
                                 {tag}
@@ -103,23 +122,8 @@ function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any
                     ))}
                 </Wrap>
             </Flex>
-
-            <Flex justify={"end"}>
-                <GridItem>
-                    <Menu placement="bottom-end">
-                        <MenuButton as={Button} bg='#343434' _hover={{bg:'#3b3b3b'}} rightIcon={<ChevronDownIcon />}>
-                            Sort by
-                        </MenuButton>
-                        <MenuList >
-                            <MenuItem>Popularity ascending</MenuItem>
-                            <MenuItem>Popularity descending</MenuItem>
-                            <MenuItem>Release Date ascending</MenuItem>
-                            <MenuItem>Release Date descending</MenuItem>
-                            <MenuItem>Title (A-Z)</MenuItem>
-                            <MenuItem>Title (Z-A)</MenuItem>
-                        </MenuList>
-                    </Menu>
-                </GridItem>
+            <Flex justify={"end"} alignItems={'center'}>
+                <SortButton onSortChange={handleSortChange} sortingOptions={sortingOptions} />
             </Flex>
         </SimpleGrid>
     );

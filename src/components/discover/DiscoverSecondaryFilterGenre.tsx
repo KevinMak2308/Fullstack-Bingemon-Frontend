@@ -38,13 +38,14 @@ export default function DiscoverSecondaryFilterGenre({onChange}: DiscoverSeconda
     }
 
     return (
-        <SimpleGrid columns={[3, null, 6]} gap={{ base: "4", md: "5", lg: "auto" }} textTransform="capitalize" fontWeight='500' fontSize={{ base: "14px", md: "15px", lg: "16px" }}>
+        <SimpleGrid columns={[2, 3, 4, 6, 6, 6]} gap={{ base: "4", md: "5", lg: "auto" }} textTransform="capitalize" fontWeight='500' fontSize={{ base: "14px", md: "15px", lg: "16px" }}>
             {genreList.map((genre, index) => (
                 <GridItem key={index} w='100%' display="grid" gridGap="2">
                     <Box
                         bg={selectedGenre === genre.id ? '#A61212' : '#21201d'}
                         cursor='pointer'
                         p='10px'
+                        className='SubheaderSmReg'
                         border='2px'
                         borderColor='#A61212'
                         _hover={{ bg: selectedGenre === genre.id ? '#c01515' : '#262521' }}

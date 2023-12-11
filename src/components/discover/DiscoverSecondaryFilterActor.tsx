@@ -37,47 +37,49 @@ export default function DiscoverSecondaryFilterCast({ onChange }: DiscoverSecond
         console.log("Selected Actor ID: ", actorId);
     }
 
+    // Default img if movie doesn't have any movie poster
+    const defaultImgUrl = "http://127.0.0.1:8080/default/poster_unavailable.jpg";
+
     return (
-        <SimpleGrid columns={[3, null, 6]} gap={{ base: "4", md: "5", lg: "auto" }} textTransform="capitalize" fontWeight='500' fontSize={{ base: "14px", md: "15px", lg: "16px" }}>
+        <SimpleGrid columns={[2, 3, 3, 3, 4, 6]} gap={{ base: "4", md: "5", lg: "auto" }} textTransform="capitalize" fontWeight='500' fontSize={{ base: "14px", md: "15px", lg: "16px" }}>
             {actorsList.map((actor, index) => (
                 <GridItem key={index} w='100%' display="grid" gridGap="2">
                     <Box
-                        bg={selectedActor === actor.id ? '#A61212' : '#21201d'}
+                        bg= '#21201d'
+                        _hover={{ bg: '#262521' }}
                         cursor='pointer'
+                        className='SubheaderSmReg'
+                        gap={{ lg: '15px', xl:'20px', "2xl":'20px' }}
                         p='10px'
                         border='2px'
                         borderColor='#A61212'
-                        _hover={{ bg: selectedActor === actor.id ? '#c01515' : '#262521' }}
                         transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                         borderRadius='10px'
                         color='#F0F0EE'
-                        h={{ base: "10vh", md: "16vh", lg: "40vh" }}
+                        h={{ base: "10vh", md: "16vh", lg: "12vh" }}
                         display='flex'
-                        flexDirection="column"
                         textAlign='center'
                         alignItems='center'
                         justifyContent='center'
-                        onClick={() => handleSelectionChange(actor.id)}
                     >
-                        <Box>
-                            <Image
-                                src={actor.profile_path}
-                                alt="actor_image"
-                                boxSize="full"
-                                width='100%'
-                                height='100%'
-                                objectFit='cover'
-                                backgroundPosition="center"
-                                backgroundRepeat="no-repeat"
-                                backgroundSize="cover"
-                                borderRadius='10px'
-                                border='2px'
-                                borderColor='#A61212'
-                                mb={{base: "5px", md: "8px", lg: "12px"}}
-                            />
-                        </Box>
+                        <Image
+                            objectFit="cover"
+                            src={actor.profile_path}
+                            fallbackSrc={defaultImgUrl}
+                            display={{ base: 'none', sm: 'none', md: 'none', lg: 'block', xl: 'block', "2xl": 'block' }}
+                            borderRadius='50%'
+                            h={{ lg: '55px', xl:'60px', "2xl":'75px' }}
+                            w={{ lg: '55px', xl:'60px', "2xl":'75px' }}
+                            border='solid 1.5px #A61212'
+                            alt='Profile'
+                        />
                         <Text
-                            pt={{base: "5px", md: "8px", lg: "12px"}}>
+                            style={{
+                                WebkitBoxOrient: 'vertical',
+                                WebkitLineClamp: 2,
+                                maxWidth: '100%',
+                            }}
+                        >
                             {actor.name}
                         </Text>
                     </Box>
