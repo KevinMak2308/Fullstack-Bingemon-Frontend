@@ -107,7 +107,7 @@ function SingleMovieFirstSection({ movie, images }: SingleMovieFirstSectionProps
                                     </HStack>
                                     {movie.spoken_languages && movie.spoken_languages.length > 0 ? (
                                         <>
-                                            {movie.spoken_languages.map((language) => (
+                                            {movie.spoken_languages.slice(0,1).map((language) => (
                                                 <HStack spacing='2' key={language.iso_639_1}>
                                                     <Text className='SubheaderSmBold'>{language.english_name}</Text>
                                                 </HStack>
