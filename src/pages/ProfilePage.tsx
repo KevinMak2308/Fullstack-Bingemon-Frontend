@@ -7,6 +7,8 @@ import Footer from "../components/Footer"
 import React, {useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import httpService from '../services/httpService';
+import LoadingScreen from '../components/errorHandling/LoadingScreen';
+import ErrorScreen from '../components/errorHandling/ErrorScreen';
 
 export interface User {
     id: number;
@@ -43,6 +45,9 @@ function ProfilePage() {
     const [avatarData, setAvatarData] = useState<Avatar[]>([]);
     const [movieData, setMovieData] = useState<Movie[]>([]);
     const [seriesData, setSeriesData] = useState<Series[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+
 
     const fetchUserMovies = async(id: string) => {
         try {
@@ -56,8 +61,10 @@ function ProfilePage() {
             setAvatarData(avatarResponse);
             setMovieData(movieResponse);
             setSeriesData(seriesResponse);
+            setIsLoading(false);
         } catch (error) {
-            console.error("Something went wrong fetching: ", error)
+            console.error("Something went wrong fetching: ", error);
+            setIsLoading(false);
         }
     }
 
@@ -66,6 +73,13 @@ function ProfilePage() {
             fetchUserMovies(id);
         }
     }, [id]);
+
+    if (isLoading) {
+        return <LoadingScreen loadingText='user' />;
+    }
+    if (movieData == null) {
+        return <ErrorScreen errorText='Something went wrong fetching the user' />;
+    }
 
     return (
         <div>

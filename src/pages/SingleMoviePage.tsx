@@ -10,6 +10,8 @@ import Footer from "../components/Footer"
 import { useParams } from 'react-router-dom';
 import {ApiImage} from "../components/ImageCarousel";
 import httpService from '../services/httpService';
+import LoadingScreen from '../components/errorHandling/LoadingScreen';
+import ErrorScreen from '../components/errorHandling/ErrorScreen';
 
 interface Genre {
     id: number;
@@ -110,11 +112,10 @@ function SingleMoviePage() {
     }, [id]);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <LoadingScreen loadingText='movie' />;
     }
-
     if (movieData == null) {
-        return <div>Something went wrong... Please refresh the page</div>;
+        return <ErrorScreen errorText='Something went wrong fetching the movie' />;
     }
     
     return (

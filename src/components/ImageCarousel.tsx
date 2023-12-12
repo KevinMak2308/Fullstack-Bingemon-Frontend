@@ -55,18 +55,23 @@ export default function ImageCarousel({ images }: Slides) {
     return (
         <Flex>
             <Flex overflow="hidden" pos="relative">
-                <Flex w='100%'  h={{ base: '45vh', md: '90vh', lg: '92.5vh' }} {...carouselStyle}>
+                <Flex w='100%'  h={{ base: "50vh", sm:"50vh", md: "60vh", lg: "82vh", xl:"82vh", "2xl":"82vh" }} {...carouselStyle}>
                     {images.map((slide, sid) => (
                         <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none">
+
                             <Text
-                                color="white"
-                                fontSize="xs"
+                                color="#F0F0EE"
+                                backgroundColor= 'rgba(26, 25, 23, 0.6)'
+                                borderRadius= '0 0 10px 0'
+                                backdropFilter= 'blur(5px)'
+                                className='SubheaderXsBold'
                                 p="8px 12px"
                                 pos="absolute"
                                 top="0"
                             >
                                 {sid + 1} / {slidesCount}
                             </Text>
+
                             <Image
                                 src={slide.file_path}
                                 alt="carousel image"
@@ -81,12 +86,32 @@ export default function ImageCarousel({ images }: Slides) {
                         </Box>
                     ))}
                 </Flex>
-                <Text {...arrowStyles} left="0" onClick={prevSlide}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#F0F0EE" d="m3.55 12l7.35 7.35q.375.375.363.875t-.388.875q-.375.375-.875.375t-.875-.375l-7.7-7.675q-.3-.3-.45-.675T.825 12q0-.375.15-.75t.45-.675l7.7-7.7q.375-.375.888-.363t.887.388q.375.375.375.875t-.375.875L3.55 12Z"/></svg>
-                </Text>
-                <Text {...arrowStyles} right="0" onClick={nextSlide}>
+                <Box
+                    {...arrowStyles}
+                    left="0"
+                    onClick={prevSlide}
+                    px='2'
+                    color="#F0F0EE"
+                    backgroundColor= 'rgba(26, 25, 23, 0.6)'
+                    borderRadius= '0 10px 10px 0'
+                    backdropFilter= 'blur(5px)'
+                    _hover={{ filter: 'brightness(1.2)' }}
+                >
+                    <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#F0F0EE" d="m3.55 12l7.35 7.35q.375.375.363.875t-.388.875q-.375.375-.875.375t-.875-.375l-7.7-7.675q-.3-.3-.45-.675T.825 12q0-.375.15-.75t.45-.675l7.7-7.7q.375-.375.888-.363t.887.388q.375.375.375.875t-.375.875L3.55 12Z"/></svg>
+                </Box>
+                <Box
+                    {...arrowStyles}
+                    right="0"
+                    onClick={nextSlide}
+                    px='2'
+                    color="#F0F0EE"
+                    backgroundColor= 'rgba(26, 25, 23, 0.6)'
+                    borderRadius= '10px 0 0 10px'
+                    backdropFilter= 'blur(5px)'
+                    _hover={{ filter: 'brightness(1.2)' }}
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#F0F0EE" d="m14.475 12l-7.35-7.35q-.375-.375-.363-.888t.388-.887q.375-.375.888-.375t.887.375l7.675 7.7q.3.3.45.675t.15.75q0 .375-.15.75t-.45.675l-7.7 7.7q-.375.375-.875.363T7.15 21.1q-.375-.375-.375-.888t.375-.887L14.475 12Z"/></svg>
-                </Text>
+                </Box>
                 <HStack justify="center" pos="absolute" bottom="20px" w="full">
                     {Array.from({ length: slidesCount }).map((_, slide) => (
                         <Box

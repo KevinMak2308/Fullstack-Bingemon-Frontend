@@ -5,6 +5,8 @@ import Footer from "../components/Footer"
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import httpService from '../services/httpService';
+import LoadingScreen from '../components/errorHandling/LoadingScreen';
+import ErrorScreen from '../components/errorHandling/ErrorScreen';
 
 export interface Movie {
     id: number;
@@ -53,6 +55,7 @@ function ProfileLiked() {
     const [seriesData, setSeriesData] = useState<Series[]>([]);
     const [commonMoviesData, setCommonMoviesData] = useState<Movie[]>([]);
     const [commonSeriesData, setCommonSeriesData] = useState<Series[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
 
     const fetchUserMovies = async(id: string) => {
@@ -60,7 +63,7 @@ function ProfileLiked() {
             const { data: userResponse } = await httpService.get(userUrl, {});
             const { data: movieResponse } = await httpService.get(userMoviesUrl, {});
             const { data: seriesResponse } = await httpService.get(userSeriesUrl, {});
-
+            setIsLoading(false);
             let loggedInId;
             const cookies = document.cookie.split(';');
             for (let i = 0; i < cookies.length; i++) {
@@ -104,7 +107,8 @@ function ProfileLiked() {
             setSeriesData(seriesResponse);
 
         } catch (error) {
-            console.error("Something went wrong fetching: ", error)
+            console.error("Something went wrong fetching: ", error);
+            setIsLoading(false);
         }
     }
 
@@ -113,6 +117,13 @@ function ProfileLiked() {
             fetchUserMovies(id);
         }
     }, [id]);
+
+    if (isLoading) {
+        return <LoadingScreen loadingText='liked movies and series' />;
+    }
+    if (movieData == null) {
+        return <ErrorScreen errorText='Something went wrong fetching liked movies and series' />;
+    }
 
     return (
         <div>

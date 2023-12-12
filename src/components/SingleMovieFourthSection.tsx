@@ -9,84 +9,378 @@ import {
     Heading,
     Image,
     SimpleGrid,
-    Text
+    AspectRatio,
+    Text,
+    useColorModeValue
 } from '@chakra-ui/react';
+import PrimaryButton from "./buttons/PrimaryButton";
 
 function SingleMovieFourthSection() {
+
+    // Default img if movie doesn't have any movie poster
+    const defaultImgUrl = "http://127.0.0.1:8080/default/user_unavailable.jpg";
+
     return (
-        <Box bg='#21201d' color='#dcdbd8'>
-            <Flex py={{ base: '75px', md: '', lg: '90px' }} alignContent={"center"} justifyContent={"center"}>
+        <Box bg={useColorModeValue('#e5e5e5', '#21201D')} color={useColorModeValue('#21201D', '#F0F0EE')}>
+            <Flex py={{
+                base: '75px',
+                sm: '80px',
+                md: '85px',
+                lg: '90px',
+                xl: '95px',
+                '2xl': '100px',
+            }} alignContent={"center"} justifyContent={"center"}>
                 <Center>
-                    <Box display="grid" gridGap={{ base: "4", md: "6", lg: "8" }} w="80vw">
-                        <Heading as='h2' fontSize={{ base: "25px", md: "30px", lg: "35px" }}>
+                    <Box display="grid" gap={{ base: "15px", sm:"16px", md: "17px", lg: "18px", xl:"19px", "2xl":"20px" }} w="80vw">
+                        <Text as='h2'>
                             Liked by these friends
-                        </Heading>
-                        <SimpleGrid columns={[3, null, 6]} gap={6} fontWeight='400' fontSize={{ base: "13px", md: "14px", lg: "15px" }}>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                        </Text>
+                        <SimpleGrid columns={[2, 3, 3, 4, 5, 5]} gap={{ base: "12px", sm:"14px", md: "16px", lg: "18px", xl:"22px", "2xl":"26px" }}>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem up
+                                    </Text>
+                                </Box>
                             </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem ipsum
+                                    </Text>
+                                </Box>
                             </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem ipsum
+                                    </Text>
+                                </Box>
                             </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem ipsum
+                                    </Text>
+                                </Box>
                             </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem ipsum
+                                    </Text>
+                                </Box>
                             </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem ipsum
+                                    </Text>
+                                </Box>
                             </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem ipsum
+                                    </Text>
+                                </Box>
                             </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem ipsum
+                                    </Text>
+                                </Box>
                             </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem ipsum
+                                    </Text>
+                                </Box>
                             </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
-                            </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
-                            </GridItem>
-                            <GridItem w='100%' display="grid" gridGap="2">
-                                <Image src='gibbresh.png' fallbackSrc='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' />
-                                <Text textAlign="center" > Name Lorem Ipsum</Text>
+                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
+                                <AspectRatio ratio={1}  w="100%" h="100%">
+                                    <Image
+                                        backgroundPosition='center'
+                                        backgroundRepeat='no-repeat'
+                                        backgroundSize='cover'
+                                        objectFit='cover'
+                                        border='solid 1.5px transparent'
+                                        borderRadius= '5px'
+                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width= '100%'
+                                        src={defaultImgUrl}
+                                        fallbackSrc={defaultImgUrl}
+                                        alt='User profile for user'
+                                        _hover={{
+                                            filter: 'brightness(1.3)'
+                                        }}
+                                    />
+                                </AspectRatio>
+                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                    <Text
+                                        className='MovieTitle'
+                                        overflow="hidden"
+                                        display="-webkit-box"
+                                        style={{
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        User name lorem up
+                                    </Text>
+                                </Box>
                             </GridItem>
                         </SimpleGrid>
-                        <Flex alignContent={"center"} justifyContent={"center"}>
-                            <Button
-                                py={{base: "24px", md: "26px", lg: "25px"}}
-                                px={{base: "28px", md: "29px", lg: "30px"}}
-                                mt='20px'
-                                lineHeight='1.2'
-                                transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                                border=''
-                                borderRadius='10px'
-                                fontSize={{ base: "14px", md: "15px", lg: "16px" }}
-                                fontWeight='semibold'
-                                bg='#A61212'
-                                color='#F0F0EE'
-                                _hover={{ bg: '#c01515' }}>
-                                View all
-                            </Button>
+                        <Flex alignContent={"center"} justifyContent={"center"} mt={{ base: '15px', sm:'15px', md: '15px', lg: '15px', xl:'20px', "2xl":'25px' }}>
+                            <PrimaryButton
+                                buttonText="View all"
+                            />
                         </Flex>
                     </Box>
                 </Center>

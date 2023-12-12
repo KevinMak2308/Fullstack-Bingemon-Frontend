@@ -15,14 +15,13 @@ function Tag({ tagText }: TagProps) {
             transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
             borderRadius="100px"
             border="2px"
-            fontSize={{ base: "13px", md: "14px", lg: "15px" }}
-            fontFamily='Roboto'
-            fontWeight="normal"
-            cursor="default"
             bg=""
+            className="BodyBold"
+            cursor="default"
             borderColor="#A61212"
-            color="#F0F0EE"
             _hover={{ bg: "" }}
+            _active={{ bg: "" }}
+            _focus={{ boxShadow: 'none' }}
         >
             {tagText}
         </Button>

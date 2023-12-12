@@ -10,24 +10,23 @@ import {
     Box,
 } from '@chakra-ui/react';
 
+
 function FrontPage() {
 
     return (
         <div>
-        <Box style={{ backgroundImage: `url(${hero})` }}
-             backgroundSize="cover"
-             backgroundRepeat="no-repeat"
-             backgroundPosition={{ base: 'right', md: 'center', lg: 'center' }}>
-            <NavBar/>
-            <FrontPageFirstSection/>
-        </Box>
+            <Box style={{ backgroundImage: `url(${hero})` }}
+                 backgroundSize="cover"
+                 backgroundRepeat="no-repeat"
+                 backgroundPosition={{ base: 'right', md: 'center', lg: 'center' }}>
+                <NavBar/>
+                <FrontPageFirstSection/>
+            </Box>
             <FrontPageSecondSection/>
             <FrontPageThirdSection/>
             <Footer/>
         </div>
-
     )
-
 }
 
 export default FrontPage;

@@ -33,6 +33,8 @@ interface Movie {
 }
 
 function DiscoverMovies() {
+    const defaultBgColor = useColorModeValue('#dbdbdb', '#1A1917');
+    const defaultTextColor = useColorModeValue('#21201D', '#F0F0EE');
     const movieUrl = "movie/discover";
     const [movieData, setMovieData] = useState<Movie[]>([]);
     const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
@@ -40,6 +42,7 @@ function DiscoverMovies() {
     const [selectedDecade, setSelectedDecade] = useState<string | null>(null);
     const [selectedActor, setSelectedActor] = useState<number | null>(null);
     const [selectedPrimaryFilter, setSelectedPrimaryFilter] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleLanguageSelection = (selectedLanguage: string) => {
         setSelectedLanguage(selectedLanguage);
@@ -84,6 +87,7 @@ function DiscoverMovies() {
         console.log("What is in actor param?: ", selectedActor);
     }, [selectedGenre, selectedDecade, selectedLanguage, selectedActor]);
 
+
     const handlePrimaryFilterChange = (selectedOption: string) => {
         setSelectedPrimaryFilter(selectedOption);
     };
@@ -96,8 +100,10 @@ function DiscoverMovies() {
         setSelectedPrimaryFilter(null);
     };
 
+
+
     return (
-        <Box bg={useColorModeValue('#dbdbdb', '#1A1917')} color={useColorModeValue('#21201D', '#F0F0EE')}>
+        <Box bg={defaultBgColor} color={defaultTextColor}>
             {/* Back button */}
             <BackButton />
 

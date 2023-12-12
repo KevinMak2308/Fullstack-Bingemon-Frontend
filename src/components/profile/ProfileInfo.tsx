@@ -118,6 +118,8 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
 
     return (
         <Box bg={useColorModeValue('#dbdbdb', '#1A1917')} color={useColorModeValue('#21201D', '#F0F0EE')} >
+            {/* Back button */}
+            <BackButton />
             <Flex
                 py={{
                     base: '75px',
