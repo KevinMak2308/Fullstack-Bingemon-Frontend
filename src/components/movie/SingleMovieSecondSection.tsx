@@ -1,5 +1,5 @@
 import React, {useRef, useState } from 'react';
-import '../App.css';
+import '../../App.css';
 import {
     Box,
     Button,
@@ -12,8 +12,8 @@ import {
     Text,
     useColorModeValue
 } from '@chakra-ui/react';
-import {Cast} from "../pages/SingleMoviePage";
-import PrimaryButton from "./buttons/PrimaryButton";
+import {Cast} from "../../pages/SingleMoviePage";
+import PrimaryButton from "../buttons/PrimaryButton";
 
 function SingleMovieSecondSection({ actors }: Cast) {
     const [showFullCast, setShowFullCast] = useState(false);

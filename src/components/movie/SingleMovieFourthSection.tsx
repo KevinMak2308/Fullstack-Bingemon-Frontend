@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import {
     Box,
     Button,
@@ -13,7 +13,7 @@ import {
     Text,
     useColorModeValue
 } from '@chakra-ui/react';
-import PrimaryButton from "./buttons/PrimaryButton";
+import PrimaryButton from "../buttons/PrimaryButton";
 
 function SingleMovieFourthSection() {
 

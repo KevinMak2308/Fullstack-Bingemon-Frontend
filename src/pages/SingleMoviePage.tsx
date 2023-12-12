@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
-import NavBar from "../components/NavBar"
-import SingleMovieFirstSection from "../components/SingleMovieFirstSection"
-import SingleMovieSecondSection from "../components/SingleMovieSecondSection"
-import SingleMovieThirdSection from "../components/SingleMovieThirdSection"
-import SingleMovieFourthSection from "../components/SingleMovieFourthSection"
-import SingleMovieFifthSection from "../components/SingleMovieFifthSection"
-import Footer from "../components/Footer"
+import NavBar from "../components/nav/NavBar"
+import SingleMovieFirstSection from "../components/movie/SingleMovieFirstSection"
+import SingleMovieSecondSection from "../components/movie/SingleMovieSecondSection"
+import SingleMovieThirdSection from "../components/movie/SingleMovieThirdSection"
+import SingleMovieFourthSection from "../components/movie/SingleMovieFourthSection"
+import SingleMovieFifthSection from "../components/movie/SingleMovieFifthSection"
+import LoadingScreen from '../components/errorHandling/LoadingScreen';
+import ErrorScreen from '../components/errorHandling/ErrorScreen';
+import Footer from "../components/nav/Footer"
 import { useParams } from 'react-router-dom';
 import {ApiImage} from "../components/ImageCarousel";
 import httpService from '../services/httpService';
-import LoadingScreen from '../components/errorHandling/LoadingScreen';
-import ErrorScreen from '../components/errorHandling/ErrorScreen';
+
 
 interface Genre {
     id: number;

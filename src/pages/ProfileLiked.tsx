@@ -1,12 +1,12 @@
 import '../App.css';
-import NavBar from "../components/NavBar"
-import AllLiked from "../components/AllLiked"
-import Footer from "../components/Footer"
+import NavBar from "../components/nav/NavBar"
+import AllLiked from "../components/profile/AllLiked"
+import LoadingScreen from '../components/errorHandling/LoadingScreen';
+import ErrorScreen from '../components/errorHandling/ErrorScreen';
+import Footer from "../components/nav/Footer"
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import httpService from '../services/httpService';
-import LoadingScreen from '../components/errorHandling/LoadingScreen';
-import ErrorScreen from '../components/errorHandling/ErrorScreen';
 
 export interface Movie {
     id: number;
@@ -100,7 +100,6 @@ function ProfileLiked() {
                 setCommonMoviesData([])
                 setCommonMoviesData([])
             }
-
 
             setUserData(userResponse);
             setMovieData(movieResponse);

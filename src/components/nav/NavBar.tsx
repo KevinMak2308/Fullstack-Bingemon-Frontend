@@ -22,11 +22,9 @@
 
     import { Link as ReactRouterLink } from 'react-router-dom'
     import { MoonIcon, SunIcon, SearchIcon } from '@chakra-ui/icons'
-    import Login from "./authentication/LoginModal";
+    import Login from "../authentication/LoginModal";
     import SubNav from "./SubNav";
-    import Logout from "./authentication/Logout";
-    import SearchBar from "./Searchbar"
-
+    import Logout from "../authentication/Logout";
 
     export default function NavBar() {
         const { colorMode, toggleColorMode } = useColorMode()
@@ -38,7 +36,6 @@
 
         // Const for responsive logo width
         const width = useBreakpointValue({ base: "125px", sm: "125px", md: "150px", lg: "175px", xl: "200px", "2xl":"250px" });
-
 
         return (
             <Box bg={bgColor} color={textColor}>

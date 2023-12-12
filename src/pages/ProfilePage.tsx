@@ -1,14 +1,14 @@
 import '../App.css';
-import NavBar from "../components/NavBar"
+import NavBar from "../components/nav/NavBar"
 import ProfileInfo from "../components/profile/ProfileInfo"
 import ProfileCards from "../components/profile/ProfileCards"
 import ProfileRectangles from "../components/profile/ProfileRectangles"
-import Footer from "../components/Footer"
+import LoadingScreen from '../components/errorHandling/LoadingScreen';
+import ErrorScreen from '../components/errorHandling/ErrorScreen';
+import Footer from "../components/nav/Footer"
 import React, {useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import httpService from '../services/httpService';
-import LoadingScreen from '../components/errorHandling/LoadingScreen';
-import ErrorScreen from '../components/errorHandling/ErrorScreen';
 
 export interface User {
     id: number;
@@ -46,8 +46,6 @@ function ProfilePage() {
     const [movieData, setMovieData] = useState<Movie[]>([]);
     const [seriesData, setSeriesData] = useState<Series[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-
-
 
     const fetchUserMovies = async(id: string) => {
         try {

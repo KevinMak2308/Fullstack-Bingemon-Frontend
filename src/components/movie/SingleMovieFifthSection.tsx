@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import {
     Box,
     Center,
@@ -16,7 +16,7 @@ import {
     Text,
     WrapItem
 } from '@chakra-ui/react'
-import {Movie, CastMember} from "../pages/SingleMoviePage";
+import {Movie, CastMember} from "../../pages/SingleMoviePage";
 
 interface SingleMovieProps {
     movie: Movie;
@@ -24,9 +24,6 @@ interface SingleMovieProps {
 }
 
 function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
-
-    const tableBorderColor = useColorModeValue('#21201D', '#F0F0EE');
-
     return (
         <Box bg={useColorModeValue('#dbdbdb', '#1A1917')} color={useColorModeValue('#21201D', '#F0F0EE')}>
             <Flex py={{

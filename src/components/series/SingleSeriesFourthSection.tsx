@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import {
     Box,
     Center,
@@ -10,8 +10,7 @@ import {
     SimpleGrid,
     Text
 } from '@chakra-ui/react';
-
-import {SeasonList} from "../pages/SingleSeriesPage";
+import {SeasonList} from "../../pages/SingleSeriesPage";
 
 function SingleSeriesFourthSection({ seasons }: SeasonList) {
 

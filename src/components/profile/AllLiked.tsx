@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useState } from 'react';
+import '../../App.css';
 import {
     Box,
     Center,
@@ -11,11 +12,10 @@ import {
     useColorModeValue
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom'
-import '../App.css';
-import { LoggedInId, Movie, Series, User } from "../pages/ProfileLiked";
-import BackButton from './buttons/BackButton';
-import FilterButton from './buttons/FilterButton';
-import SortButton from './buttons/SortButton';
+import { LoggedInId, Movie, Series, User } from "../../pages/ProfileLiked";
+import BackButton from '../buttons/BackButton';
+import FilterButton from '../buttons/FilterButton';
+import SortButton from '../buttons/SortButton';
 
 
 interface AllLikedProps {

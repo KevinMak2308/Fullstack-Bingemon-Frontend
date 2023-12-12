@@ -1,6 +1,6 @@
 import React from 'react';
 import YouTube from 'react-youtube';
-import '../App.css';
+import '../../App.css';
 import {
     AspectRatio,
     Box,
@@ -9,7 +9,7 @@ import {
     Flex,
     useColorModeValue
 } from '@chakra-ui/react';
-import {Movie, Trailer} from "../pages/SingleMoviePage";
+import {Movie, Trailer} from "../../pages/SingleMoviePage";
 
 interface SingleMovieFifthSectionProps {
     movie: Movie;

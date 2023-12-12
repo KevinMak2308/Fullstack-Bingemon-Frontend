@@ -1,6 +1,6 @@
 import React from 'react';
 import YouTube from 'react-youtube';
-import '../App.css';
+import '../../App.css';
 import {
     AspectRatio,
     Box,
@@ -9,7 +9,7 @@ import {
     Heading,
     Text
 } from '@chakra-ui/react';
-import {Series, Trailer} from "../pages/SingleSeriesPage";
+import {Series, Trailer} from "../../pages/SingleSeriesPage";
 
 interface SingleSeriesThirdSectionProps {
     series: Series;

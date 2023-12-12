@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
-import NavBar from "../components/NavBar"
-import SingleSeriesFirstSection from "../components/SingleSeriesFirstSection"
-import SingleSeriesSecondSection from "../components/SingleSeriesSecondSection"
-import SingleSeriesThirdSection from "../components/SingleSeriesThirdSection"
-import SingleSeriesFourthSection from "../components/SingleSeriesFourthSection"
-import SingleSeriesFifthSection from "../components/SingleSeriesFifthSection"
-import SingleSeriesSixthSection from "../components/SingleSeriesSixthSection"
-import Footer from "../components/Footer"
+import NavBar from "../components/nav/NavBar"
+import SingleSeriesFirstSection from "../components/series/SingleSeriesFirstSection"
+import SingleSeriesSecondSection from "../components/series/SingleSeriesSecondSection"
+import SingleSeriesThirdSection from "../components/series/SingleSeriesThirdSection"
+import SingleSeriesFourthSection from "../components/series/SingleSeriesFourthSection"
+import SingleSeriesFifthSection from "../components/series/SingleSeriesFifthSection"
+import SingleSeriesSixthSection from "../components/series/SingleSeriesSixthSection"
+import LoadingScreen from '../components/errorHandling/LoadingScreen';
+import ErrorScreen from '../components/errorHandling/ErrorScreen';
+import Footer from "../components/nav/Footer"
 import { useParams } from 'react-router-dom';
 import {ApiImage} from "../components/ImageCarousel";
 import httpService from '../services/httpService';
-import LoadingScreen from '../components/errorHandling/LoadingScreen';
-import ErrorScreen from '../components/errorHandling/ErrorScreen';
+
 
 interface Genre {
     id: number;
@@ -131,9 +132,7 @@ function SingleSeriesPage() {
             <SingleSeriesSixthSection series={seriesData} />
             <Footer/>
         </div>
-
     )
-
 }
 
 export default SingleSeriesPage;

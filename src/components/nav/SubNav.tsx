@@ -3,10 +3,6 @@ import React from 'react'
 import {
     Flex,
     Text,
-    Stack,
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
     useColorModeValue,
     Menu,
     MenuButton,

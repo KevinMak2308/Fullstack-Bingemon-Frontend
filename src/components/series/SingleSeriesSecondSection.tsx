@@ -1,5 +1,5 @@
 import React, {useRef, useState } from 'react';
-import '../App.css';
+import '../../App.css';
 import {
     Box,
     Button,
@@ -11,7 +11,7 @@ import {
     SimpleGrid,
     Text
 } from '@chakra-ui/react';
-import {Cast} from "../pages/SingleSeriesPage";
+import {Cast} from "../../pages/SingleSeriesPage";
 
 function SingleSeriesSecondSection({ actors }: Cast) {
     const [showFullCast, setShowFullCast] = useState(false);

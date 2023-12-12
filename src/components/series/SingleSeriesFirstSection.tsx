@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../App.css';
-import ImageCarousel, {ApiImage} from "../components/ImageCarousel";
-import {Series} from "../pages/SingleSeriesPage";
+import '../../App.css';
 import {
     Box,
     Button,
@@ -16,6 +14,8 @@ import {
     Wrap,
     WrapItem
 } from '@chakra-ui/react';
+import ImageCarousel, {ApiImage} from "../../components/ImageCarousel";
+import {Series} from "../../pages/SingleSeriesPage";
 
 
 interface SingleSeriesFirstSectionProps {

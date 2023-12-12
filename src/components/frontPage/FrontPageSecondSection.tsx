@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import {
     Box,
     useColorModeValue,
@@ -11,7 +11,7 @@ import {
     SimpleGrid,
     Text
 } from '@chakra-ui/react';
-import PrimaryButton from "./buttons/PrimaryButton"
+import PrimaryButton from "../buttons/PrimaryButton"
 
 function FrontPageSecondSection() {
     return (

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import '../../App.css';
 import {
     Box,
     Center,
     Flex,
     Text,
-    useColorModeValue
 } from '@chakra-ui/react';
-import Signup from './authentication/SignupModal';
+import Signup from '../authentication/SignupModal';
 
 function FrontPageFirstSection() {
     const [show, setShow] = useState(false);

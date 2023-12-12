@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../App.css';
+import '../../App.css';
 import {
     Box,
     Button,
@@ -15,10 +15,10 @@ import {
     useColorModeValue,
     WrapItem
 } from '@chakra-ui/react';
-import ImageCarousel, {ApiImage} from "../components/ImageCarousel";
-import {Movie} from "../pages/SingleMoviePage";
-import BackButton from "./buttons/BackButton";
-import Tag from "./buttons/Tag";
+import ImageCarousel, {ApiImage} from "../../components/ImageCarousel";
+import {Movie} from "../../pages/SingleMoviePage";
+import BackButton from "../buttons/BackButton";
+import Tag from "../buttons/Tag";
 
 interface SingleMovieFirstSectionProps {
     movie: Movie;

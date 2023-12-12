@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import {
     Box,
     Center,
@@ -15,8 +15,7 @@ import {
     Wrap,
     WrapItem
 } from '@chakra-ui/react';
-
-import {Series, CastMember} from "../pages/SingleSeriesPage";
+import {Series, CastMember} from "../../pages/SingleSeriesPage";
 
 interface SingleSeriesProps {
     series: Series;
