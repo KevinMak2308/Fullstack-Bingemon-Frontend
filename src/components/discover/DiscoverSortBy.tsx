@@ -112,6 +112,7 @@ function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any
                                 border=''
                                 cursor='default'
                                 bg='#343434'
+                                color='#F0F0EE'
                                 borderColor=''
                                 _hover={{ bg: '#3b3b3b' }}
                             >
