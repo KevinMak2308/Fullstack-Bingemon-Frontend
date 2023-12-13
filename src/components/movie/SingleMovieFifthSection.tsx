@@ -7,23 +7,23 @@ import {
     GridItem,
     SimpleGrid,
     Table,
+    TableContainer,
     Tbody,
     Td,
-    TableContainer,
-    useColorModeValue,
-    Tr,
-    Wrap,
     Text,
+    Tr,
+    useColorModeValue,
+    Wrap,
     WrapItem
 } from '@chakra-ui/react'
-import {Movie, CastMember} from "../../pages/SingleMoviePage";
+import {CastMember, Movie} from "../../pages/SingleMoviePage";
 
 interface SingleMovieProps {
     movie: Movie;
     directors: CastMember[];
 }
 
-function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
+function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
     return (
         <Box bg={useColorModeValue('#dbdbdb', '#1A1917')} color={useColorModeValue('#21201D', '#F0F0EE')}>
             <Flex py={{
@@ -37,11 +37,12 @@ function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
                   alignContent={"center"}
                   justifyContent={"center"}>
                 <Center>
-                    <Box display="grid" gap={{ base: "15px", sm:"16px", md: "17px", lg: "18px", xl:"19px", "2xl":"20px" }} w="80vw">
+                    <Box display="grid"
+                         gap={{base: "15px", sm: "16px", md: "17px", lg: "18px", xl: "19px", "2xl": "20px"}} w="80vw">
                         <Text as='h2'>
                             More information
                         </Text>
-                        <SimpleGrid columns={[1, 1, 1, 1, 2, 2]} gap={{ base: 0, md: 0, lg: 0, xl:20 }} fontSize={{ base: "13px", md: "14px", lg: "15px" }} lineHeight='1.7'>
+                        <SimpleGrid columns={[1, 1, 1, 1, 2, 2]} gap={{base: 0, md: 0, lg: 0, xl: 20}}>
                             <GridItem w='100%'>
                                 <TableContainer>
                                     <Table variant='simple'>
@@ -63,7 +64,8 @@ function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
                                                                 ))}
                                                             </>
                                                         ) : (
-                                                            <span className='BodyReg'>No spoken languages available</span>
+                                                            <span
+                                                                className='BodyReg'>No spoken languages available</span>
                                                         )}
                                                     </Wrap>
                                                 </Td>
@@ -75,7 +77,8 @@ function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
                                                         {movie.genres.map((genre, i) => (
                                                             <WrapItem width='fit-content' key={genre.name}>
                                                                 <span>{genre.name}</span>
-                                                                {movie.genres.length > 1 && i < movie.genres.length - 1 ? <span>,</span> : null}
+                                                                {movie.genres.length > 1 && i < movie.genres.length - 1 ?
+                                                                    <span>,</span> : null}
                                                             </WrapItem>
                                                         ))}
                                                     </Wrap>
@@ -84,7 +87,8 @@ function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
                                             {movie.belongs_to_collection ?
                                                 <Tr>
                                                     <Td className='BodyBold'>Belongs to Collection</Td>
-                                                    <Td textAlign='right' className='BodyReg'>{movie.belongs_to_collection.name}</Td>
+                                                    <Td textAlign='right'
+                                                        className='BodyReg'>{movie.belongs_to_collection.name}</Td>
                                                 </Tr>
                                                 :
                                                 null
@@ -111,11 +115,13 @@ function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
                                         <Tbody>
                                             <Tr>
                                                 <Td className='BodyBold'>Budget</Td>
-                                                <Td textAlign='right'  className='BodyReg'>{new Intl.NumberFormat('en-US').format(parseFloat(movie.budget.toString()))} $</Td>
+                                                <Td textAlign='right'
+                                                    className='BodyReg'>{new Intl.NumberFormat('en-US').format(parseFloat(movie.budget.toString()))} $</Td>
                                             </Tr>
                                             <Tr>
                                                 <Td className='BodyBold'>Revenue</Td>
-                                                <Td textAlign='right'  className='BodyReg'>{new Intl.NumberFormat('en-US').format(parseFloat(movie.revenue.toString()))} $</Td>
+                                                <Td textAlign='right'
+                                                    className='BodyReg'>{new Intl.NumberFormat('en-US').format(parseFloat(movie.revenue.toString()))} $</Td>
                                             </Tr>
                                             <Tr w='100%'>
                                                 <Td className='BodyBold'>Production Companies</Td>
@@ -126,7 +132,8 @@ function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
                                                                 {movie.production_companies.map((company, i) => (
                                                                     <WrapItem width='fit-content' key={company.id}>
                                                                         <span>{company.name}</span>
-                                                                        {movie.production_companies.length > 1 && i < movie.production_companies.length - 1 ? <span>,</span> : null}
+                                                                        {movie.production_companies.length > 1 && i < movie.production_companies.length - 1 ?
+                                                                            <span>,</span> : null}
                                                                     </WrapItem>
                                                                 ))}
                                                             </>
@@ -142,9 +149,11 @@ function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
                                                         {movie.production_countries && movie.production_countries.length > 0 ? (
                                                             <>
                                                                 {movie.production_countries.map((country, i) => (
-                                                                    <WrapItem width='fit-content' key={country.iso_3166_1}>
+                                                                    <WrapItem width='fit-content'
+                                                                              key={country.iso_3166_1}>
                                                                         <span>{country.name}</span>
-                                                                        {movie.production_countries.length > 1 && i < movie.production_countries.length - 1 ? <span>,</span> : null}
+                                                                        {movie.production_countries.length > 1 && i < movie.production_countries.length - 1 ?
+                                                                            <span>,</span> : null}
                                                                     </WrapItem>
                                                                 ))}
                                                             </>
@@ -160,11 +169,13 @@ function SingleMovieFifthSection({ movie, directors }: SingleMovieProps) {
                                                     <Td className='BodyBold'>Directors</Td>
                                                 }
                                                 <Td>
-                                                    <Wrap justify='flex-end' align='center' spacing='2' className='BodyReg'>
+                                                    <Wrap justify='flex-end' align='center' spacing='2'
+                                                          className='BodyReg'>
                                                         {directors.map((director, i) => (
                                                             <WrapItem key={director.id}>
                                                                 <span>{director.name}</span>
-                                                                {directors.length > 1 && i < directors.length - 1 ? <span>,</span> : null}
+                                                                {directors.length > 1 && i < directors.length - 1 ?
+                                                                    <span>,</span> : null}
                                                             </WrapItem>
                                                         ))}
                                                     </Wrap>

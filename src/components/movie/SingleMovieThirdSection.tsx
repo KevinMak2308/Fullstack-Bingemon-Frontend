@@ -1,14 +1,7 @@
 import React from 'react';
 import YouTube from 'react-youtube';
 import '../../App.css';
-import {
-    AspectRatio,
-    Box,
-    Center,
-    Text,
-    Flex,
-    useColorModeValue
-} from '@chakra-ui/react';
+import {AspectRatio, Box, Center, Flex, Text, useColorModeValue} from '@chakra-ui/react';
 import {Movie, Trailer} from "../../pages/SingleMoviePage";
 
 interface SingleMovieFifthSectionProps {
@@ -16,7 +9,7 @@ interface SingleMovieFifthSectionProps {
     trailer: Trailer;
 }
 
-function SingleMovieThirdSection({ movie, trailer }: SingleMovieFifthSectionProps) {
+function SingleMovieThirdSection({movie, trailer}: SingleMovieFifthSectionProps) {
 
     // Const for light/dark mode
     const bgColor = useColorModeValue('#dbdbdb', '#1A1917');
@@ -40,14 +33,15 @@ function SingleMovieThirdSection({ movie, trailer }: SingleMovieFifthSectionProp
                     justifyContent={'center'}
                 >
                     <Center>
-                        <Box w="80vw" display='grid' gap={{ base: "15px", sm:"16px", md: "17px", lg: "18px", xl:"19px", "2xl":"20px" }}>
+                        <Box w="80vw" display='grid'
+                             gap={{base: "15px", sm: "16px", md: "17px", lg: "18px", xl: "19px", "2xl": "20px"}}>
                             <Text
                                 as="h2"
                             >
                                 {movie.title}
                             </Text>
                             <AspectRatio
-                                h={{base: '30vh', sm:'40vh', md: '50vh', lg: '60vh', xl:'70vh', "2xl":'80vh'}}
+                                h={{base: '30vh', sm: '40vh', md: '50vh', lg: '60vh', xl: '70vh', "2xl": '80vh'}}
                                 w='100%'
                                 ratio={1}
                             >
@@ -66,7 +60,7 @@ function SingleMovieThirdSection({ movie, trailer }: SingleMovieFifthSectionProp
     );
 }
 
-    const extractVideoId = (url: string) => {
+const extractVideoId = (url: string) => {
     const match = url.match(/(?:\/|%3D|v=|vi=)([0-9A-Za-z_-]{11})(?:[%#?&]|$)/);
     return match ? match[1] : '';
 };

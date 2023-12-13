@@ -1,17 +1,19 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import {
+    Button,
+    Flex,
+    GridItem,
     Menu,
     MenuButton,
-    MenuList,
     MenuItem,
-    Button,
-    GridItem,
+    MenuList,
     SimpleGrid,
-    Tag, TagCloseButton,
-    Flex, Wrap,
+    Tag,
+    TagCloseButton,
+    Wrap,
     WrapItem
 } from '@chakra-ui/react'
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import {ChevronDownIcon} from '@chakra-ui/icons'
 
 const genreMap: Record<string, string> = {
     '28': 'Action',
@@ -51,7 +53,7 @@ const languageMap: Record<string, string> = {
     'da': 'Dansk'
 };
 
-function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any) {
+function DiscoverSortBy({selectedGenre, selectedDecade, selectedLanguage}: any) {
     const [tags, setTags] = useState<any[]>([]);
 
     useEffect(() => {
@@ -82,22 +84,22 @@ function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any
                         <WrapItem key={index}>
                             <Tag
                                 size="md"
-                                py={{ base: "8px", md: "9px", lg: "10px" }}
-                                px={{ base: "18px", md: "19px", lg: "20px" }}
+                                py={{base: "8px", md: "9px", lg: "10px"}}
+                                px={{base: "18px", md: "19px", lg: "20px"}}
                                 lineHeight='1.2'
                                 transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                                 borderRadius='100px'
                                 border=''
-                                fontSize={{ base: "13px", md: "14px", lg: "15px" }}
+                                fontSize={{base: "13px", md: "14px", lg: "15px"}}
                                 fontWeight='normal'
                                 cursor='default'
                                 bg='#343434'
                                 borderColor=''
                                 color='#F0F0EE'
-                                _hover={{ bg: '#3b3b3b' }}
+                                _hover={{bg: '#3b3b3b'}}
                             >
                                 {tag}
-                                <TagCloseButton onClick={() => removeTag(tag)} />
+                                <TagCloseButton onClick={() => removeTag(tag)}/>
                             </Tag>
                         </WrapItem>
                     ))}
@@ -107,10 +109,10 @@ function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any
             <Flex justify={"end"}>
                 <GridItem>
                     <Menu placement="bottom-end">
-                        <MenuButton as={Button} bg='#343434' _hover={{bg:'#3b3b3b'}} rightIcon={<ChevronDownIcon />}>
+                        <MenuButton as={Button} bg='#343434' _hover={{bg: '#3b3b3b'}} rightIcon={<ChevronDownIcon/>}>
                             Sort by
                         </MenuButton>
-                        <MenuList >
+                        <MenuList>
                             <MenuItem>Popularity ascending</MenuItem>
                             <MenuItem>Popularity descending</MenuItem>
                             <MenuItem>Release Date ascending</MenuItem>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../App.css';
 import NavBar from "../components/nav/NavBar"
 import SingleSeriesFirstSection from "../components/series/SingleSeriesFirstSection"
@@ -10,10 +10,9 @@ import SingleSeriesSixthSection from "../components/series/SingleSeriesSixthSect
 import LoadingScreen from '../components/errorHandling/LoadingScreen';
 import ErrorScreen from '../components/errorHandling/ErrorScreen';
 import Footer from "../components/nav/Footer"
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {ApiImage} from "../components/ImageCarousel";
 import httpService from '../services/httpService';
-
 
 interface Genre {
     id: number;
@@ -76,7 +75,7 @@ export interface Series {
 }
 
 function SingleSeriesPage() {
-    const { id } = useParams();
+    const {id} = useParams();
     const seriesUrl = `series/${id}`;
     const castUrl = `series/${id}/cast`;
     const backdropsUrl = `series/${id}/backdrops`;
@@ -92,11 +91,11 @@ function SingleSeriesPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: seriesResult } = await httpService.get(seriesUrl, {});
-                const { data: castResult } = await httpService.get(castUrl, {});
-                const { data: imagesResult } = await httpService.get(backdropsUrl, {});
-                const { data: trailerResult } = await httpService.get(trailerUrl, {});
-                const { data: seasonsResult } = await httpService.get(seasonsUrl, {});
+                const {data: seriesResult} = await httpService.get(seriesUrl, {});
+                const {data: castResult} = await httpService.get(castUrl, {});
+                const {data: imagesResult} = await httpService.get(backdropsUrl, {});
+                const {data: trailerResult} = await httpService.get(trailerUrl, {});
+                const {data: seasonsResult} = await httpService.get(seasonsUrl, {});
                 setSeriesData(seriesResult);
                 setCastData(castResult);
                 setImageData(imagesResult);
@@ -112,24 +111,24 @@ function SingleSeriesPage() {
     }, [id]);
 
     if (isLoading) {
-        return <LoadingScreen loadingText='series' />;
+        return <LoadingScreen loadingText='series'/>;
     }
     if (seriesData == null) {
-        return <ErrorScreen errorText='Something went wrong fetching the movie' />;
+        return <ErrorScreen errorText='Something went wrong fetching the movie'/>;
     }
-    
+
     console.log(trailerData);
-    
+
     return (
         <div>
             <NavBar/>
-            <SingleSeriesFirstSection series={seriesData} images={imageData} />
-            <SingleSeriesSecondSection actors={castData} />
+            <SingleSeriesFirstSection series={seriesData} images={imageData}/>
+            <SingleSeriesSecondSection actors={castData}/>
             {/*{!trailerData?.key || !trailerData ? (null) : <SingleSeriesThirdSection series={seriesData} trailer={trailerData} />}*/}
-            <SingleSeriesThirdSection series={seriesData} trailer={trailerData} />
+            <SingleSeriesThirdSection series={seriesData} trailer={trailerData}/>
             <SingleSeriesFourthSection seasons={seasonsData}/>
             <SingleSeriesFifthSection/>
-            <SingleSeriesSixthSection series={seriesData} />
+            <SingleSeriesSixthSection series={seriesData}/>
             <Footer/>
         </div>
     )

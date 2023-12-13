@@ -1,17 +1,5 @@
-import { useState, useEffect } from 'react';
-import {
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    Button,
-    GridItem,
-    SimpleGrid,
-    Tag, TagCloseButton,
-    Flex, Wrap,
-    WrapItem
-} from '@chakra-ui/react'
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import {useEffect, useState} from 'react';
+import {Flex, SimpleGrid, Tag, TagCloseButton, Wrap, WrapItem} from '@chakra-ui/react'
 import SortButton from '../buttons/SortButton';
 
 const genreMap: Record<string, string> = {
@@ -52,7 +40,7 @@ const languageMap: Record<string, string> = {
     'da': 'Dansk'
 };
 
-function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any) {
+function DiscoverSortBy({selectedGenre, selectedDecade, selectedLanguage}: any) {
     const [tags, setTags] = useState<any[]>([]);
 
     useEffect(() => {
@@ -92,21 +80,13 @@ function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any
     return (
         <SimpleGrid columns={[2, null, 2]} w='80vw'>
             <Flex justify={"start"}>
-                <Wrap spacing={{ base: "8px", sm:"8px", md: "8px", lg: "10px", xl:"10px", "2xl":"10px" }}>
+                <Wrap spacing={{base: "8px", sm: "8px", md: "8px", lg: "10px", xl: "10px", "2xl": "10px"}}>
                     {tags.map((tag, index) => (
                         <WrapItem key={index}>
                             <Tag
-                                fontFamily='Roboto'
-                                fontSize={{
-                                    base: '10px',
-                                    sm: '11px',
-                                    md: '12px',
-                                    lg: '13px',
-                                    xl: '14px',
-                                    '2xl': '15px',
-                                }}
-                                py={{ base: "7px", sm:"9", md: "9px", lg: "10px", xl:"11px", "2xl":"12px" }}
-                                px={{ base: "17px", sm: "19px", md: "19px", lg: "20px", xl:"21px", "2xl":"22px" }}
+                                className='SubheaderXsBold'
+                                py={{base: "7px", sm: "9", md: "9px", lg: "10px", xl: "11px", "2xl": "12px"}}
+                                px={{base: "17px", sm: "19px", md: "19px", lg: "20px", xl: "21px", "2xl": "22px"}}
                                 transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                                 borderRadius='100px'
                                 border=''
@@ -114,17 +94,17 @@ function DiscoverSortBy({ selectedGenre, selectedDecade, selectedLanguage }: any
                                 bg='#343434'
                                 color='#F0F0EE'
                                 borderColor=''
-                                _hover={{ bg: '#3b3b3b' }}
+                                _hover={{bg: '#3b3b3b'}}
                             >
                                 {tag}
-                                <TagCloseButton onClick={() => removeTag(tag)} />
+                                <TagCloseButton onClick={() => removeTag(tag)}/>
                             </Tag>
                         </WrapItem>
                     ))}
                 </Wrap>
             </Flex>
             <Flex justify={"end"} alignItems={'center'}>
-                <SortButton onSortChange={handleSortChange} sortingOptions={sortingOptions} />
+                <SortButton onSortChange={handleSortChange} sortingOptions={sortingOptions}/>
             </Flex>
         </SimpleGrid>
     );

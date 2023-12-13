@@ -8,10 +8,8 @@ import Discover from "./pages/Discover"
 import DiscoverSeries from "./pages/DiscoverSeries"
 import MovieSwipe from "./pages/MovieSwipePage"
 import ProfileLiked from './pages/ProfileLiked';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import { useNavigate } from 'react-router-dom';
 function App() {
     return (
         <BrowserRouter>
@@ -29,4 +27,5 @@ function App() {
 
     )
 }
+
 export default App;

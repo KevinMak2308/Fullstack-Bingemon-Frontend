@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Image, SimpleGrid, Text, Flex, Center, Heading, Link as ChakraLink } from '@chakra-ui/react';
+import React, {useEffect, useState} from 'react';
+import {Box, Center, Flex, Heading, Image, Link as ChakraLink, SimpleGrid, Text} from '@chakra-ui/react';
 import httpService from "../../services/httpService";
 import DiscoverPrimaryFilter from './DiscoverPrimaryFilter';
 import DiscoverSecondaryFilterDecade from './DiscoverSecondaryFilterDecade';
@@ -7,7 +7,7 @@ import DiscoverSecondaryFilterGenre from './DiscoverSecondaryFilterGenre';
 import DiscoverSecondaryFilterLanguage from './DiscoverSecondaryFilterLanguage';
 import DiscoverSecondaryFilterActor from './DiscoverSecondaryFilterActor';
 import DiscoverSortBy from './DiscoverSortBy';
-import { Link as ReactRouterLink } from 'react-router-dom'
+import {Link as ReactRouterLink} from 'react-router-dom'
 
 interface Series {
     id: string;
@@ -43,7 +43,7 @@ function DiscoverSeriesMain() {
 
     const fetchAllSeries = async () => {
         try {
-            const { data } = await httpService.get(seriesUrl, {
+            const {data} = await httpService.get(seriesUrl, {
                 params: {
                     genres: selectedGenre,
                     decade: selectedDecade,
@@ -81,20 +81,20 @@ function DiscoverSeriesMain() {
     return (
         <Box bg='#1A1917' color='#dcdbd8'>
             <Flex
-                py={{ base: '75px', md: '', lg: '90px' }}
+                py={{base: '75px', md: '', lg: '90px'}}
                 alignContent={'center'}
                 justifyContent={'center'}
             >
                 <Center>
                     <Box
                         display='grid'
-                        gridGap={{ base: '16', md: '18', lg: '20' }}
+                        gridGap={{base: '16', md: '18', lg: '20'}}
                         w='80vw'
                     >
                         <Flex alignContent={'center'} justifyContent={'center'}>
                             <Heading
                                 as='h1'
-                                fontSize={{ base: '35px', md: '40px', lg: '45px' }}
+                                fontSize={{base: '35px', md: '40px', lg: '45px'}}
                                 textTransform='capitalize'
                             >
                                 Discover Series
@@ -103,11 +103,11 @@ function DiscoverSeriesMain() {
 
                         <Box
                             display='grid'
-                            gridGap={{ base: '4', md: '6', lg: '6' }}
+                            gridGap={{base: '4', md: '6', lg: '6'}}
                         >
                             <Heading
                                 as='h2'
-                                fontSize={{ base: '25px', md: '30px', lg: '35px' }}
+                                fontSize={{base: '25px', md: '30px', lg: '35px'}}
                             >
                                 Discover by
                             </Heading>
@@ -125,7 +125,7 @@ function DiscoverSeriesMain() {
                                     <Heading
                                         as='h3'
                                         pt='15px'
-                                        fontSize={{ base: '20px', md: '22px', lg: '25px' }}
+                                        fontSize={{base: '20px', md: '22px', lg: '25px'}}
                                     >
                                         All actors
                                     </Heading>
@@ -140,7 +140,7 @@ function DiscoverSeriesMain() {
                                     <Heading
                                         as='h3'
                                         pt='15px'
-                                        fontSize={{ base: '20px', md: '22px', lg: '25px' }}
+                                        fontSize={{base: '20px', md: '22px', lg: '25px'}}
                                     >
                                         All decades
                                     </Heading>
@@ -155,7 +155,7 @@ function DiscoverSeriesMain() {
                                     <Heading
                                         as='h3'
                                         pt='15px'
-                                        fontSize={{ base: '20px', md: '22px', lg: '25px' }}
+                                        fontSize={{base: '20px', md: '22px', lg: '25px'}}
                                     >
                                         Popular languages
                                     </Heading>
@@ -170,7 +170,7 @@ function DiscoverSeriesMain() {
                                     <Heading
                                         as='h3'
                                         pt='15px'
-                                        fontSize={{ base: '20px', md: '22px', lg: '25px' }}
+                                        fontSize={{base: '20px', md: '22px', lg: '25px'}}
                                     >
                                         All genres
                                     </Heading>
@@ -190,26 +190,29 @@ function DiscoverSeriesMain() {
 
                         <SimpleGrid
                             columns={[3, null, 5]}
-                            gap={{ base: '7', md: '8', lg: '9' }}
+                            gap={{base: '7', md: '8', lg: '9'}}
                             fontWeight='500'
                             textTransform='capitalize'
-                            fontSize={{ base: '13px', md: '14px', lg: '15px' }}
+                            fontSize={{base: '13px', md: '14px', lg: '15px'}}
                         >
                             {seriesData.map((series) => (
                                 <ChakraLink as={ReactRouterLink} key={series.id} to={`/singleseriespage/${series.id}`}>
-                                <Box
-                                    key={series.id}
-                                    display="grid" gap="3"
-                                    _hover={{ filter: 'brightness(115%)' }} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' cursor="pointer"
-                                >
-                                    {series.poster_path ? (
-                                        <Image src={`https://image.tmdb.org/t/p/w300${series.poster_path}`}/>
-                                        )
-                                    :
-                                    <Image src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'/>
-                                    }
-                                    <Text textAlign='center' fontWeight='500' fontSize={{ base: "13px", md: "13px", lg: "15px" }}>{series.name}</Text>
-                                </Box>
+                                    <Box
+                                        key={series.id}
+                                        display="grid" gap="3"
+                                        _hover={{filter: 'brightness(115%)'}}
+                                        transition='all 0.2s cubic-bezier(.08,.52,.52,1)' cursor="pointer"
+                                    >
+                                        {series.poster_path ? (
+                                                <Image src={`https://image.tmdb.org/t/p/w300${series.poster_path}`}/>
+                                            )
+                                            :
+                                            <Image
+                                                src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'/>
+                                        }
+                                        <Text textAlign='center' fontWeight='500'
+                                              fontSize={{base: "13px", md: "13px", lg: "15px"}}>{series.name}</Text>
+                                    </Box>
                                 </ChakraLink>
                             ))}
                         </SimpleGrid>

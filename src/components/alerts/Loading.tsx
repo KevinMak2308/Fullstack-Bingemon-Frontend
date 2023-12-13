@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Alert, AlertIcon, AlertTitle, AlertDescription, Box, Button, useDisclosure, Flex, Center } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+import React, {useEffect, useState} from 'react';
+import {Alert, AlertDescription, AlertIcon, AlertTitle, Box, Flex, useDisclosure} from '@chakra-ui/react';
+import {motion} from 'framer-motion';
 
 function Loading() {
-    const { isOpen: isVisible, onClose, onOpen } = useDisclosure({ defaultIsOpen: true });
+    const {isOpen: isVisible} = useDisclosure({defaultIsOpen: true});
 
     const loadingDescription = "Please wait.";
 
@@ -24,18 +24,18 @@ function Loading() {
 
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: opacity }}
-            transition={{ duration: 0.5 }}
+            initial={{opacity: 0}}
+            animate={{opacity: opacity}}
+            transition={{duration: 0.5}}
         >
             {isVisible && (
                 <Alert
                     status='loading'
                     py='6'
-                    w={{ base: '100%', md: '600px' }}
+                    w={{base: '100%', md: '600px'}}
                     bg='rgb(0, 89, 218, 0.6)'
                     color='#F0F0EE'
-                    borderRadius={{md:'10px 0px 0px 0px'}}
+                    borderRadius={{md: '10px 0px 0px 0px'}}
                     zIndex='2000'
                     position='fixed'
                     right='0'
@@ -47,7 +47,7 @@ function Loading() {
                 >
                     <Box w='500px' px='8'>
                         <Flex gap='6'>
-                            <AlertIcon alignSelf="center" m='0' p='0' color='#F0F0EE' />
+                            <AlertIcon alignSelf="center" m='0' p='0' color='#F0F0EE'/>
                             <Box>
                                 <AlertTitle>Loading</AlertTitle>
                                 <AlertDescription>{loadingDescription}</AlertDescription>

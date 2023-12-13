@@ -1,4 +1,3 @@
-import React from "react";
 import httpService from "../../services/httpService";
 
 export default async function Logout() {
@@ -13,5 +12,4 @@ export default async function Logout() {
     } catch (error) {
         console.error("Logout Successful", error)
     }
-
 }

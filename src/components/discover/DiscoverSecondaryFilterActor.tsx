@@ -41,7 +41,7 @@ export default function DiscoverSecondaryFilterCast({ onChange }: DiscoverSecond
     const defaultImgUrl = "http://127.0.0.1:8080/default/poster_unavailable.jpg";
 
     return (
-        <SimpleGrid columns={[2, 3, 3, 3, 4, 6]} gap={{ base: "4", md: "5", lg: "auto" }} textTransform="capitalize" fontWeight='500' fontSize={{ base: "14px", md: "15px", lg: "16px" }}>
+        <SimpleGrid columns={[2, 3, 3, 3, 4, 6]} gap={{base: "3", sm:"4", md: "5", lg: "auto"}}>
             {actorsList.map((actor, index) => (
                 <GridItem key={index} w='100%' display="grid" gridGap="2">
                     <Box

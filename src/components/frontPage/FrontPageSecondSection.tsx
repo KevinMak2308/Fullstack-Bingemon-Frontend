@@ -51,7 +51,7 @@ function FrontPageSecondSection() {
                                                 How does it work? It's simple. By swiping right to 'like' a movie and left to 'dislike' it, the app begins to learn your preferences. But that's not where it ends. What truly makes our app unique is the ability to match movies with your friends.
                                             </Text>
                                             <Box mt={{ base: '15px', sm:'15px', md: '15px', lg: '15px', xl:'20px', "2xl":'25px' }}>
-                                                <a href="/movieswipe"><PrimaryButton buttonText="Start swiping now"/></a>
+                                                <PrimaryButton buttonText="Start swiping now" />
                                             </Box>
                                         </Stack>
                                     </Center>

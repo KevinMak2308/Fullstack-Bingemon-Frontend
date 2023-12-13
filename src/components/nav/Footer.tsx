@@ -53,9 +53,7 @@ function Footer() {
                             },
                         }}
                     >
-                        
-                        <a href="/discover"><Text className='BodyReg' marginBottom="2px">Browse movies</Text></a>
-
+                        <Text className='BodyReg' marginBottom="2px">Browse movies</Text>
                     </Box>
                     <Box
                         as="span"
@@ -78,8 +76,7 @@ function Footer() {
                             },
                         }}
                     >
-
-                        <a href="/movieswipe"><Text className='BodyReg' marginBottom="2px">Start swiping movies</Text></a>
+                        <Text className='BodyReg' marginBottom="2px">Start swiping movies</Text>
                     </Box>
                 </Flex>
             </Flex>
@@ -112,7 +109,6 @@ function Footer() {
                             }}
                         >
                             <Text className='BodyReg' marginBottom="2px">Browse series</Text>
-
                         </Box>
                         <Box
                             as="span"

@@ -6,17 +6,15 @@ import FrontPageSecondSection from "../components/frontPage/FrontPageSecondSecti
 import FrontPageThirdSection from "../components/frontPage/FrontPageThirdSection"
 import Footer from "../components/nav/Footer"
 import hero from "../hero.png";
-import {
-    Box,
-} from '@chakra-ui/react';
+import {Box,} from '@chakra-ui/react';
 
 function FrontPage() {
     return (
         <div>
-            <Box style={{ backgroundImage: `url(${hero})` }}
+            <Box style={{backgroundImage: `url(${hero})`}}
                  backgroundSize="cover"
                  backgroundRepeat="no-repeat"
-                 backgroundPosition={{ base: 'right', md: 'center', lg: 'center' }}>
+                 backgroundPosition={{base: 'right', md: 'center', lg: 'center'}}>
                 <NavBar/>
                 <FrontPageFirstSection/>
             </Box>

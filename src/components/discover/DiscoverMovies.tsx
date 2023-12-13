@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
+    AspectRatio,
     Box,
+    Center,
+    Flex,
+    GridItem,
     Image,
+    Link,
     SimpleGrid,
     Text,
-    Flex,
-    Center,
-    Heading,
-    GridItem,
-    AspectRatio,
-    Link,
     useColorModeValue,
-    Link as ChakraLink
 } from '@chakra-ui/react';
 import '../../App.css';
 import httpService from "../../services/httpService";
@@ -20,10 +18,8 @@ import DiscoverSecondaryFilterDecade from './DiscoverSecondaryFilterDecade';
 import DiscoverSecondaryFilterGenre from './DiscoverSecondaryFilterGenre';
 import DiscoverSecondaryFilterLanguage from './DiscoverSecondaryFilterLanguage';
 import DiscoverSecondaryFilterActor from './DiscoverSecondaryFilterActor';
-import { Link as ReactRouterLink } from 'react-router-dom'
+import {Link as ReactRouterLink} from 'react-router-dom'
 import BackButton from '../buttons/BackButton';
-import SortButton from '../buttons/SortButton';
-import FilterButton from '../buttons/FilterButton';
 import DiscoverSortBy from './DiscoverSortBy';
 
 interface Movie {
@@ -42,7 +38,6 @@ function DiscoverMovies() {
     const [selectedDecade, setSelectedDecade] = useState<string | null>(null);
     const [selectedActor, setSelectedActor] = useState<number | null>(null);
     const [selectedPrimaryFilter, setSelectedPrimaryFilter] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
 
     const handleLanguageSelection = (selectedLanguage: string) => {
         setSelectedLanguage(selectedLanguage);
@@ -59,13 +54,13 @@ function DiscoverMovies() {
     const handleActorSelection = (selectedActor: number) => {
         setSelectedActor(selectedActor);
     }
-    
+
     // Default img if movie doesn't have any movie poster
     const defaultImgUrl = "http://127.0.0.1:8080/default/poster_unavailable.jpg";
 
     const fetchAllMovies = async () => {
         try {
-            const { data } = await httpService.get(movieUrl, {
+            const {data} = await httpService.get(movieUrl, {
                 params: {
                     genres: selectedGenre,
                     decade: selectedDecade,
@@ -87,7 +82,6 @@ function DiscoverMovies() {
         console.log("What is in actor param?: ", selectedActor);
     }, [selectedGenre, selectedDecade, selectedLanguage, selectedActor]);
 
-
     const handlePrimaryFilterChange = (selectedOption: string) => {
         setSelectedPrimaryFilter(selectedOption);
     };
@@ -100,22 +94,19 @@ function DiscoverMovies() {
         setSelectedPrimaryFilter(null);
     };
 
-
-
     return (
         <Box bg={defaultBgColor} color={defaultTextColor}>
             {/* Back button */}
-            <BackButton />
-
+            <BackButton/>
             <Flex
-                py={{ base: '75px', sm:'80px', md: '85px', lg: '90px', xl:'95px', "2xl":'100px' }}
+                py={{base: '75px', sm: '80px', md: '85px', lg: '90px', xl: '95px', "2xl": '100px'}}
                 alignContent={'center'}
                 justifyContent={'center'}
             >
                 <Center>
                     <Box
                         display='grid'
-                        gridGap={{ base: '6', sm:'8', md: '10', lg: '10', xl:'12', "2xl":'14' }}
+                        gridGap={{base: '6', sm: '8', md: '10', lg: '10', xl: '12', "2xl": '14'}}
                         w='80vw'
                     >
                         <Flex alignContent={'center'} justifyContent={'center'}>
@@ -128,7 +119,7 @@ function DiscoverMovies() {
 
                         <Box
                             display='grid'
-                            gridGap={{ base: '4', md: '6', lg: '6' }}
+                            gridGap={{base: '4', md: '6', lg: '6'}}
                         >
                             <Text
                                 as='h2'
@@ -204,15 +195,23 @@ function DiscoverMovies() {
                             />
                         </Box>
                         {/* Movies/series (loop) */}
-                        <SimpleGrid columns={[2, 3, 3, 4, 5, 6]} gap={{base: "3", sm:"4", md: "5", lg: "6", xl:"7", "2xl":"8"}} fontWeight='500' fontSize={{ base: "11px", sm: "12px", md: "13px", lg: "14px", xl: "15px", "2xl": "16px" }}>
+                        <SimpleGrid columns={[2, 3, 3, 4, 5, 6]}
+                                    gap={{base: "3", sm: "4", md: "5", lg: "6", xl: "7", "2xl": "8"}}>
                             {movieData.map((movie) => (
                                 <Link
                                     as={ReactRouterLink}
                                     key={movie.id}
                                     to={`/singlemoviepage/${movie.id}`}
-                                    _hover={{ textDecoration: 'none' }}
+                                    _hover={{textDecoration: 'none'}}
                                 >
-                                    <GridItem key={movie.id} w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer' position="relative">
+                                    <GridItem key={movie.id} w='100%' h='100%' display="grid" gap={{
+                                        base: "4px",
+                                        sm: "5px",
+                                        md: "6px",
+                                        lg: "7px",
+                                        xl: "8px",
+                                        "2xl": "9px"
+                                    }} cursor='pointer' position="relative">
                                         <AspectRatio ratio={2 / 3}>
                                             <Image
                                                 objectFit="cover"
@@ -224,7 +223,14 @@ function DiscoverMovies() {
                                         </AspectRatio>
                                         <Text
                                             textAlign="center"
-                                            h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}}
+                                            h={{
+                                                base: "30px",
+                                                sm: "35px",
+                                                md: "40px",
+                                                lg: "45px",
+                                                xl: "50px",
+                                                "2xl": "55px"
+                                            }}
                                             className='MovieTitle'
                                             overflow="hidden"
                                             display="-webkit-box"
