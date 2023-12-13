@@ -1,25 +1,8 @@
 import React from 'react'
-
-import {
-    Flex,
-    Text,
-    useColorModeValue,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    useDisclosure,
-    Link as ChakraLink,
-} from '@chakra-ui/react'
-import { Link as ReactRouterLink } from 'react-router-dom'
+import {Flex, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue,} from '@chakra-ui/react'
+import {Link as ReactRouterLink} from 'react-router-dom'
 
 export default function SubNav() {
-    const linkColor = useColorModeValue('gray.600', 'gray.200')
-    const linkHoverColor = useColorModeValue('gray.800', 'white')
-    const popoverContentBgColor = useColorModeValue('white', 'gray.800')
-    const { isOpen, onToggle } = useDisclosure()
-
-
     interface NavItem {
         label: string
         subLabel?: string
@@ -27,31 +10,33 @@ export default function SubNav() {
         href?: string
     }
 
-    const subNavItems : Array<NavItem> =
+    const subNavItems: Array<NavItem> =
         [
-            { label:"Discover Movies",
-            children: [
-                {
-                    label: "Browse Movies",
-                    subLabel: "Start Swiping Now",
-                }
-            ]},
+            {
+                label: "Discover Movies",
+                children: [
+                    {
+                        label: "Browse Movies",
+                        subLabel: "Start Swiping Now",
+                    }
+                ]
+            },
             {
                 label: "Discover Series",
-                    children: [
-                        {
-                            label: "Browse Series",
-                            subLabel: "Start Swiping Now"
-                        }
-                    ]
+                children: [
+                    {
+                        label: "Browse Series",
+                        subLabel: "Start Swiping Now"
+                    }
+                ]
             }
         ]
 
     return (
         <Flex
             color={useColorModeValue('#21201D', '#F0F0EE')}
-            h={{ base: "6vh", sm:"6vh", md: "6vh", lg: "8vh", xl:"8vh", "2xl":"8vh" }}
-            gap={{ base: "40px", sm:"45px", md: "50px", lg: "55px", xl:"60px", "2xl":"65px" }}
+            h={{base: "6vh", sm: "6vh", md: "6vh", lg: "8vh", xl: "8vh", "2xl": "8vh"}}
+            gap={{base: "40px", sm: "45px", md: "50px", lg: "55px", xl: "60px", "2xl": "65px"}}
             borderStyle={'none'}
             borderColor={useColorModeValue('gray.200', 'gray.900')}
             borderRadius='10px'
@@ -66,8 +51,8 @@ export default function SubNav() {
                         as={Flex}
                         className="SubheaderSmBold"
                         cursor='pointer'
-                        py={{ base: 2 }}
-                        _hover={{ filter: 'brightness(1.2)' }}
+                        py={{base: 2}}
+                        _hover={{filter: 'brightness(1.2)'}}
                     >
                         <Text as={ReactRouterLink} to={navItem.href ?? '#'}>
                             {navItem.label}
@@ -93,7 +78,7 @@ export default function SubNav() {
                                     py='3'
                                     px='6'
                                     className='BodyReg'
-                                    _hover={{ filter: 'brightness(1.4)' }}
+                                    _hover={{filter: 'brightness(1.4)'}}
                                     transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
                                 >
                                     {child.label}
@@ -103,9 +88,9 @@ export default function SubNav() {
                                     to="/"
                                     bg="#343434"
                                     py='3'
-                                    px='6'  
+                                    px='6'
                                     className='BodyReg'
-                                    _hover={{ filter: 'brightness(1.4)' }}
+                                    _hover={{filter: 'brightness(1.4)'}}
                                     transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
                                 >
                                     {child.subLabel}

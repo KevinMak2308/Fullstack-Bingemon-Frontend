@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../App.css';
 import NavBar from "../components/nav/NavBar"
 import SingleMovieFirstSection from "../components/movie/SingleMovieFirstSection"
@@ -9,10 +9,9 @@ import SingleMovieFifthSection from "../components/movie/SingleMovieFifthSection
 import LoadingScreen from '../components/errorHandling/LoadingScreen';
 import ErrorScreen from '../components/errorHandling/ErrorScreen';
 import Footer from "../components/nav/Footer"
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {ApiImage} from "../components/ImageCarousel";
 import httpService from '../services/httpService';
-
 
 interface Genre {
     id: number;
@@ -77,7 +76,7 @@ export interface Movie {
 }
 
 function SingleMoviePage() {
-    const { id } = useParams();
+    const {id} = useParams();
     const movieUrl = `movie/${id}`;
     const castUrl = `movie/${id}/cast`;
     const directorUrl = `movie/${id}/directors`;
@@ -93,11 +92,11 @@ function SingleMoviePage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: movieResult } = await httpService.get(movieUrl, {});
-                const { data: castResult } = await httpService.get(castUrl, {});
-                const { data: directorResult } = await httpService.get(directorUrl, {});
-                const { data: imagesResult } = await httpService.get(backdropsUrl, {});
-                const { data: trailerResult } = await httpService.get(trailerUrl, {});
+                const {data: movieResult} = await httpService.get(movieUrl, {});
+                const {data: castResult} = await httpService.get(castUrl, {});
+                const {data: directorResult} = await httpService.get(directorUrl, {});
+                const {data: imagesResult} = await httpService.get(backdropsUrl, {});
+                const {data: trailerResult} = await httpService.get(trailerUrl, {});
                 setMovieData(movieResult);
                 setCastData(castResult);
                 setDirectorData(directorResult);
@@ -113,21 +112,21 @@ function SingleMoviePage() {
     }, [id]);
 
     if (isLoading) {
-        return <LoadingScreen loadingText='movie' />;
+        return <LoadingScreen loadingText='movie'/>;
     }
     if (movieData == null) {
-        return <ErrorScreen errorText='Something went wrong fetching the movie' />;
+        return <ErrorScreen errorText='Something went wrong fetching the movie'/>;
     }
-    
+
     return (
         <div>
-            <NavBar />
-            <SingleMovieFirstSection movie={movieData} images={imageData} />
-            <SingleMovieSecondSection actors={castData} />
-            {trailerData && <SingleMovieThirdSection movie={movieData} trailer={trailerData} />}
-            <SingleMovieFourthSection />
-            <SingleMovieFifthSection movie={movieData} directors={directorData} />
-            <Footer />
+            <NavBar/>
+            <SingleMovieFirstSection movie={movieData} images={imageData}/>
+            <SingleMovieSecondSection actors={castData}/>
+            {trailerData && <SingleMovieThirdSection movie={movieData} trailer={trailerData}/>}
+            <SingleMovieFourthSection/>
+            <SingleMovieFifthSection movie={movieData} directors={directorData}/>
+            <Footer/>
         </div>
     );
 }

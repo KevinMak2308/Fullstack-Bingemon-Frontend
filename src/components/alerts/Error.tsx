@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Alert, AlertIcon, AlertTitle, AlertDescription, Box, Button, useDisclosure, Flex, Center } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+import React, {useEffect, useState} from 'react';
+import {Alert, AlertDescription, AlertIcon, AlertTitle, Box, Flex, useDisclosure} from '@chakra-ui/react';
+import {motion} from 'framer-motion';
 
 function Error() {
-    const { isOpen: isVisible, onClose, onOpen } = useDisclosure({ defaultIsOpen: true });
+    const {isOpen: isVisible} = useDisclosure({defaultIsOpen: true});
 
     const errorDescription = "Username exceeds the maximum length. Please enter a username with a maximum of 25 characters.";
 
@@ -24,18 +24,18 @@ function Error() {
 
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: opacity }}
-            transition={{ duration: 0.5 }}
+            initial={{opacity: 0}}
+            animate={{opacity: opacity}}
+            transition={{duration: 0.5}}
         >
             {isVisible && (
                 <Alert
                     status='error'
                     py='6'
-                    w={{ base: '100%', md: '600px' }}
+                    w={{base: '100%', md: '600px'}}
                     bg='rgba(166, 18, 18, 0.8)'
                     color='#F0F0EE'
-                    borderRadius={{md:'10px 0px 0px 0px'}}
+                    borderRadius={{md: '10px 0px 0px 0px'}}
                     zIndex='2000'
                     position='fixed'
                     right='0'
@@ -46,8 +46,8 @@ function Error() {
                     }}
                 >
                     <Box w='500px' px='8'>
-                        <Flex gap='6' >
-                            <AlertIcon alignSelf="center" m='0' p='0' color='#F0F0EE' />
+                        <Flex gap='6'>
+                            <AlertIcon alignSelf="center" m='0' p='0' color='#F0F0EE'/>
                             <Box>
                                 <AlertTitle>Error!</AlertTitle>
                                 <AlertDescription>{errorDescription}</AlertDescription>

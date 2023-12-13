@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import {Box, Text} from '@chakra-ui/react';
 
 interface FilterButtonProps {
     filterText: string;
@@ -7,7 +7,7 @@ interface FilterButtonProps {
     onClick?: () => void;
 }
 
-function FilterButton({ filterText, isSelected, onClick }: FilterButtonProps) {
+function FilterButton({filterText, isSelected, onClick}: FilterButtonProps) {
     return (
         <Box
             bg={isSelected ? '#21201d' : '#A61212'}
@@ -18,8 +18,8 @@ function FilterButton({ filterText, isSelected, onClick }: FilterButtonProps) {
             borderRadius='10px'
             fontFamily='Roboto'
             color='#F0F0EE'
-            _hover={{ bg: isSelected ? '#262521' : '#c01515' }}
-            h={{ base: '15vh', md: '16vh', lg: '17vh' }}
+            _hover={{bg: isSelected ? '#262521' : '#c01515'}}
+            h={{base: '15vh', md: '16vh', lg: '17vh'}}
             display='flex'
             textAlign='center'
             alignItems='center'

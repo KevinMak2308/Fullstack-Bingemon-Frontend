@@ -1,44 +1,42 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Signup from "./SignupModal";
 import httpService from "../../services/httpService";
 import {
+    Box,
     Button,
-    useDisclosure,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
+    Center,
     FormControl,
     FormLabel,
-    Text,
-    Box,
     Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
     Stack,
+    Text,
     useColorModeValue,
-    Center
+    useDisclosure
 } from '@chakra-ui/react'
 
 interface Credentials {
     username: string,
     password: string
 }
+
 export default function Login() {
 
     const authUrl = "auth/login";
-    const [formData, setFormData] = useState({ username: '', password: ''});
-    const [token, setToken] = useState();
+    const [formData, setFormData] = useState({username: '', password: ''});
     const [show, setShow] = useState(false);
 
-
-    const login = async(credentials: Credentials) => {
+    const login = async (credentials: Credentials) => {
         const {data} = await httpService.post(authUrl, credentials);
         document.cookie = `user=${data.token}`;
         document.cookie = `user_id=${data.user_id}`;
     }
-
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
@@ -50,7 +48,6 @@ export default function Login() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
         try {
             await login(formData);
             console.log("What does the cookie look like?: ", document.cookie)
@@ -59,30 +56,7 @@ export default function Login() {
         }
     }
 
-    /*const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        await fetch('http://localhost:8080/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-            body: JSON.stringify(formData)
-        }).then((response) => {
-            if(!response.ok) {
-                throw Error(response.statusText)
-            }
-            return response.json()
-        }).then(data => {
-            setToken(data.token)
-            console.log("What is in data? ", data)
-            document.cookie = `user=${token}`
-
-        })
-    };*/
-
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const {isOpen, onOpen, onClose} = useDisclosure()
 
     const closeModal = () => {
         setShow(false)
@@ -103,25 +77,25 @@ export default function Login() {
                     transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                     border=''
                     borderRadius='10px'
-                    fontSize={{ base: "12px", sm:"13px", md: "13px", lg: "14px", xl: "15px", "2xl": "16px" }}
+                    fontSize={{base: "12px", sm: "13px", md: "13px", lg: "14px", xl: "15px", "2xl": "16px"}}
                     fontFamily='Roboto'
                     fontWeight='semibold'
                     letterSpacing='0.75px'
                     bg='#A61212'
                     color='#F0F0EE'
-                    _hover={{ filter: 'brightness(1.2)' }}
-                    _active={{ bg: '#A61212', filter: 'brightness(1.2)' }}
-                    _focus={{ boxShadow: 'none' }}
+                    _hover={{filter: 'brightness(1.2)'}}
+                    _active={{bg: '#A61212', filter: 'brightness(1.2)'}}
+                    _focus={{boxShadow: 'none'}}
             >
                 Log in
             </Button>
             {/* Login modal */}
             <Center>
                 <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
-                <ModalOverlay />
+                    <ModalOverlay/>
                     <ModalContent p='4' bg={searchBarBgColor}>
                         <ModalHeader className='SubheaderLgReg'>Log in</ModalHeader>
-                        <ModalCloseButton />
+                        <ModalCloseButton/>
                         <form onSubmit={handleSubmit}>
                             <ModalBody display='grid' gap='6'>
                                 <FormControl id="username" isRequired>
@@ -178,7 +152,8 @@ export default function Login() {
                                                 },
                                             }}
                                         >
-                                            {show ? <Signup isOpen={show} onClose={closeModal} onOpen={onOpen}/> : "Sign up now"}
+                                            {show ? <Signup isOpen={show} onClose={closeModal}
+                                                            onOpen={onOpen}/> : "Sign up now"}
                                         </Box>
                                     </Text>
                                 </Stack>
@@ -186,22 +161,43 @@ export default function Login() {
                             <ModalFooter>
                                 <Button type="submit"
                                         cursor='pointer'
-                                        py={{base: "19px", sm: "20px", md: "21px", lg: "22px", xl: "23px", "2xl": "24px"}}
-                                        px={{base: "27px", sm: "28px", md: "29px", lg: "30px", xl: "31px", "2xl": "32px"}}
+                                        py={{
+                                            base: "19px",
+                                            sm: "20px",
+                                            md: "21px",
+                                            lg: "22px",
+                                            xl: "23px",
+                                            "2xl": "24px"
+                                        }}
+                                        px={{
+                                            base: "27px",
+                                            sm: "28px",
+                                            md: "29px",
+                                            lg: "30px",
+                                            xl: "31px",
+                                            "2xl": "32px"
+                                        }}
                                         w="fit-content"
                                         lineHeight='1.2'
                                         transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                                         border=''
                                         borderRadius='10px'
-                                        fontSize={{ base: "12px", sm:"13px", md: "13px", lg: "14px", xl: "15px", "2xl": "16px" }}
+                                        fontSize={{
+                                            base: "12px",
+                                            sm: "13px",
+                                            md: "13px",
+                                            lg: "14px",
+                                            xl: "15px",
+                                            "2xl": "16px"
+                                        }}
                                         fontFamily='Roboto'
                                         fontWeight='semibold'
                                         letterSpacing='0.75px'
                                         bg='#A61212'
                                         color='#F0F0EE'
-                                        _hover={{ filter: 'brightness(1.2)' }}
-                                        _active={{ bg: '#A61212', filter: 'brightness(1.2)' }}
-                                        _focus={{ boxShadow: 'none' }}
+                                        _hover={{filter: 'brightness(1.2)'}}
+                                        _active={{bg: '#A61212', filter: 'brightness(1.2)'}}
+                                        _focus={{boxShadow: 'none'}}
                                 >
                                     Log in
                                 </Button>

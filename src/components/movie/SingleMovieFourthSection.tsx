@@ -1,18 +1,6 @@
 import React from 'react';
 import '../../App.css';
-import {
-    Box,
-    Button,
-    Center,
-    Flex,
-    GridItem,
-    Heading,
-    Image,
-    SimpleGrid,
-    AspectRatio,
-    Text,
-    useColorModeValue
-} from '@chakra-ui/react';
+import {AspectRatio, Box, Center, Flex, GridItem, Image, SimpleGrid, Text, useColorModeValue} from '@chakra-ui/react';
 import PrimaryButton from "../buttons/PrimaryButton";
 
 function SingleMovieFourthSection() {
@@ -31,22 +19,26 @@ function SingleMovieFourthSection() {
                 '2xl': '100px',
             }} alignContent={"center"} justifyContent={"center"}>
                 <Center>
-                    <Box display="grid" gap={{ base: "15px", sm:"16px", md: "17px", lg: "18px", xl:"19px", "2xl":"20px" }} w="80vw">
+                    <Box display="grid"
+                         gap={{base: "15px", sm: "16px", md: "17px", lg: "18px", xl: "19px", "2xl": "20px"}} w="80vw">
                         <Text as='h2'>
                             Liked by these friends
                         </Text>
-                        <SimpleGrid columns={[2, 3, 3, 4, 5, 5]} gap={{ base: "12px", sm:"14px", md: "16px", lg: "18px", xl:"22px", "2xl":"26px" }}>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                        <SimpleGrid columns={[2, 3, 3, 4, 5, 5]}
+                                    gap={{base: "12px", sm: "14px", md: "16px", lg: "18px", xl: "22px", "2xl": "26px"}}>
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -55,7 +47,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -70,17 +64,19 @@ function SingleMovieFourthSection() {
                                     </Text>
                                 </Box>
                             </GridItem>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -89,7 +85,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -104,17 +102,19 @@ function SingleMovieFourthSection() {
                                     </Text>
                                 </Box>
                             </GridItem>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -123,7 +123,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -138,17 +140,19 @@ function SingleMovieFourthSection() {
                                     </Text>
                                 </Box>
                             </GridItem>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -157,7 +161,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -172,17 +178,19 @@ function SingleMovieFourthSection() {
                                     </Text>
                                 </Box>
                             </GridItem>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -191,7 +199,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -206,17 +216,19 @@ function SingleMovieFourthSection() {
                                     </Text>
                                 </Box>
                             </GridItem>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -225,7 +237,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -240,17 +254,19 @@ function SingleMovieFourthSection() {
                                     </Text>
                                 </Box>
                             </GridItem>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -259,7 +275,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -274,17 +292,19 @@ function SingleMovieFourthSection() {
                                     </Text>
                                 </Box>
                             </GridItem>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -293,7 +313,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -308,17 +330,19 @@ function SingleMovieFourthSection() {
                                     </Text>
                                 </Box>
                             </GridItem>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -327,7 +351,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -342,17 +368,19 @@ function SingleMovieFourthSection() {
                                     </Text>
                                 </Box>
                             </GridItem>
-                            <GridItem w='100%' h='100%' display="grid" gap={{base: "4px", sm:"5px", md: "6px", lg: "7px", xl:"8px", "2xl":"9px"}} cursor='pointer'>
-                                <AspectRatio ratio={1}  w="100%" h="100%">
+                            <GridItem w='100%' h='100%' display="grid"
+                                      gap={{base: "4px", sm: "5px", md: "6px", lg: "7px", xl: "8px", "2xl": "9px"}}
+                                      cursor='pointer'>
+                                <AspectRatio ratio={1} w="100%" h="100%">
                                     <Image
                                         backgroundPosition='center'
                                         backgroundRepeat='no-repeat'
                                         backgroundSize='cover'
                                         objectFit='cover'
                                         border='solid 1.5px transparent'
-                                        borderRadius= '5px'
-                                        transition= 'all 0.5s cubic-bezier(.08,.52,.52,1)'
-                                        width= '100%'
+                                        borderRadius='5px'
+                                        transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                        width='100%'
                                         src={defaultImgUrl}
                                         fallbackSrc={defaultImgUrl}
                                         alt='User profile for user'
@@ -361,7 +389,9 @@ function SingleMovieFourthSection() {
                                         }}
                                     />
                                 </AspectRatio>
-                                <Box textAlign="center" alignItems="top" h={{base: "30px", sm:"35px", md: "40px", lg: "45px", xl:"50px", "2xl":"55px"}} overflow="hidden">
+                                <Box textAlign="center" alignItems="top"
+                                     h={{base: "30px", sm: "35px", md: "40px", lg: "45px", xl: "50px", "2xl": "55px"}}
+                                     overflow="hidden">
                                     <Text
                                         className='MovieTitle'
                                         overflow="hidden"
@@ -377,7 +407,8 @@ function SingleMovieFourthSection() {
                                 </Box>
                             </GridItem>
                         </SimpleGrid>
-                        <Flex alignContent={"center"} justifyContent={"center"} mt={{ base: '15px', sm:'15px', md: '15px', lg: '15px', xl:'20px', "2xl":'25px' }}>
+                        <Flex alignContent={"center"} justifyContent={"center"}
+                              mt={{base: '15px', sm: '15px', md: '15px', lg: '15px', xl: '20px', "2xl": '25px'}}>
                             <PrimaryButton
                                 buttonText="View all"
                             />

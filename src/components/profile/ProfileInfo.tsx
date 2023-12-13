@@ -7,22 +7,13 @@ import {
     Box,
     Center,
     Flex,
-    useColorMode,
     useColorModeValue,
-    Input,
-    InputGroup,
-    Button,
     Textarea,
 } from '@chakra-ui/react';
 import { User, Movie, Series, Avatar } from "../../pages/ProfilePage";
-import Error from '../alerts/Error';
-import Success from '../alerts/Success';
-import Loading from '../alerts/Loading';
-import AvatarModal from './ProfileAvatarModal';
 import httpService from '../../services/httpService';
 import BackButton from '../buttons/BackButton';
 import SecondaryButton from '../buttons/SecondaryButton'
-
 
 interface ProfileProps {
     user: User;

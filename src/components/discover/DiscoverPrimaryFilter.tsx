@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
-import {
-    Box,
-    GridItem,
-    SimpleGrid,
-    Text,
-} from '@chakra-ui/react';
+import React, {useState} from 'react';
+import {Box, GridItem, SimpleGrid, Text,} from '@chakra-ui/react';
 
 interface DiscoverPrimaryFilterProps {
     onChange: (selectedOption: string) => void;
 }
 
-function DiscoverPrimaryFilter({ onChange }: DiscoverPrimaryFilterProps) {
+function DiscoverPrimaryFilter({onChange}: DiscoverPrimaryFilterProps) {
     const boxNames = ["Popular", "Actor", "Decade", "Genre", "Language"];
     const [selectedBox, setSelectedBox] = useState<number | null>(0);
 
@@ -21,7 +16,8 @@ function DiscoverPrimaryFilter({ onChange }: DiscoverPrimaryFilterProps) {
     };
 
     return (
-        <SimpleGrid columns={[2, 3, 3, 5, 5, 5]} gap={{ base: "4", md: "5", lg: "auto" }} fontWeight='500' fontSize={{ base: "16px", md: "18px", lg: "20px" }}>
+        <SimpleGrid columns={[2, 3, 3, 5, 5, 5]} gap={{base: "4", md: "5", lg: "auto"}} fontWeight='500'
+                    fontSize={{base: "16px", md: "18px", lg: "20px"}}>
             {boxNames.map((name, index) => (
                 <GridItem key={index} w='100%'>
                     <Box
@@ -30,11 +26,11 @@ function DiscoverPrimaryFilter({ onChange }: DiscoverPrimaryFilterProps) {
                         p='10px'
                         border='2px'
                         borderColor='#A61212'
-                        _hover={{ bg: selectedBox === index ? '#262521' : '#c01515' }}
+                        _hover={{bg: selectedBox === index ? '#262521' : '#c01515'}}
                         transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                         borderRadius='10px'
                         color='#F0F0EE'
-                        h={{ base: "15vh", md: "16vh", lg: "17vh" }}
+                        h={{base: "15vh", md: "16vh", lg: "17vh"}}
                         display='flex'
                         textAlign='center'
                         alignItems='center'

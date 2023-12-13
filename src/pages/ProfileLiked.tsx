@@ -4,8 +4,8 @@ import AllLiked from "../components/profile/AllLiked"
 import LoadingScreen from '../components/errorHandling/LoadingScreen';
 import ErrorScreen from '../components/errorHandling/ErrorScreen';
 import Footer from "../components/nav/Footer"
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import httpService from '../services/httpService';
 
 export interface Movie {
@@ -34,7 +34,7 @@ export interface LoggedInId {
 }
 
 function ProfileLiked() {
-    const { id } = useParams();
+    const {id} = useParams();
     const userUrl = `user/${id}`;
     const userMoviesUrl = `user/${id}/movies`;
     const userSeriesUrl = `user/${id}/series`;
@@ -58,11 +58,11 @@ function ProfileLiked() {
     const [isLoading, setIsLoading] = useState(true);
 
 
-    const fetchUserMovies = async(id: string) => {
+    const fetchUserMovies = async (id: string) => {
         try {
-            const { data: userResponse } = await httpService.get(userUrl, {});
-            const { data: movieResponse } = await httpService.get(userMoviesUrl, {});
-            const { data: seriesResponse } = await httpService.get(userSeriesUrl, {});
+            const {data: userResponse} = await httpService.get(userUrl, {});
+            const {data: movieResponse} = await httpService.get(userMoviesUrl, {});
+            const {data: seriesResponse} = await httpService.get(userSeriesUrl, {});
             setIsLoading(false);
             let loggedInId;
             const cookies = document.cookie.split(';');
@@ -78,16 +78,16 @@ function ProfileLiked() {
             }
 
             console.log("LOGGED IN ID", loggedInId);
-            
+
             if (loggedInId) {
-                const { data: commonMoviesResponse } = await httpService.get(commonMoviesUrl, {
+                const {data: commonMoviesResponse} = await httpService.get(commonMoviesUrl, {
                     params: {
                         loggedInId: loggedInId,
                         friendId: id
                     }
                 });
                 console.log(commonMoviesResponse);
-                const { data: commonSeriesResponse } = await httpService.get(commonSeriesUrl, {
+                const {data: commonSeriesResponse} = await httpService.get(commonSeriesUrl, {
                     params: {
                         loggedInId: loggedInId,
                         friendId: id
@@ -118,16 +118,17 @@ function ProfileLiked() {
     }, [id]);
 
     if (isLoading) {
-        return <LoadingScreen loadingText='liked movies and series' />;
+        return <LoadingScreen loadingText='liked movies and series'/>;
     }
     if (movieData == null) {
-        return <ErrorScreen errorText='Something went wrong fetching liked movies and series' />;
+        return <ErrorScreen errorText='Something went wrong fetching liked movies and series'/>;
     }
 
     return (
         <div>
             <NavBar/>
-            <AllLiked movies={movieData} series={seriesData} commonMovies={commonMoviesData} commonSeries={commonSeriesData} user={userData} loggedInId={loggedInIdData}/>
+            <AllLiked movies={movieData} series={seriesData} commonMovies={commonMoviesData}
+                      commonSeries={commonSeriesData} user={userData} loggedInId={loggedInIdData}/>
             <Footer/>
         </div>
     )

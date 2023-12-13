@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-modal';
 import httpService from '../../services/httpService';
-import { Avatar, User } from '../../pages/ProfilePage';
+import {Avatar, User} from '../../pages/ProfilePage';
 
 interface AvatarModalProps {
     avatars: Avatar[];
@@ -12,7 +12,7 @@ interface AvatarModalProps {
 
 Modal.setAppElement('#root');
 
-export default function AvatarModal({ avatars, user, isOpen, onRequestClose }: AvatarModalProps) {
+export default function AvatarModal({avatars, user, isOpen, onRequestClose}: AvatarModalProps) {
     const avatarUrl = 'http://127.0.0.1:8080/avatars/';
     const [selectedAvatar, setSelectedAvatar] = useState<string>('');
 
@@ -27,7 +27,7 @@ export default function AvatarModal({ avatars, user, isOpen, onRequestClose }: A
         }
 
         httpService
-            .put(`http://localhost:8080/api/user/${user.id}`, { avatar: selectedAvatar })
+            .put(`http://localhost:8080/api/user/${user.id}`, {avatar: selectedAvatar})
             .then(() => {
                 alert('User updated successfully!');
                 onRequestClose(); // Close the modal after updating the user
