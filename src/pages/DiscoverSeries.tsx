@@ -1,8 +1,8 @@
 import React from 'react';
 import '../App.css';
-import NavBar from "../components/NavBar"
+import NavBar from "../components/nav/NavBar"
 import DiscoverSeriesMain from "../components/discoverseries/DiscoverSeriesMain"
-import Footer from "../components/Footer"
+import Footer from "../components/nav/Footer"
 
 function Discover() {
 
