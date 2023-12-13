@@ -5,6 +5,7 @@ import ProfilePage from "./pages/ProfilePage"
 import SingleMoviePage from "./pages/SingleMoviePage"
 import SingleSeriesPage from "./pages/SingleSeriesPage"
 import Discover from "./pages/Discover"
+import DiscoverSeries from "./pages/DiscoverSeries"
 import MovieSwipe from "./components/swipe-feature/MovieSwipe"
 import ProfileLiked from './pages/ProfileLiked';
 
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/singlemoviepage/:id" element={<SingleMoviePage/>}/>
                 <Route path="/singleseriespage/:id" element={<SingleSeriesPage/>}/>
                 <Route path="/discover" element={<Discover/>}/>
+                <Route path="/discoverseries" element={<DiscoverSeries/>}/>
                 <Route path="/movieswipe" element={<MovieSwipe/>}/>
                 <Route path="/liked/:id" element={<ProfileLiked/>}/>
             </Routes>
