@@ -6,7 +6,7 @@ import SingleMoviePage from "./pages/SingleMoviePage"
 import SingleSeriesPage from "./pages/SingleSeriesPage"
 import Discover from "./pages/Discover"
 import DiscoverSeries from "./pages/DiscoverSeries"
-import MovieSwipe from "./components/swipe-feature/MovieSwipe"
+import MovieSwipe from "./pages/MovieSwipePage"
 import ProfileLiked from './pages/ProfileLiked';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';

@@ -100,7 +100,7 @@ export default function SubNav() {
                                 </MenuItem>
                                 <MenuItem
                                     as={ReactRouterLink}
-                                    to="/"
+                                    to="/movieswipe"
                                     bg="#343434"
                                     py='3'
                                     px='6'  
