@@ -77,6 +77,7 @@ function FrontPageFirstSection() {
                              }}
                         >
                             <Text as='h1'>Start Swiping Today!</Text>
+                            
                             <Text className='SubheaderLgReg'>
                                 Fed up with the endless scrolling and disagreements when trying to pick a movie to watch
                                 with friends
