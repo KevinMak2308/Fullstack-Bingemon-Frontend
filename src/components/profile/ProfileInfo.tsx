@@ -208,7 +208,7 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
                                     @{user.username}
                                 </Text>
                                 <Box display="grid" gap={{ base: "15px", sm:"16px", md: "17px", lg: "18px", xl:"19px", "2xl":"20px" }}>
-                                    <Flex gridGap={{ base: "2", md: "6", lg: "8" }} justifyContent={"space-between"} fontSize={{ base: "13px", md: "14px", lg: "15px" }} flexWrap='wrap'>
+                                    <Flex gridGap={{ base: "2", md: "6", lg: "8" }} justifyContent={"space-between"} flexWrap='wrap'>
                                         <HStack
                                             cursor="pointer"
                                             position="relative"

@@ -38,8 +38,7 @@ export default function DiscoverSecondaryFilterGenre({onChange}: DiscoverSeconda
     }
 
     return (
-        <SimpleGrid columns={[2, 3, 4, 6, 6, 6]} gap={{base: "4", md: "5", lg: "auto"}} textTransform="capitalize"
-                    fontWeight='500' fontSize={{base: "14px", md: "15px", lg: "16px"}}>
+        <SimpleGrid columns={[2, 3, 4, 6, 6, 6]} gap={{base: "3", sm:"4", md: "5", lg: "auto"}}>
             {genreList.map((genre, index) => (
                 <GridItem key={index} w='100%' display="grid" gridGap="2">
                     <Box

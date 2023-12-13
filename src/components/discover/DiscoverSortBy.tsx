@@ -84,15 +84,7 @@ function DiscoverSortBy({selectedGenre, selectedDecade, selectedLanguage}: any) 
                     {tags.map((tag, index) => (
                         <WrapItem key={index}>
                             <Tag
-                                fontFamily='Roboto'
-                                fontSize={{
-                                    base: '10px',
-                                    sm: '11px',
-                                    md: '12px',
-                                    lg: '13px',
-                                    xl: '14px',
-                                    '2xl': '15px',
-                                }}
+                                className='SubheaderXsBold'
                                 py={{base: "7px", sm: "9", md: "9px", lg: "10px", xl: "11px", "2xl": "12px"}}
                                 px={{base: "17px", sm: "19px", md: "19px", lg: "20px", xl: "21px", "2xl": "22px"}}
                                 transition='all 0.2s cubic-bezier(.08,.52,.52,1)'

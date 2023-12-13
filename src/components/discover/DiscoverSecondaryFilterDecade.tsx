@@ -69,8 +69,7 @@ export default function DecadeFilter({onChange}: DiscoverSecondaryFilterDecadePr
     };
 
     return (
-        <SimpleGrid columns={[2, 3, 4, 6, 6, 6]} gap={{base: "4", md: "5", lg: "auto"}} textTransform="capitalize"
-                    fontWeight='500' fontSize={{base: "14px", md: "15px", lg: "16px"}}>
+        <SimpleGrid columns={[2, 3, 4, 6, 6, 6]} gap={{base: "3", sm:"4", md: "5", lg: "auto"}}>
             {decades.map((decade, decadeIndex) => (
                 <GridItem key={decadeIndex} w='100%' display="grid" gridGap="2">
                     {decade.years && decade.years.map((year, yearIndex) => (

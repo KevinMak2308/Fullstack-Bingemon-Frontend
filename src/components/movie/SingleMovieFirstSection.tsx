@@ -76,7 +76,7 @@ function SingleMovieFirstSection({movie, images}: SingleMovieFirstSectionProps) 
                              gap={{base: "15px", sm: "16px", md: "17px", lg: "18px", xl: "19px", "2xl": "20px"}}
                         >
                             {/* Movie title */}
-                            <Text as='h1' fontSize={{base: "35px", md: "40px", lg: "45px"}}>
+                            <Text as='h1'>
                                 {movie.original_title}
                             </Text>
 
@@ -99,7 +99,7 @@ function SingleMovieFirstSection({movie, images}: SingleMovieFirstSectionProps) 
                             {/* Movie infos: runtime, rating etc. */}
                             <Box display="grid" gridGap={{base: "4", md: "6", lg: "8"}}>
                                 <Flex gridGap={{base: "2", md: "6", lg: "8"}} justifyContent={"space-between"}
-                                      alignItems='center' fontSize={{base: "13px", md: "14px", lg: "15px"}}
+                                      alignItems='center'
                                       flexWrap='wrap' w={{base: "80vw", md: "30vw", lg: "30vw"}}>
                                     <HStack alignItems='center' spacing='2'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"

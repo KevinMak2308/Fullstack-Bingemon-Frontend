@@ -245,8 +245,7 @@ export default function ProfileCards() {
                                         <Text textAlign="center">Name Lorem Ipsum</Text>
                                     </GridItem>
                                 </SimpleGrid>
-                                <Flex alignItems="center" gap="2" cursor="pointer" fontWeight='500'
-                                      fontSize={{base: "13px", md: "14px", lg: "15px"}}>
+                                <Flex alignItems="center" gap="2" cursor="pointer">
                                     <Center gap='4'>
                                         <HStack
                                             cursor="pointer"

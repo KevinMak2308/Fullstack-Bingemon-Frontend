@@ -42,8 +42,7 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                         <Text as='h2'>
                             More information
                         </Text>
-                        <SimpleGrid columns={[1, 1, 1, 1, 2, 2]} gap={{base: 0, md: 0, lg: 0, xl: 20}}
-                                    fontSize={{base: "13px", md: "14px", lg: "15px"}} lineHeight='1.7'>
+                        <SimpleGrid columns={[1, 1, 1, 1, 2, 2]} gap={{base: 0, md: 0, lg: 0, xl: 20}}>
                             <GridItem w='100%'>
                                 <TableContainer>
                                     <Table variant='simple'>

@@ -200,15 +200,7 @@ export default function AllLiked({commonMovies, commonSeries, movies, series, us
                         </Box>
                         {/* Movies/series (loop) */}
                         <SimpleGrid columns={[2, 3, 3, 4, 5, 6]}
-                                    gap={{base: "3", sm: "4", md: "5", lg: "6", xl: "7", "2xl": "8"}} fontWeight='500'
-                                    fontSize={{
-                                        base: "11px",
-                                        sm: "12px",
-                                        md: "13px",
-                                        lg: "14px",
-                                        xl: "15px",
-                                        "2xl": "16px"
-                                    }}>
+                                    gap={{base: "3", sm: "4", md: "5", lg: "6", xl: "7", "2xl": "8"}}>
                             {data[selectedBox].map((data, index) => (
                                 <Link key={data.id}
                                       to={selectedBox === 0 || selectedBox === 2 ? "/singlemoviepage/" + data.id : "/singleseriespage/" + data.id}>

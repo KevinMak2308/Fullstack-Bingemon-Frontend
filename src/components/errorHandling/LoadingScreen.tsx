@@ -33,8 +33,10 @@ const LoadingScreen = ({loadingText}: LoadingScreenProps) => {
                 <Flex height="100vh" width="100vw" alignItems="center" justifyContent="center">
                     <Box display='grid' gap='4'>
                         <Box display='grid' gap='10'>
-                            <img width={width} src={'http://localhost:3000/images/bingemon_red_side_xsm.png'}
-                                 alt="Logo"/>
+                            <Center>
+                                <img width={width} src={'http://localhost:3000/images/bingemon_red_side_xsm.png'}
+                                     alt="Logo"/>
+                            </Center>
                             <Center>
                                 <CircularProgress isIndeterminate color="#A61212" size="75px" thickness="4px"/>
                             </Center>
