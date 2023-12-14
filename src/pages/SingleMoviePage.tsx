@@ -86,7 +86,7 @@ function SingleMoviePage() {
     const [castData, setCastData] = useState<CastMember[]>([]);
     const [directorData, setDirectorData] = useState<CastMember[]>([]);
     const [imageData, setImageData] = useState<ApiImage[]>([]);
-    const [trailerData, setTrailerData] = useState<Trailer | null>(null);
+    const [trailerData, setTrailerData] = useState<Trailer>();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -123,7 +123,7 @@ function SingleMoviePage() {
             <NavBar/>
             <SingleMovieFirstSection movie={movieData} images={imageData}/>
             <SingleMovieSecondSection actors={castData}/>
-            {trailerData && <SingleMovieThirdSection movie={movieData} trailer={trailerData}/>}
+            <SingleMovieThirdSection movie={movieData} trailer={trailerData}/>
             <SingleMovieFourthSection/>
             <SingleMovieFifthSection movie={movieData} directors={directorData}/>
             <Footer/>

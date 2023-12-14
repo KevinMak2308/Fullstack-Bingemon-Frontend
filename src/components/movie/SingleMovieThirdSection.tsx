@@ -6,7 +6,7 @@ import {Movie, Trailer} from "../../pages/SingleMoviePage";
 
 interface SingleMovieFifthSectionProps {
     movie: Movie;
-    trailer: Trailer;
+    trailer: Trailer | undefined;
 }
 
 function SingleMovieThirdSection({movie, trailer}: SingleMovieFifthSectionProps) {
@@ -38,7 +38,7 @@ function SingleMovieThirdSection({movie, trailer}: SingleMovieFifthSectionProps)
                             <Text
                                 as="h2"
                             >
-                                {movie.title}
+                                Trailer
                             </Text>
                             <AspectRatio
                                 h={{base: '30vh', sm: '40vh', md: '50vh', lg: '60vh', xl: '70vh', "2xl": '80vh'}}
@@ -55,7 +55,32 @@ function SingleMovieThirdSection({movie, trailer}: SingleMovieFifthSectionProps)
                 </Flex>
             </Box>
         ) : (
-            <span className='SubheaderMdReg'>No trailer available</span>
+            <Box bg={bgColor} color={textColor}>
+                <Flex
+                    py={{
+                        base: '75px',
+                        sm: '80px',
+                        md: '85px',
+                        lg: '90px',
+                        xl: '95px',
+                        '2xl': '100px',
+                    }}
+                    alignContent={'center'}
+                    justifyContent={'center'}
+                >
+                    <Center>
+                        <Box w="80vw" display='grid'
+                             gap={{base: "15px", sm: "16px", md: "17px", lg: "18px", xl: "19px", "2xl": "20px"}}>
+                            <Text
+                                as="h2"
+                            >
+                                Trailer
+                            </Text>
+                            <span className='SubheaderMdReg'>Oops, no trailer available!</span>
+                        </Box>
+                    </Center>
+                </Flex>
+            </Box>
         )
     );
 }
