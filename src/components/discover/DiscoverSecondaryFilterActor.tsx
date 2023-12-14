@@ -61,6 +61,7 @@ export default function DiscoverSecondaryFilterCast({ onChange }: DiscoverSecond
                         textAlign='center'
                         alignItems='center'
                         justifyContent='center'
+                        onClick={() => handleSelectionChange(actor.id)}
                     >
                         <Image
                             objectFit="cover"
