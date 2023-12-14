@@ -7,25 +7,30 @@ export default function SubNav() {
         label: string
         subLabel?: string
         children?: Array<NavItem>
-        href?: string
+        href1?: string
+        href2?: string
     }
 
     const subNavItems: Array<NavItem> =
         [
             {
                 label: "Discover Movies",
+                href1: "/discover",
                 children: [
                     {
                         label: "Browse Movies",
-                        subLabel: "Start Swiping Now",
+                        href1: "/discover",
+                        subLabel: "Start Swiping Now"
                     }
                 ]
             },
             {
                 label: "Discover Series",
+                href2: "/discoverseries",
                 children: [
                     {
                         label: "Browse Series",
+                        href2: "/discoverseries",
                         subLabel: "Start Swiping Now"
                     }
                 ]
@@ -54,7 +59,7 @@ export default function SubNav() {
                         py={{base: 2}}
                         _hover={{filter: 'brightness(1.2)'}}
                     >
-                        <Text as={ReactRouterLink} to={navItem.href ?? '#'}>
+                        <Text as={ReactRouterLink} to={navItem.href1 ?? navItem.href2}>
                             {navItem.label}
                         </Text>
                     </MenuButton>
@@ -73,7 +78,7 @@ export default function SubNav() {
                             >
                                 <MenuItem
                                     as={ReactRouterLink}
-                                    to="/discover"
+                                    to={navItem.href1 ?? navItem.href2}
                                     bg="#343434"
                                     py='3'
                                     px='6'
@@ -85,7 +90,7 @@ export default function SubNav() {
                                 </MenuItem>
                                 <MenuItem
                                     as={ReactRouterLink}
-                                    to="/movieswipe"
+                                    to='movieswipe'
                                     bg="#343434"
                                     py='3'
                                     px='6'

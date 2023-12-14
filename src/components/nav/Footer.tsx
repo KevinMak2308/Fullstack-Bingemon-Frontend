@@ -89,6 +89,7 @@ function Footer() {
             <Flex >
                 <Box >
                     <Flex flexDirection='column' gap='10px' placeItems={{base:"center", md:"normal", lg:"normal"}}>
+                        <a href="/discoverseries"/>
                         <Text className='BodyBold'>
                             Discover series
                         </Text>
@@ -113,7 +114,9 @@ function Footer() {
                                 },
                             }}
                         >
+                            <a href="/discoverseries">
                             <Text className='BodyReg' marginBottom="2px">Browse series</Text>
+                            </a>
                         </Box>
                         <Box
                             as="span"
@@ -136,7 +139,9 @@ function Footer() {
                                 },
                             }}
                         >
+                            <a href="/movieswipe">
                             <Text className='BodyReg' marginBottom="2px">Start swiping series</Text>
+                            </a>
                         </Box>
                     </Flex>
                 </Box>
