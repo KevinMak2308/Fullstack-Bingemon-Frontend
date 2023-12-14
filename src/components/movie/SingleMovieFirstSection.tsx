@@ -32,6 +32,9 @@ function SingleMovieFirstSection({movie, images}: SingleMovieFirstSectionProps) 
     // Max movie description length
     const maxOverviewLength = 445;
 
+    // Max 15 images
+    const limitedImages = images.slice(0, 15);
+
     return (
         <SimpleGrid
             h={{lg: "82vh", xl: "82vh", "2xl": "82vh"}}
@@ -40,8 +43,8 @@ function SingleMovieFirstSection({movie, images}: SingleMovieFirstSectionProps) 
         >
             {/* Movie images */}
             <GridItem>
-                {images.length > 1 ? (
-                    <ImageCarousel images={images}/>
+                {limitedImages.length > 1 ? (
+                    <ImageCarousel images={limitedImages} />
                 ) : (
                     (movie.backdrop_path ? (
                         <Image
