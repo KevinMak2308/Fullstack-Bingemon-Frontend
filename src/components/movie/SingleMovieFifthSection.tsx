@@ -44,7 +44,7 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                         <Text as='h2'>
                             More information
                         </Text>
-                        <SimpleGrid columns={[1, 1, 1, 1, 2, 2]} gap={{base: 0, md: 0, lg: 0, xl: 20}}>
+                        <SimpleGrid columns={[1, 1, 1, 1, 2, 2]} gap={{base: 0, md: 0, lg: 0, xl: 10}}>
                             <GridItem w='100%'>
                                 <TableContainer>
                                     <Table variant='simple'>
@@ -52,8 +52,9 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                             {/* Movie title */}
                                             <Tr>
                                                 <Td className='BodyBold'>Original Title</Td>
-                                                <Td textAlign='right'
-                                                    className='BodyReg'>{movie.original_title || unavailableText}</Td>
+                                                <Td textAlign='right' className='BodyReg' whiteSpace='normal'>
+                                                    {movie.original_title || unavailableText}
+                                                </Td>
                                             </Tr>
                                             {/* Movie language(s) */}
                                             <Tr w='100%'>
@@ -62,7 +63,7 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                                 ) : (
                                                     <Td className='BodyBold'>Spoken Languages</Td>
                                                 )}
-                                                <Td w='full'>
+                                                <Td w='full' whiteSpace='normal'>
                                                     <Wrap w='full' justify='end' spacing='1' className='BodyReg'>
                                                         {movie.spoken_languages && movie.spoken_languages.length > 0 ? (
                                                             <>
@@ -86,7 +87,7 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                                 ) : (
                                                     <Td className='BodyBold'>Genres</Td>
                                                 )}
-                                                <Td w='full'>
+                                                <Td w='full' whiteSpace='normal'>
                                                     <Wrap w='full' justify='end' spacing='1' className='BodyReg'>
                                                         {movie.genres.map((genre, i) => (
                                                             <WrapItem width='fit-content' key={genre.name}>
@@ -103,7 +104,7 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                                 <Tr>
                                                     <Td className='BodyBold'>Belongs to Collection</Td>
                                                     <Td textAlign='right'
-                                                        className='BodyReg'>{movie.belongs_to_collection.name}</Td>
+                                                        className='BodyReg' whiteSpace='normal'>{movie.belongs_to_collection.name}</Td>
                                                 </Tr>
                                                 :
                                                 null
@@ -112,19 +113,19 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                             <Tr>
                                                 <Td className='BodyBold'>Release Date</Td>
                                                 <Td textAlign='right'
-                                                    className='BodyReg'>{movie.release_date || unavailableText}</Td>
+                                                    className='BodyReg' whiteSpace='normal'>{movie.release_date || unavailableText}</Td>
                                             </Tr>
                                             {/* Movie runtime */}
                                             <Tr>
                                                 <Td className='BodyBold'>Runtime</Td>
                                                 <Td textAlign='right'
-                                                    className='BodyReg'>{movie.runtime ? `${movie.runtime} minutes` : unavailableText}</Td>
+                                                    className='BodyReg' whiteSpace='normal'>{movie.runtime ? `${movie.runtime} minutes` : unavailableText}</Td>
                                             </Tr>
                                             {/* Movie status */}
                                             <Tr>
                                                 <Td className='BodyBold'>Status</Td>
                                                 <Td textAlign='right'
-                                                    className='BodyReg'>{movie.status || unavailableText}</Td>
+                                                    className='BodyReg' whiteSpace='normal'>{movie.status || unavailableText}</Td>
                                             </Tr>
                                         </Tbody>
                                     </Table>
@@ -137,7 +138,7 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                             {/* Movie budget */}
                                             <Tr>
                                                 <Td className='BodyBold'>Budget</Td>
-                                                <Td textAlign='right' className='BodyReg'>
+                                                <Td textAlign='right' className='BodyReg' whiteSpace='normal'>
                                                     {movie.revenue !== undefined && movie.revenue !== 0
                                                         ? new Intl.NumberFormat('en-US').format(parseFloat(movie.revenue.toString())) + ' $'
                                                         : unavailableText
@@ -147,7 +148,7 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                             {/* Movie revenue */}
                                             <Tr>
                                                 <Td className='BodyBold'>Revenue</Td>
-                                                <Td textAlign='right' className='BodyReg'>
+                                                <Td textAlign='right' className='BodyReg' whiteSpace='normal'>
                                                     {movie.budget !== undefined && movie.budget !== 0
                                                         ? new Intl.NumberFormat('en-US').format(parseFloat(movie.budget.toString())) + ' $'
                                                         : unavailableText
@@ -161,8 +162,17 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                                 ) : (
                                                     <Td className='BodyBold'>Production Companies</Td>
                                                 )}
-                                                <Td w='full'>
-                                                    <Wrap w='full' justify='end' spacing='2' className='BodyReg'>
+                                                <Td
+                                                    w='full'
+                                                    whiteSpace='normal'
+                                                    style={{
+                                                        wordWrap: 'break-word',
+                                                        overflowWrap: 'break-word',
+                                                        wordBreak: 'break-all',
+                                                        flexWrap: 'wrap',
+                                                        textAlign: 'right',
+                                                    }}
+                                                    className='BodyReg' display='flex' justifyContent='flex-end' alignItems='flex-end' gap={1}>                                                     <Wrap w='full' justify='end' spacing='1' className='BodyReg'>
                                                         {movie.production_companies && movie.production_companies.length > 0
                                                             ? movie.production_companies.map((company, i) => (
                                                                 <WrapItem width='fit-content' key={company.id}>
@@ -182,11 +192,20 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                                 ) : (
                                                     <Td className='BodyBold'>Production Countries</Td>
                                                 )}
-                                                <Td w='full' className='BodyReg' style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                                    {movie.production_countries && movie.production_countries.length > 0 ? (
+                                                <Td
+                                                    w='full'
+                                                    whiteSpace='normal'
+                                                    style={{
+                                                        wordWrap: 'break-word',
+                                                        overflowWrap: 'break-word',
+                                                        wordBreak: 'break-all',
+                                                        flexWrap: 'wrap',
+                                                        textAlign: 'right',
+                                                    }}
+                                                    className='BodyReg' display='flex' justifyContent='flex-end' alignItems='flex-end' gap={1}>                                                    {movie.production_countries && movie.production_countries.length > 0 ? (
                                                         <>
                                                             {movie.production_countries.map((country, i) => (
-                                                                <WrapItem width='fit-content' key={country.iso_3166_1}>
+                                                                <WrapItem width='fit-content'  key={country.iso_3166_1}>
                                                                     <span>{country.name}</span>
                                                                     {movie.production_countries.length > 1 && i < movie.production_countries.length - 1 ?
                                                                         <span>,</span> : null}
@@ -203,7 +222,7 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                                 ) : (
                                                     <Td className='BodyBold'>Directors</Td>
                                                 )}
-                                                <Td w='full' className='BodyReg' style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                                <Td w='full' whiteSpace='normal' className='BodyReg' display='flex' justifyContent='flex-end' gap={1}>
                                                     {directors.length > 0 ? (
                                                         <>
                                                             {directors.map((director, i) => (
