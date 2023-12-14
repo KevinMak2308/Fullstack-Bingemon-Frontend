@@ -60,7 +60,21 @@ function SingleMovieSecondSection({actors}: Cast) {
                                         xl: "8px",
                                         "2xl": "9px"
                                     }} key={actor.id}>
-                                        <Image src={actor.profile_path} fallbackSrc={defaultImgUrl} borderRadius="7px"/>
+                                        <AspectRatio ratio={2 / 3}>
+                                            <Image
+                                                backgroundPosition='center'
+                                                backgroundRepeat='no-repeat'
+                                                backgroundSize='cover'
+                                                objectFit='cover'
+                                                border='solid 1.5px transparent'
+                                                borderRadius='5px'
+                                                transition='all 0.5s cubic-bezier(.08,.52,.52,1)'
+                                                width='100%'
+                                                src={actor.profile_path}
+                                                fallbackSrc={defaultImgUrl}
+                                                alt={"Picture of: " + actor.name}
+                                            />
+                                        </AspectRatio>
                                         <Text textAlign="center">{actor.name}</Text>
                                     </GridItem>
                                 ))

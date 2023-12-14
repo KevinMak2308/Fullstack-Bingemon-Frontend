@@ -23,6 +23,8 @@ interface SingleMovieProps {
     directors: CastMember[];
 }
 
+const unavailableText = "N/A";
+
 function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
     return (
         <Box bg={useColorModeValue('#dbdbdb', '#1A1917')} color={useColorModeValue('#21201D', '#F0F0EE')}>
@@ -47,12 +49,19 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                 <TableContainer>
                                     <Table variant='simple'>
                                         <Tbody>
+                                            {/* Movie title */}
                                             <Tr>
                                                 <Td className='BodyBold'>Original Title</Td>
-                                                <Td textAlign='right' className='BodyReg'>{movie.original_title}</Td>
+                                                <Td textAlign='right'
+                                                    className='BodyReg'>{movie.original_title || unavailableText}</Td>
                                             </Tr>
+                                            {/* Movie language(s) */}
                                             <Tr w='100%'>
-                                                <Td className='BodyBold'>Spoken Language(s)</Td>
+                                                {movie.spoken_languages.length === 1 ? (
+                                                    <Td className='BodyBold'>Spoken Language</Td>
+                                                ) : (
+                                                    <Td className='BodyBold'>Spoken Languages</Td>
+                                                )}
                                                 <Td w='full'>
                                                     <Wrap w='full' justify='end' spacing='1' className='BodyReg'>
                                                         {movie.spoken_languages && movie.spoken_languages.length > 0 ? (
@@ -70,8 +79,13 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                                     </Wrap>
                                                 </Td>
                                             </Tr>
+                                            {/* Movie genres */}
                                             <Tr w='100%'>
-                                                <Td className='BodyBold'>Genre(s)</Td>
+                                                {movie.genres.length === 1 ? (
+                                                    <Td className='BodyBold'>Genre</Td>
+                                                ) : (
+                                                    <Td className='BodyBold'>Genres</Td>
+                                                )}
                                                 <Td w='full'>
                                                     <Wrap w='full' justify='end' spacing='1' className='BodyReg'>
                                                         {movie.genres.map((genre, i) => (
@@ -84,6 +98,7 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                                     </Wrap>
                                                 </Td>
                                             </Tr>
+                                            {/* Movie collection */}
                                             {movie.belongs_to_collection ?
                                                 <Tr>
                                                     <Td className='BodyBold'>Belongs to Collection</Td>
@@ -93,17 +108,23 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                                 :
                                                 null
                                             }
+                                            {/* Movie release date */}
                                             <Tr>
                                                 <Td className='BodyBold'>Release Date</Td>
-                                                <Td textAlign='right' className='BodyReg'>{movie.release_date}</Td>
+                                                <Td textAlign='right'
+                                                    className='BodyReg'>{movie.release_date || unavailableText}</Td>
                                             </Tr>
+                                            {/* Movie runtime */}
                                             <Tr>
                                                 <Td className='BodyBold'>Runtime</Td>
-                                                <Td textAlign='right' className='BodyReg'>{movie.runtime} minutes</Td>
+                                                <Td textAlign='right'
+                                                    className='BodyReg'>{movie.runtime ? `${movie.runtime} minutes` : unavailableText}</Td>
                                             </Tr>
+                                            {/* Movie status */}
                                             <Tr>
                                                 <Td className='BodyBold'>Status</Td>
-                                                <Td textAlign='right' className='BodyReg'>{movie.status}</Td>
+                                                <Td textAlign='right'
+                                                    className='BodyReg'>{movie.status || unavailableText}</Td>
                                             </Tr>
                                         </Tbody>
                                     </Table>
@@ -113,72 +134,88 @@ function SingleMovieFifthSection({movie, directors}: SingleMovieProps) {
                                 <TableContainer>
                                     <Table variant='simple'>
                                         <Tbody>
+                                            {/* Movie budget */}
                                             <Tr>
                                                 <Td className='BodyBold'>Budget</Td>
-                                                <Td textAlign='right'
-                                                    className='BodyReg'>{new Intl.NumberFormat('en-US').format(parseFloat(movie.budget.toString()))} $</Td>
+                                                <Td textAlign='right' className='BodyReg'>
+                                                    {movie.revenue !== undefined && movie.revenue !== 0
+                                                        ? new Intl.NumberFormat('en-US').format(parseFloat(movie.revenue.toString())) + ' $'
+                                                        : unavailableText
+                                                    }
+                                                </Td>
                                             </Tr>
+                                            {/* Movie revenue */}
                                             <Tr>
                                                 <Td className='BodyBold'>Revenue</Td>
-                                                <Td textAlign='right'
-                                                    className='BodyReg'>{new Intl.NumberFormat('en-US').format(parseFloat(movie.revenue.toString()))} $</Td>
+                                                <Td textAlign='right' className='BodyReg'>
+                                                    {movie.budget !== undefined && movie.budget !== 0
+                                                        ? new Intl.NumberFormat('en-US').format(parseFloat(movie.budget.toString())) + ' $'
+                                                        : unavailableText
+                                                    }
+                                                </Td>
                                             </Tr>
+                                            {/* Movie production companies */}
                                             <Tr w='100%'>
-                                                <Td className='BodyBold'>Production Companies</Td>
+                                                {movie.production_companies.length === 1 ? (
+                                                    <Td className='BodyBold'>Production Company</Td>
+                                                ) : (
+                                                    <Td className='BodyBold'>Production Companies</Td>
+                                                )}
                                                 <Td w='full'>
                                                     <Wrap w='full' justify='end' spacing='2' className='BodyReg'>
-                                                        {movie.production_companies && movie.production_companies.length > 0 ? (
-                                                            <>
-                                                                {movie.production_companies.map((company, i) => (
-                                                                    <WrapItem width='fit-content' key={company.id}>
-                                                                        <span>{company.name}</span>
-                                                                        {movie.production_companies.length > 1 && i < movie.production_companies.length - 1 ?
-                                                                            <span>,</span> : null}
-                                                                    </WrapItem>
-                                                                ))}
-                                                            </>
-                                                        ) : null
-                                                        }
+                                                        {movie.production_companies && movie.production_companies.length > 0
+                                                            ? movie.production_companies.map((company, i) => (
+                                                                <WrapItem width='fit-content' key={company.id}>
+                                                                    <span>{company.name}</span>
+                                                                    {i < movie.production_companies.length - 1 &&
+                                                                        <span>,</span>}
+                                                                </WrapItem>
+                                                            ))
+                                                            : <span className='BodyReg'>{unavailableText}</span>}
                                                     </Wrap>
                                                 </Td>
                                             </Tr>
+                                            {/* Movie production countries */}
                                             <Tr w='100%'>
-                                                <Td className='BodyBold'>Production Countries</Td>
-                                                <Td w='full'>
-                                                    <Wrap w='full' justify='end' spacing='2' className='BodyReg'>
-                                                        {movie.production_countries && movie.production_countries.length > 0 ? (
-                                                            <>
-                                                                {movie.production_countries.map((country, i) => (
-                                                                    <WrapItem width='fit-content'
-                                                                              key={country.iso_3166_1}>
-                                                                        <span>{country.name}</span>
-                                                                        {movie.production_countries.length > 1 && i < movie.production_countries.length - 1 ?
-                                                                            <span>,</span> : null}
-                                                                    </WrapItem>
-                                                                ))}
-                                                            </>
-                                                        ) : null
-                                                        }
-                                                    </Wrap>
+                                                {movie.production_countries.length === 1 ? (
+                                                    <Td className='BodyBold'>Production Country</Td>
+                                                ) : (
+                                                    <Td className='BodyBold'>Production Countries</Td>
+                                                )}
+                                                <Td w='full' className='BodyReg' style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                                    {movie.production_countries && movie.production_countries.length > 0 ? (
+                                                        <>
+                                                            {movie.production_countries.map((country, i) => (
+                                                                <WrapItem width='fit-content' key={country.iso_3166_1}>
+                                                                    <span>{country.name}</span>
+                                                                    {movie.production_countries.length > 1 && i < movie.production_countries.length - 1 ?
+                                                                        <span>,</span> : null}
+                                                                </WrapItem>
+                                                            ))}
+                                                        </>
+                                                    ) : <span className='BodyReg'>{unavailableText}</span>}
                                                 </Td>
                                             </Tr>
-                                            <Tr>
+                                            {/* Movie directors */}
+                                            <Tr w='100%'>
                                                 {directors.length === 1 ? (
-                                                        <Td className='BodyBold'>Director</Td>)
-                                                    :
+                                                    <Td className='BodyBold'>Director</Td>
+                                                ) : (
                                                     <Td className='BodyBold'>Directors</Td>
-                                                }
-                                                <Td>
-                                                    <Wrap justify='flex-end' align='center' spacing='2'
-                                                          className='BodyReg'>
-                                                        {directors.map((director, i) => (
-                                                            <WrapItem key={director.id}>
-                                                                <span>{director.name}</span>
-                                                                {directors.length > 1 && i < directors.length - 1 ?
-                                                                    <span>,</span> : null}
-                                                            </WrapItem>
-                                                        ))}
-                                                    </Wrap>
+                                                )}
+                                                <Td w='full' className='BodyReg' style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                                    {directors.length > 0 ? (
+                                                        <>
+                                                            {directors.map((director, i) => (
+                                                                <WrapItem className='BodyReg' width='fit-content' key={director.id}>
+                                                                    <span>{director.name}</span>
+                                                                    {i < directors.length - 1 && <span>,</span>}
+                                                                </WrapItem>
+                                                            ))}
+                                                        </>
+                                                    ) : (
+                                                        <span className='BodyReg'>{unavailableText}</span>
+                                                    )}
                                                 </Td>
                                             </Tr>
                                         </Tbody>
