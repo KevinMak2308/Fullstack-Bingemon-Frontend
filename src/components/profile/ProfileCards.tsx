@@ -126,7 +126,7 @@ export default function ProfileCards({user, movies, series}: ProfileProps) {
                                     <GridItem colSpan={6} py='20'>
                                         <Flex flexDirection="column" gap={{base: '20px', md: '25px', lg: '30px'}}
                                               alignContent="center" justifyContent="center">
-                                            <Text className='SubheaderMdReg'>Oops, looks like you haven't liked any
+                                            <Text textAlign='center' className='SubheaderMdReg'>Oops, looks like you haven't liked any
                                                 movies yet!</Text>
                                             <Center>
                                                 <Link to={"/discover"}>
@@ -172,7 +172,7 @@ export default function ProfileCards({user, movies, series}: ProfileProps) {
                                 {/* H3 + sort button */}
                                 <Box alignItems="top">
                                     <Flex justifyContent='space-between' alignItems="center">
-                                        <Text as='h3'>
+                                        <Text as='h3' >
                                             {series.length} liked series
                                         </Text>
                                         <SortButton onSortChange={handleSortChange} sortingOptions={sortingOptions}/>
