@@ -18,7 +18,7 @@ function selectedBox(id: number) {
 
 export default function ProfileCards({user, movies, series}: ProfileProps) {
     // Default img if movie doesn't have any movie poster
-    const defaultImgUrl = "http://127.0.0.1:8080/default/poster_unavailable.jpg";
+    const defaultImgUrl = "../../images/unavailable/poster_unavailable.jpg";
 
     // SORT BUTTON
     const handleSortChange = (sortOption: string) => {

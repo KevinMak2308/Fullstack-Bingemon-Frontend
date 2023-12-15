@@ -38,7 +38,7 @@ export default function DiscoverSecondaryFilterCast({ onChange }: DiscoverSecond
     }
 
     // Default img if movie doesn't have any movie poster
-    const defaultImgUrl = "http://127.0.0.1:8080/default/poster_unavailable.jpg";
+    const defaultImgUrl = "../../images/unavailable/user_unavailable.jpg";
 
     return (
         <SimpleGrid columns={[2, 3, 3, 3, 4, 6]} gap={{base: "3", sm:"4", md: "5", lg: "auto"}}>

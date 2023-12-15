@@ -28,7 +28,7 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
     const [profilePicture, setProfilePicture] = useState<string>(user.profile_picture_filename);
 
     const imageUrl = "http://127.0.0.1:8080/avatars/" + user.profile_picture_filename;
-    const defaultImgUrl = "http://127.0.0.1:8080/default/user_unavailable.jpg";
+    const defaultImgUrl = "../../images/unavailable/user_unavailable.jpg";
 
     const updateUser = async () => {
         try {

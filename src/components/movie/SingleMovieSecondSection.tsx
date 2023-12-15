@@ -26,7 +26,7 @@ function SingleMovieSecondSection({actors}: Cast) {
         }
     };
 
-    const defaultImgUrl = "http://127.0.0.1:8080/default/user_unavailable.jpg";
+    const defaultImgUrl = "../../images/unavailable/user_unavailable.jpg";
 
     const shouldShowButton = actors.length > 6;
 

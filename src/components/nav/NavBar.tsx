@@ -51,7 +51,7 @@ export default function NavBar() {
                         {/* Logo */}
                         <Box>
                             <ChakraLink as={ReactRouterLink} to="/">
-                                <img width={width} src={'http://localhost:3000/images/bingemon_red_side_xsm.png'}/>
+                                <img width={width} src={'/images/logo/bingemon_red_side_sm.png'} />
                             </ChakraLink>
                         </Box>
                         {/* Searchbar, login, and dark/light mode */}

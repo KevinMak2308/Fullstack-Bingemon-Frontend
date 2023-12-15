@@ -27,7 +27,7 @@ const unavailableText = "N/A";
 
 function SingleMovieFirstSection({movie, images}: SingleMovieFirstSectionProps) {
     // Default img if movie doesn't have any movie poster
-    const defaultImgUrl = "http://127.0.0.1:8080/default/backdrop_unavailable.jpg";
+    const defaultImgUrl = "../../images/unavailable/poster_unavailable.jpg";
 
     // Max movie description length
     const maxOverviewLength = 445;

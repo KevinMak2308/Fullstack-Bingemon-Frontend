@@ -25,7 +25,7 @@ const ErrorScreen = ({errorText}: ErrorScreenProps) => {
                     <Box display='grid' gap='10'>
                         <Box display='grid' gap='10'>
                             <Center>
-                                <img width={width} src={'http://localhost:3000/images/bingemon_red_side_xsm.png'}
+                                <img width={width} src={'/images/logo/bingemon_red_side_sm.png'}
                                      alt="Logo"/>
                             </Center>
                             <Center>
