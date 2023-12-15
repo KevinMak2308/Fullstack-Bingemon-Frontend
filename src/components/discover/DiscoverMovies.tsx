@@ -75,11 +75,16 @@ function DiscoverMovies() {
     }
 
     useEffect(() => {
-        fetchAllMovies();
-        console.log("What is in genre param?: ", selectedGenre);
-        console.log("What is in decade param?: ", selectedDecade);
-        console.log("What is in language param?: ", selectedLanguage);
-        console.log("What is in actor param?: ", selectedActor);
+        const fetchData = async () => {
+            await fetchAllMovies();
+            console.log("What is in genre param?: ", selectedGenre);
+            console.log("What is in decade param?: ", selectedDecade);
+            console.log("What is in language param?: ", selectedLanguage);
+            console.log("What is in actor param?: ", selectedActor);
+        };
+
+        fetchData();
+
     }, [selectedGenre, selectedDecade, selectedLanguage, selectedActor]);
 
     const handlePrimaryFilterChange = (selectedOption: string) => {
