@@ -31,7 +31,7 @@ jobs:
       - name: Run TypeScript build
         run: npm run build
 
-      - name: Run ESLint
+      - name: Run ESLint in src folder
         run: npx eslint src
 
       - name: Run tests
