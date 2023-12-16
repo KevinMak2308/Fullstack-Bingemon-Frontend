@@ -10,7 +10,6 @@ import {
     useColorModeValue
 } from '@chakra-ui/react';
 import { User, Movie, Series, Avatar } from "../../pages/ProfilePage";
-import httpService from '../../services/httpService';
 import BackButton from '../buttons/BackButton';
 import SecondaryButton from '../buttons/SecondaryButton'
 
@@ -22,7 +21,7 @@ interface ProfileProps {
 }
 
 export default function ProfileInfo({ user, movies, series, avatars }: ProfileProps) {
-    const [name, setName] = useState<string>(user.name);
+    const [name] = useState<string>(user.name);
     const [bio, setBio] = useState<string>(user.bio);
     const [,] = useState<string>(user.profile_picture_filename);
 
@@ -30,23 +29,15 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
     const defaultImgUrl = "http://127.0.0.1:8080/default/user_unavailable.jpg";
 
 
-    const [isEditing, setIsEditing] = useState(false);
+    const [,] = useState(false);
     useEffect(() => {
         localStorage.setItem('userName', name);
     }, [name]);
-    const [originalName, setOriginalName] = useState(name);
-    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (isEditing) {
-            const plainText = e.target.value;
-            setName(plainText);
-        }
-    };
 
     const [isEditingBio, setIsEditingBio] = useState(false);
     useEffect(() => {
         localStorage.setItem('userBio', bio);
     }, [bio]);
-    const [originalBio, setOriginalBio] = useState(bio);
     const handleBioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (isEditingBio) {
             const plainText = e.target.value;
@@ -61,8 +52,6 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
     useEffect(() => {
         localStorage.setItem('profileImage', selectedImage || '');
     }, [selectedImage]);
-
-    const [] = useState(false);
 
 
     return (

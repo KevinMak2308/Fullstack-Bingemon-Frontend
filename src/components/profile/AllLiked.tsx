@@ -45,14 +45,13 @@ export default function AllLiked({commonMovies, commonSeries, movies, series, us
     // @ts-ignore
     const handleMouseEnter = useCallback((index: number) => {
         setIsHovered(index)
-    }, );
+    }, []);
     // Function for un-hover
-    // @ts-ignore
     const handleMouseLeave = useCallback(() => {
         if (!isClicked) {
             setIsHovered(null);
         }
-    }, );
+    }, [isClicked]);
     // Check for a selected box in localStorage
     useEffect(() => {
         const chooseBoxOnRender = () => {
