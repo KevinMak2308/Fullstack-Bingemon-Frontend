@@ -86,7 +86,6 @@ function Footer() {
             <Flex >
                 <Box >
                     <Flex flexDirection='column' gap='10px' placeItems={{base:"center", md:"normal", lg:"normal"}}>
-                        <a href="/discoverseries"/>
                         <Text className='BodyBold'>
                             Discover series
                         </Text>

@@ -38,7 +38,6 @@ function ProfileLiked() {
     const userUrl = `user/${id}`;
     const userMoviesUrl = `user/${id}/movies`;
     const userSeriesUrl = `user/${id}/series`;
-    const loggedInIdUrl = `user/logged-in-user`;
     const commonMoviesUrl = `user/compare-movies`;
     const commonSeriesUrl = `user/compare-series`;
     const [userData, setUserData] = useState<User>({

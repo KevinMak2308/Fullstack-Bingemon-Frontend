@@ -29,18 +29,6 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
     const imageUrl = "http://127.0.0.1:8080/avatars/" + user.profile_picture_filename;
     const defaultImgUrl = "http://127.0.0.1:8080/default/user_unavailable.jpg";
 
-    const updateUser = async () => {
-        try {
-            await httpService.put("/user/" + user.id, {
-                name: user.name,
-                bio: user.bio,
-                profile_picture_filename: user.profile_picture_filename,
-            });
-            setIsEditing(false);
-        } catch (error) {
-            console.error('Error updating profile:', error);
-        }
-    };
 
     const [isEditing, setIsEditing] = useState(false);
     useEffect(() => {
@@ -51,17 +39,6 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
         if (isEditing) {
             const plainText = e.target.value;
             setName(plainText);
-        }
-    };
-    const handleToggleEdit = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-        e.stopPropagation();
-        setIsEditing(!isEditing);
-        if (!isEditing) {
-            setOriginalName(name);
-        } else {
-            if (!e.currentTarget.classList.contains('save-name-button')) {
-                setName(originalName);
-            }
         }
     };
 
@@ -76,17 +53,6 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
             setBio(plainText);
         }
     };
-    const handleToggleBioEdit = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-        e.stopPropagation();
-        setIsEditingBio(!isEditingBio);
-        if (!isEditingBio) {
-            setOriginalBio(bio);
-        } else {
-            if (!e.currentTarget.classList.contains('save-bio-button')) {
-                setBio(originalBio);
-            }
-        }
-    };
 
     const storedImage = localStorage.getItem('profileImage');
     const [selectedImage, setSelectedImage] = useState<string | null>(
@@ -96,15 +62,8 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
         localStorage.setItem('profileImage', selectedImage || '');
     }, [selectedImage]);
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [] = useState(false);
 
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
 
     return (
         <Box bg={useColorModeValue('#dbdbdb', '#1A1917')} color={useColorModeValue('#21201D', '#F0F0EE')} >
