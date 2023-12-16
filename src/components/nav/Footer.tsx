@@ -4,10 +4,7 @@ import {
     Image,
     VStack,
     Text,
-    Link,
-    Flex,
-    Center,
-    HStack
+    Flex
 } from '@chakra-ui/react'
 
 
@@ -19,7 +16,7 @@ function Footer() {
             <VStack>
                 <Flex justifyContent='center' placeItems={{base:"center", md:"normal", lg:"normal"}} maxW="50%">
                     <a href="/">
-                        <img src='http://localhost:3000/images/bingemon_logo_transparent_red_sm.png'/>
+                        <img alt={"bingemon_logo"} src='http://localhost:3000/images/bingemon_logo_transparent_red_sm.png'/>
                     </a>
                 </Flex>
                 <Text className='SubheaderXsReg'>

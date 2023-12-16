@@ -1,5 +1,4 @@
-import React, {Fragment, useEffect, useState} from "react";
-import httpService from "../../services/httpService";
+import React, {useState} from "react";
 import {
     Menu,
     MenuButton,
@@ -14,7 +13,7 @@ interface DecadesProps {
 }
 
 export default function Decades({onChange}: DecadesProps ) {
-    const [selectedDecades, setSelectedDecades] = useState<string | null>(null);
+    const [, setSelectedDecades] = useState<string | null>(null);
 
     const decades: Array<{ decades: string; years?: Array<{ decades: string }> }> =
         [

@@ -115,7 +115,7 @@ function ProfileLiked() {
         if (id) {
             fetchUserMovies(id);
         }
-    }, [id]);
+    }, );
 
     if (isLoading) {
         return <LoadingScreen loadingText='liked movies and series'/>;

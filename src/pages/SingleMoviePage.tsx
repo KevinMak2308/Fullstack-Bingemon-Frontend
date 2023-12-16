@@ -109,7 +109,7 @@ function SingleMoviePage() {
             }
         };
         fetchData();
-    }, [id]);
+    }, );
 
     if (isLoading) {
         return <LoadingScreen loadingText='movie'/>;

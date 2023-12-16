@@ -1,4 +1,4 @@
-import React, {useState, useEffect, ChangeEvent  } from 'react';
+import React, {useState, useEffect } from 'react';
 import '../../App.css';
 import {
     Image,
@@ -7,8 +7,7 @@ import {
     Box,
     Center,
     Flex,
-    useColorModeValue,
-    Textarea,
+    useColorModeValue
 } from '@chakra-ui/react';
 import { User, Movie, Series, Avatar } from "../../pages/ProfilePage";
 import httpService from '../../services/httpService';
@@ -25,7 +24,7 @@ interface ProfileProps {
 export default function ProfileInfo({ user, movies, series, avatars }: ProfileProps) {
     const [name, setName] = useState<string>(user.name);
     const [bio, setBio] = useState<string>(user.bio);
-    const [profilePicture, setProfilePicture] = useState<string>(user.profile_picture_filename);
+    const [,] = useState<string>(user.profile_picture_filename);
 
     const imageUrl = "http://127.0.0.1:8080/avatars/" + user.profile_picture_filename;
     const defaultImgUrl = "http://127.0.0.1:8080/default/user_unavailable.jpg";

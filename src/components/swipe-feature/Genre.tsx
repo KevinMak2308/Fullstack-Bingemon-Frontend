@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import httpService from "../../services/httpService";
 import {
     Menu,
@@ -19,10 +19,10 @@ interface Genre {
     name: string
 }
 
-export default function Genre({onChange}: GenreProps ) {
+export default function Genres({onChange}: GenreProps ) {
     const genreUrl = "/movie/genres";
     const [genreData, setGenreData] = useState<Genre[]>([]);
-    const [selectedGenre, setSelectedGenre] = useState(0);
+    const [, setSelectedGenre] = useState(0);
 
     const fetchAllGenres = async () => {
         try {
