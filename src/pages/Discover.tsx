@@ -7,6 +7,7 @@ import Footer from "../components/nav/Footer"
 function Discover() {
     return (
         <div>
+            ///////
             <NavBar/>
             <DiscoverMovies/>
             <Footer/>
