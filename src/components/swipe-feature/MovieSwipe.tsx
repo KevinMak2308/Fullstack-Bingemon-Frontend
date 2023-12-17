@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import httpService from "../../services/httpService";
-import {Box, Text, SimpleGrid, GridItem, Flex, Heading, HStack, Button, Wrap, WrapItem} from '@chakra-ui/react';
+import {Box, Text, SimpleGrid, GridItem, Flex, HStack, Button} from '@chakra-ui/react';
 import Genre from "./Genre";
 import Language from "./Language"
 import Decades from "./Decades"
@@ -58,9 +58,11 @@ export default function MovieSwipe() {
                     decade: selectedDecades,
                     }
                 });
+                setCurrentMovie(0)
                 setMovieListData(data.results);
-                console.log("This is our json array: ", data.results)
-                console.log("This is our data: ", data)
+                console.log("JSON Array in fetchAllMovies: ", data.results)
+                fetchSingleMovie(data.results[0].id)
+                console.log("JSON object from fetchSingleMovie inside fetchAllMovies: ", data.results[currentMovie])
             } catch (error) {
                 console.error("Something went wrong fetching: ", error);
             }
@@ -68,16 +70,6 @@ export default function MovieSwipe() {
 
     const fetchAllData = async () => {
         await fetchAllMovies()
-        await handleNextMovie()
-    }
-
-    const handleNextMovie = () => {
-        if(currentMovie < movieListData.length -1) {
-            console.log("Single movie json: ", movieListData[currentMovie].id)
-            setCurrentMovie(currentMovie)
-            fetchSingleMovie(movieListData[currentMovie].id)
-
-        }
     }
 
     const fetchSingleMovie = async (id: string) => {
@@ -85,21 +77,30 @@ export default function MovieSwipe() {
             const { data } = await httpService.get(`movie/${id}`);
             setVideosData(data.videos.results)
             setGenreData(data.genres)
-            console.log("This is our single json movie object: ", data)
-            console.log("This is our single json movie object videos: ", data.videos.results)
+            console.log("JSON object in fetchSingleMovie: ", data)
         } catch (error) {
             console.log("Something went wrong fetching single movie: ", error)
         }
     }
 
-    const renderNextMovie = () => {
-        setCurrentMovie(currentMovie + 1)
+    const renderNextMovie = async () => {
+        if(currentMovie < movieListData.length -1) {
+            console.log("Current Movie in handleNextMovie: ", movieListData[currentMovie].id)
+            const nextMovie = currentMovie + 1
+            setCurrentMovie(nextMovie)
+            await fetchSingleMovie(movieListData[nextMovie].id)
+
+        }
     }
 
-    const renderNextMovieAndAddToList = () => {
-        // Indsæt film id til user movie list
-        handleNextMovie()
-        setCurrentMovie(currentMovie + 1)
+    const renderNextMovieAndAddToList = async () => {
+        if(currentMovie < movieListData.length -1) {
+            console.log("Current Movie in handleNextMovie: ", movieListData[currentMovie].id)
+            const nextMovie = currentMovie + 1
+            setCurrentMovie(nextMovie)
+            await fetchSingleMovie(movieListData[nextMovie].id)
+
+        }
     }
 
     const officialMovieTrailer = videosData.filter((trailer) => trailer.type.includes('Trailer')).map((trailer) => (trailer.key))

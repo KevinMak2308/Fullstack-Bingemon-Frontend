@@ -19,7 +19,7 @@ export default function SubNav() {
                 children: [
                     {
                         label: "Browse Movies",
-                        href1: "/discover",
+                        href1: "/movieswipe",
                         subLabel: "Start Swiping Now"
                     }
                 ]
@@ -90,7 +90,7 @@ export default function SubNav() {
                                 </MenuItem>
                                 <MenuItem
                                     as={ReactRouterLink}
-                                    to='movieswipe'
+                                    to='/movieswipe'
                                     bg="#343434"
                                     py='3'
                                     px='6'
