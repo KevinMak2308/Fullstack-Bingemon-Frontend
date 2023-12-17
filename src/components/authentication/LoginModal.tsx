@@ -28,7 +28,7 @@ interface Credentials {
 
 export default function Login() {
 
-    const authUrl = "auth/login";
+    const authUrl = "/auth/login";
     const [formData, setFormData] = useState({username: '', password: ''});
     const [show, setShow] = useState(false);
 
@@ -49,7 +49,8 @@ export default function Login() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await login(formData);
+            await login(formData)
+            window.location.reload()
             console.log("What does the cookie look like?: ", document.cookie)
         } catch (error) {
             console.error("Login Failed", error);

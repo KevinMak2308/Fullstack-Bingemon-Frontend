@@ -7,6 +7,7 @@ export default async function Logout() {
     document.cookie = `user=; expires=${expirationDate.toUTCString()}; path=/`;
     try {
         await httpService.post(logoutUrl)
+        window.location.reload()
         document.cookie = `user=; expires=${expirationDate.toUTCString()}; path=/`;
         document.cookie = `user_id=; expires=${expirationDate.toUTCString()}; path=/`;
     } catch (error) {

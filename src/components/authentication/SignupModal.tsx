@@ -25,6 +25,7 @@ interface signupProps {
 export default function Signup({isOpen, onClose, onOpen}: signupProps) {
 
     const [formData, setFormData] = useState({
+        name: '',
         email: '',
         username: '',
         password: ''
@@ -41,7 +42,7 @@ export default function Signup({isOpen, onClose, onOpen}: signupProps) {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const response = await fetch('http://localhost:8080/auth/signup', {
+        const response = await fetch('http://localhost:8080/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,6 +52,7 @@ export default function Signup({isOpen, onClose, onOpen}: signupProps) {
 
         if (response.ok) {
             console.log(formData, 'Signup successful');
+            window.location.reload()
         } else {
             console.log(formData, 'Signup unsuccessful')
         }
@@ -96,6 +98,12 @@ export default function Signup({isOpen, onClose, onOpen}: signupProps) {
                                     <FormLabel className='BodyBold' fontWeight='600'>E-mail</FormLabel>
                                     <Input className='BodyReg' borderRadius="10px" type="email" id="email" name="email"
                                            value={formData.email} onChange={handleChange} placeholder="E-mail"/>
+                                </FormControl>
+                                <FormControl id="name" isRequired>
+                                    <FormLabel className='BodyBold' fontWeight='600'>Name</FormLabel>
+                                    <Input className='BodyReg' borderRadius="10px" type="name" id="name"
+                                           name="name" value={formData.name} onChange={handleChange}
+                                           placeholder="Name"/>
                                 </FormControl>
                                 <FormControl id="username" isRequired>
                                     <FormLabel className='BodyBold' fontWeight='600'>Username</FormLabel>
