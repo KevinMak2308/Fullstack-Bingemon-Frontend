@@ -45,7 +45,7 @@ interface Movie {
 export default function NavBar() {
     const [movieSearch, setMovieSearch] = useState<Movie[]>([])
     const {colorMode, toggleColorMode} = useColorMode()
-    const user = document.cookie.split(';').find((row) => row.startsWith('user='))?.split('=')[1];
+    const user = document.cookie.split(';').find((row) => row.startsWith('user_id='))?.split('=')[1];
 
     // Const for light/dark mode
     const bgColor = useColorModeValue('#c1c1c1', '#151412');
@@ -176,7 +176,7 @@ export default function NavBar() {
                                             <MenuList bg="#343434" border="#343434" color="#F0F0EE" zIndex="2000"
                                                       minW='xs'>
                                                 <MenuItem
-                                                    as={ReactRouterLink} to="/profilepage"
+                                                    as={ReactRouterLink} to={`/profilepage/${user}`}
                                                     py='2'
                                                     px='4'
                                                     className='BodyReg'
