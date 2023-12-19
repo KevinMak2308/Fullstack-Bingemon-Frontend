@@ -26,14 +26,16 @@ interface SingleMovieFirstSectionProps {
 const unavailableText = "N/A";
 
 function SingleMovieFirstSection({movie, images}: SingleMovieFirstSectionProps) {
+
     // Default img if movie doesn't have any movie poster
     const defaultImgUrl = "../../images/unavailable/poster_unavailable.jpg";
+
+    // Max 15 images
+    const limitedImages = images.slice(0, 15);
 
     // Max movie description length
     const maxOverviewLength = 445;
 
-    // Max 15 images
-    const limitedImages = images.slice(0, 15);
 
     return (
         <SimpleGrid
@@ -44,30 +46,21 @@ function SingleMovieFirstSection({movie, images}: SingleMovieFirstSectionProps) 
             {/* Movie images */}
             <GridItem>
                 {limitedImages.length > 1 ? (
-                    <ImageCarousel images={limitedImages} />
+                    <ImageCarousel images={limitedImages}/>
                 ) : (
-                    (movie.backdrop_path ? (
-                        <Image
-                            src={"https://image.tmdb.org/t/p/original/" + movie.backdrop_path}
-                            h="100%"
-                            w="100%"
-                            objectFit="cover"
-                        />
-                    ) : (
-                        <Image
-                            src={defaultImgUrl}
-                            h={{
-                                base: "50vh",
-                                sm: "50vh",
-                                md: "60vh",
-                                lg: "82vh",
-                                xl: "82vh",
-                                "2xl": "82vh"
-                            }}
-                            w="100%"
-                            objectFit="cover"
-                        />
-                    ))
+                    <Image
+                        src={defaultImgUrl}
+                        h={{
+                            base: "50vh",
+                            sm: "50vh",
+                            md: "60vh",
+                            lg: "82vh",
+                            xl: "82vh",
+                            "2xl": "82vh"
+                        }}
+                        w="100%"
+                        objectFit="cover"
+                    />
                 )}
             </GridItem>
             <GridItem>
@@ -142,7 +135,8 @@ function SingleMovieFirstSection({movie, images}: SingleMovieFirstSectionProps) 
                                                         <path fill="currentColor"
                                                               d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m-26.37 144h52.74C149 186.34 140 202.87 128 215.89c-12-13.02-21-29.55-26.37-47.89M98 152a145.72 145.72 0 0 1 0-48h60a145.72 145.72 0 0 1 0 48Zm-58-24a87.61 87.61 0 0 1 3.33-24h38.46a161.79 161.79 0 0 0 0 48H43.33A87.61 87.61 0 0 1 40 128m114.37-40h-52.74C107 69.66 116 53.13 128 40.11c12 13.02 21 29.55 26.37 47.89m19.84 16h38.46a88.15 88.15 0 0 1 0 48h-38.46a161.79 161.79 0 0 0 0-48m32.16-16h-35.43a142.39 142.39 0 0 0-20.26-45a88.37 88.37 0 0 1 55.69 45M105.32 43a142.39 142.39 0 0 0-20.26 45H49.63a88.37 88.37 0 0 1 55.69-45M49.63 168h35.43a142.39 142.39 0 0 0 20.26 45a88.37 88.37 0 0 1-55.69-45m101.05 45a142.39 142.39 0 0 0 20.26-45h35.43a88.37 88.37 0 0 1-55.69 45"/>
                                                     </svg>
-                                                    <Text className='SubheaderSmBold'>{language.english_name || unavailableText}</Text>
+                                                    <Text
+                                                        className='SubheaderSmBold'>{language.english_name || unavailableText}</Text>
                                                 </HStack>
                                             ))}
                                         </>
@@ -170,6 +164,7 @@ function SingleMovieFirstSection({movie, images}: SingleMovieFirstSectionProps) 
                                             : movie.overview || unavailableText
                                         }
                                     </Text>
+
                                 </Flex>
                             </Box>
                         </Box>

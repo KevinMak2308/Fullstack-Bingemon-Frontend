@@ -30,7 +30,7 @@ export default function AvatarModal({avatars, user, isOpen, onRequestClose}: Ava
             .put(`http://localhost:8080/api/user/${user.id}`, {avatar: selectedAvatar})
             .then(() => {
                 alert('User updated successfully!');
-                onRequestClose(); // Close the modal after updating the user
+                onRequestClose();
             })
             .catch((error) => console.error(error));
     };

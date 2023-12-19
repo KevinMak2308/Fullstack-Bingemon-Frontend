@@ -46,9 +46,9 @@ export default function SubNav() {
             borderColor={useColorModeValue('gray.200', 'gray.900')}
             borderRadius='10px'
             align={'center'}
-            justify={'start'} // Center the content horizontally
-            w={'90vw'} // Set the width to 90vw
-            mx={'auto'} // Center the content horizontally
+            justify={'start'}
+            w={'90vw'}
+            mx={'auto'}
         >
             {subNavItems.map((navItem) => (
                 <Menu key={navItem.label}>

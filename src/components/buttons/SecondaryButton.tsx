@@ -16,9 +16,7 @@ function PrimaryButton({buttonText}: PrimaryButtonProps) {
             transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
             border=''
             borderRadius='10px'
-            fontSize={{base: "12px", sm: "13px", md: "14px", lg: "15px", xl: "16px", "2xl": "17px"}}
-            fontFamily='Roboto'
-            fontWeight='semibold'
+            className='BodyBold'
             bg='#343434'
             color="#F0F0EE"
             _hover={{filter: 'brightness(1.2)'}}

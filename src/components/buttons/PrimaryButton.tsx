@@ -15,10 +15,8 @@ function PrimaryButton({buttonText}: PrimaryButtonProps) {
             lineHeight='1.2'
             transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
             border=''
+            className='BodyBold'
             borderRadius='10px'
-            fontSize={{base: "12px", sm: "13px", md: "13px", lg: "14px", xl: "15px", "2xl": "16px"}}
-            fontFamily='Roboto'
-            fontWeight='semibold'
             letterSpacing='0.75px'
             bg='#A61212'
             color='#F0F0EE'
@@ -32,6 +30,7 @@ function PrimaryButton({buttonText}: PrimaryButtonProps) {
 }
 
 export default PrimaryButton;
+
 
 
 

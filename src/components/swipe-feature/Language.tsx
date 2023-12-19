@@ -19,7 +19,7 @@ interface Language {
 }
 
 export default function Language ({onChange}: LanguageProps) {
-    const [selectedLanguage, setSelectedLanguage] = useState(""); // Add this line
+    const [selectedLanguage, setSelectedLanguage] = useState("");
 
     const languages: Array<Language> = [
         {name: 'English', subname: [{name: 'en'}]},

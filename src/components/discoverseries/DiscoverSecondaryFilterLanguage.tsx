@@ -11,7 +11,7 @@ interface Language {
 }
 
 export default function LanguageFilter({onChange}: DiscoverSecondaryFilterLanguageProps) {
-    const [selectedLanguage, setSelectedLanguage] = useState(""); // Add this line
+    const [selectedLanguage, setSelectedLanguage] = useState("");
 
     const languages: Array<Language> = [
         {name: 'English', subname: [{name: 'en'}]},
