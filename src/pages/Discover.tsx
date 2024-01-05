@@ -5,6 +5,7 @@ import DiscoverMovies from "../components/discover/DiscoverMovies"
 import Footer from "../components/nav/Footer"
 
 function Discover() {
+    console.log("HOWDY")
     return (
         <div>
             <NavBar/>
