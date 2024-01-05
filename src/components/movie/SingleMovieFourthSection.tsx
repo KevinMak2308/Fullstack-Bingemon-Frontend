@@ -6,7 +6,7 @@ import PrimaryButton from "../buttons/PrimaryButton";
 function SingleMovieFourthSection() {
 
     // Default img if movie doesn't have any movie poster
-    const defaultImgUrl = "http://127.0.0.1:8080/default/user_unavailable.jpg";
+    const defaultImgUrl = "../../images/unavailable/user_unavailable.jpg";
 
     return (
         <Box bg={useColorModeValue('#e5e5e5', '#21201D')} color={useColorModeValue('#21201D', '#F0F0EE')}>

@@ -12,7 +12,7 @@ function DiscoverPrimaryFilter({onChange}: DiscoverPrimaryFilterProps) {
     const handleBoxClick = (boxId: number) => {
         setSelectedBox((prev) => (prev === boxId ? prev : boxId));
         const selectedOption = boxNames[boxId];
-        onChange(selectedOption); // Notify the parent component about the selected option
+        onChange(selectedOption);
     };
 
     return (

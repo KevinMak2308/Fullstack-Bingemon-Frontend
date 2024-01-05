@@ -17,10 +17,9 @@ function FrontPageFirstSection() {
     };
 
     useEffect(() => {
-        // Check the 'user' cookie when the component mounts
         const userCookie = document.cookie.split(';').find((row) => row.trim().startsWith('user='));
         setLoggedIn(!!userCookie);
-    }, []); // Empty dependency array to run the effect only once when the component mounts
+    }, []);
 
     return (
 

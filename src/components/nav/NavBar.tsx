@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
+    AspectRatio,
     Avatar,
     Box,
     Button,
     Center,
     Flex,
+    Grid,
+    GridItem, Image,
     Input,
     InputGroup,
-    InputLeftElement,
+    InputLeftElement, Link,
     Link as ChakraLink,
     Menu,
     MenuButton,
     MenuItem,
     MenuList,
+    Popover,
+    PopoverArrow,
+    PopoverBody,
+    PopoverCloseButton,
+    PopoverContent,
+    PopoverHeader,
+    PopoverTrigger,
+    SimpleGrid,
     Stack,
     useBreakpointValue,
     useColorMode,
@@ -23,10 +34,18 @@ import {MoonIcon, SearchIcon, SunIcon} from '@chakra-ui/icons'
 import Login from "../authentication/LoginModal";
 import SubNav from "./SubNav";
 import Logout from "../authentication/Logout";
+import httpService from "../../services/httpService";
+
+interface Movie {
+    id: string;
+    title: string;
+    poster_path: string;
+}
 
 export default function NavBar() {
+    const [movieSearch, setMovieSearch] = useState<Movie[]>([])
     const {colorMode, toggleColorMode} = useColorMode()
-    const user = document.cookie.split(';').find((row) => row.startsWith('user='))?.split('=')[1];
+    const user = document.cookie.split(';').find((row) => row.startsWith('user_id='))?.split('=')[1];
 
     // Const for light/dark mode
     const bgColor = useColorModeValue('#c1c1c1', '#151412');
@@ -42,6 +61,21 @@ export default function NavBar() {
         "2xl": "250px"
     });
 
+    const defaultImgUrl = "../../images/unavailable/poster_unavailable.jpg";
+
+    const searchMovie = async (title: string) => {
+        try {
+            const { data } = await httpService.get(`movie/searchMovie/${title}`);
+            setMovieSearch(data.results)
+            console.log("JSON Array in the searchMovie fetch: ", data.results)
+        } catch (error) {
+            console.log("Something went wrong searching for movies: ", error)
+        }
+    }
+
+
+
+
     return (
         <Box bg={bgColor} color={textColor}>
             <Flex py={{base: '10px', sm: '10px', md: '10px', lg: '10px', xl: '10px', "2xl": '10px'}} w='100%' h='10vh'
@@ -51,12 +85,14 @@ export default function NavBar() {
                         {/* Logo */}
                         <Box>
                             <ChakraLink as={ReactRouterLink} to="/">
-                                <img width={width} src={'http://localhost:3000/images/bingemon_red_side_xsm.png'}/>
+                                <img width={width} src={'/images/logo/bingemon_red_side_sm.png'} />
                             </ChakraLink>
                         </Box>
                         {/* Searchbar, login, and dark/light mode */}
                         <Flex alignItems={'center'} gap={{base: "2", sm: "2", md: "6", lg: "6", xl: "6", "2xl": "8"}}
                               justifyContent={'space-between'}>
+                            <Popover>
+                            <PopoverTrigger>
                             <Stack
                                 direction={'row'}
                                 display='flex'
@@ -67,9 +103,43 @@ export default function NavBar() {
                                         <SearchIcon/>
                                     </InputLeftElement>
                                     <Input type='search' placeholder='Search...' focusBorderColor='#A61212'
-                                           borderRadius='10px'/>
+                                           borderRadius='10px' onChange={(event) => searchMovie(event.target.value)}/>
                                 </InputGroup>
                             </Stack>
+                            </PopoverTrigger>
+                                <PopoverContent>
+                                    <PopoverArrow />
+                                        <PopoverCloseButton />
+                                            <PopoverHeader>Search Results</PopoverHeader>
+                                            <PopoverBody>
+                                {movieSearch.length > 0 && (
+                                <SimpleGrid>
+                                    <Grid>
+                                        {movieSearch.map((movie) => (
+                                            <Link
+                                                as={ReactRouterLink}
+                                                key={movie.id}
+                                                to={`/singlemoviepage/${movie.id}`}
+                                                _hover={{textDecoration: 'none'}}
+                                            >
+                                            <GridItem>{movie.title}</GridItem>
+                                                <AspectRatio ratio={2 / 3}>
+                                                    <Image
+                                                        objectFit="cover"
+                                                        className='movie'
+                                                        src={movie.poster_path}
+                                                        fallbackSrc={defaultImgUrl}
+                                                        alt={`Poster for: ${'title' in movie ? movie.title : ''}`}
+                                                    />
+                                                </AspectRatio>
+                                            </Link>
+                                        ))}
+                                    </Grid>
+                                </SimpleGrid>
+                            )}
+                                    </PopoverBody>
+                                </PopoverContent>
+                            </Popover>
                             {/* Dark/light mode */}
                             <Stack direction={'row'} display='flex' alignItems={'center'}
                                    spacing={{base: "1", sm: "1", md: "2", lg: "2", xl: "2", "2xl": "2"}}>
@@ -106,7 +176,7 @@ export default function NavBar() {
                                             <MenuList bg="#343434" border="#343434" color="#F0F0EE" zIndex="2000"
                                                       minW='xs'>
                                                 <MenuItem
-                                                    as={ReactRouterLink} to="/profilepage"
+                                                    as={ReactRouterLink} to={`/profilepage/${user}`}
                                                     py='2'
                                                     px='4'
                                                     className='BodyReg'

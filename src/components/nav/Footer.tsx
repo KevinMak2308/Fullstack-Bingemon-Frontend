@@ -19,7 +19,7 @@ function Footer() {
             <VStack>
                 <Flex justifyContent='center' placeItems={{base:"center", md:"normal", lg:"normal"}} maxW="50%">
                     <a href="/">
-                        <img src='http://localhost:3000/images/bingemon_logo_transparent_red_sm.png'/>
+                        <img src={'/images/logo/bingemon_red_side_sm.png'}/>
                     </a>
                 </Flex>
                 <Text className='SubheaderXsReg'>
@@ -89,6 +89,7 @@ function Footer() {
             <Flex >
                 <Box >
                     <Flex flexDirection='column' gap='10px' placeItems={{base:"center", md:"normal", lg:"normal"}}>
+                        <a href="/discoverseries"/>
                         <Text className='BodyBold'>
                             Discover series
                         </Text>
@@ -113,7 +114,9 @@ function Footer() {
                                 },
                             }}
                         >
+                            <a href="/discoverseries">
                             <Text className='BodyReg' marginBottom="2px">Browse series</Text>
+                            </a>
                         </Box>
                         <Box
                             as="span"
@@ -136,7 +139,9 @@ function Footer() {
                                 },
                             }}
                         >
+                            <a href="/movieswipe">
                             <Text className='BodyReg' marginBottom="2px">Start swiping series</Text>
+                            </a>
                         </Box>
                     </Flex>
                 </Box>
@@ -204,7 +209,7 @@ function Footer() {
             display='flex'
             gap="15px"
         >
-            <Image maxW="100px" src='http://localhost:3000/images/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg'/>
+            <Image maxW="100px" src={'/images/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg'}/>
             <Text className='SubheaderXsReg'>This product uses the TMDB API but is not endorsed or certified by TMDB.</Text>
         </Flex>
     </Box>

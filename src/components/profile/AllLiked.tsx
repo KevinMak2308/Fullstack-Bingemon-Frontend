@@ -17,7 +17,7 @@ interface AllLikedProps {
 }
 
 // Default img if movie doesn't have any movie poster
-const defaultImgUrl = "http://127.0.0.1:8080/default/poster_unavailable.jpg";
+const defaultImgUrl = "../../images/unavailable/user_unavailable.jpg";
 
 export default function AllLiked({commonMovies, commonSeries, movies, series, user, loggedInId}: AllLikedProps) {
     // FILTER

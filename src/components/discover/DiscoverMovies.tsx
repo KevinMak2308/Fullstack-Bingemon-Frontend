@@ -56,7 +56,7 @@ function DiscoverMovies() {
     }
 
     // Default img if movie doesn't have any movie poster
-    const defaultImgUrl = "http://127.0.0.1:8080/default/poster_unavailable.jpg";
+    const defaultImgUrl = "../../images/unavailable/poster_unavailable.jpg";
 
     const fetchAllMovies = async () => {
         try {
