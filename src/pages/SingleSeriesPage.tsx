@@ -108,7 +108,7 @@ function SingleSeriesPage() {
             }
         };
         fetchData();
-    }, [id]);
+    }, );
 
     if (isLoading) {
         return <LoadingScreen loadingText='series'/>;

@@ -6,7 +6,7 @@ import Signup from '../authentication/SignupModal';
 function FrontPageFirstSection() {
     const [show, setShow] = useState(false);
 
-    const [loggedIn, setLoggedIn] = useState(!!document.cookie.split(';').find((row) => row.startsWith('user=')));
+    const [, setLoggedIn] = useState(!!document.cookie.split(';').find((row) => row.startsWith('user=')));
 
     const openModal = () => {
         setShow(true);

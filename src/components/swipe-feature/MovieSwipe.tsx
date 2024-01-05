@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import httpService from "../../services/httpService";
-import {Box, Text, SimpleGrid, GridItem, Flex, Heading, HStack, Button, Wrap, WrapItem} from '@chakra-ui/react';
+import {Box, Text, SimpleGrid, GridItem, Flex, HStack, Button} from '@chakra-ui/react';
 import Genre from "./Genre";
 import Language from "./Language"
 import Decades from "./Decades"
@@ -12,11 +12,11 @@ interface Movie {
     vote_average: string;
     release_date: string;
     backdrop_path: string;
-    genre: Genre[]
+    genre: Genres[]
     videos: Videos[]
 }
 
-interface Genre {
+interface Genres {
     name: string
 }
 
@@ -28,7 +28,7 @@ interface Videos {
 
 export default function MovieSwipe() {
     const movieListUrl = `movie/swipe`
-    const [genreData, setGenreData] = useState<Genre[]>([])
+    const [genreData, setGenreData] = useState<Genres[]>([])
     const [videosData, setVideosData] = useState<Videos[]>([])
     const [movieListData, setMovieListData] = useState<Movie[]>([])
     const [currentMovie, setCurrentMovie] = useState(0)
@@ -215,7 +215,7 @@ export default function MovieSwipe() {
                         <Box
                         pt="10px"
                         h={{base:"25vh", md:"30vh", lg:"40vh"}}>
-                            <iframe src={`https://www.youtube.com/embed/${officialMovieTrailer[officialMovieTrailer.length -1]}`} width="100%" height="100%"/>
+                            <iframe title={"trailer"} src={`https://www.youtube.com/embed/${officialMovieTrailer[officialMovieTrailer.length -1]}`} width="100%" height="100%"/>
                         </Box>
                     )}
                     </Flex>

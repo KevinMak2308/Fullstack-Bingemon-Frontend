@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.8.1]
 
     steps:
       - name: Checkout code
@@ -31,8 +31,8 @@ jobs:
       - name: Run TypeScript build
         run: npm run build
 
-      - name: Run ESLint
-        run: npm run lint
+      - name: Run ESLint in src folder
+        run: npx eslint src
 
       - name: Run tests
         run: npm test

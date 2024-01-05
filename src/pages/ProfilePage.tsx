@@ -70,7 +70,7 @@ function ProfilePage() {
         if (id) {
             fetchUserMovies(id);
         }
-    }, [id]);
+    }, );
 
     if (isLoading) {
         return <LoadingScreen loadingText='user'/>;

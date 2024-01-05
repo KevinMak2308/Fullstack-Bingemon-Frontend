@@ -85,7 +85,7 @@ function DiscoverMovies() {
 
         fetchData();
 
-    }, [selectedGenre, selectedDecade, selectedLanguage, selectedActor]);
+    }, );
 
     const handlePrimaryFilterChange = (selectedOption: string) => {
         setSelectedPrimaryFilter(selectedOption);

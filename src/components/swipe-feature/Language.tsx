@@ -1,12 +1,10 @@
-import React, {Fragment, useEffect, useState} from "react";
-import httpService from "../../services/httpService";
+import React, {useState} from "react";
 import {
     Menu,
     MenuButton,
     MenuList,
     MenuItem,
-    Button,
-    Box,
+    Button
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
@@ -18,8 +16,8 @@ interface Language {
     subname?: Array<{ name: string }>
 }
 
-export default function Language ({onChange}: LanguageProps) {
-    const [selectedLanguage, setSelectedLanguage] = useState(""); // Add this line
+export default function Languages ({onChange}: LanguageProps) {
+    const [, setSelectedLanguage] = useState(""); // Add this line
 
     const languages: Array<Language> = [
         {name: 'English', subname: [{name: 'en'}]},

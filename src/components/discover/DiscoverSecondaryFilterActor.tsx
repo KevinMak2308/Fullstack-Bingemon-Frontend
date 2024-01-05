@@ -15,7 +15,7 @@ interface Actor {
 export default function DiscoverSecondaryFilterCast({ onChange }: DiscoverSecondaryFilterActorProps) {
     const actorsUrl = "/person/actors";
     const [actorsList, setActorsList] = useState<Actor[]>([]);
-    const [selectedActor, setSelectedActor] = useState(0);
+    const [, setSelectedActor] = useState(0);
 
     const fetchPopularActors = async () => {
         try {

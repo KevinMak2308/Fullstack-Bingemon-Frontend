@@ -1,4 +1,4 @@
-import React, {useState, useEffect, ChangeEvent  } from 'react';
+import React, {useState, useEffect } from 'react';
 import '../../App.css';
 import {
     Image,
@@ -7,11 +7,9 @@ import {
     Box,
     Center,
     Flex,
-    useColorModeValue,
-    Textarea,
+    useColorModeValue
 } from '@chakra-ui/react';
 import { User, Movie, Series, Avatar } from "../../pages/ProfilePage";
-import httpService from '../../services/httpService';
 import BackButton from '../buttons/BackButton';
 import SecondaryButton from '../buttons/SecondaryButton'
 
@@ -23,69 +21,27 @@ interface ProfileProps {
 }
 
 export default function ProfileInfo({ user, movies, series, avatars }: ProfileProps) {
-    const [name, setName] = useState<string>(user.name);
+    const [name] = useState<string>(user.name);
     const [bio, setBio] = useState<string>(user.bio);
-    const [profilePicture, setProfilePicture] = useState<string>(user.profile_picture_filename);
+    const [,] = useState<string>(user.profile_picture_filename);
 
     const imageUrl = "http://127.0.0.1:8080/avatars/" + user.profile_picture_filename;
     const defaultImgUrl = "http://127.0.0.1:8080/default/user_unavailable.jpg";
 
-    const updateUser = async () => {
-        try {
-            await httpService.put("/user/" + user.id, {
-                name: user.name,
-                bio: user.bio,
-                profile_picture_filename: user.profile_picture_filename,
-            });
-            setIsEditing(false);
-        } catch (error) {
-            console.error('Error updating profile:', error);
-        }
-    };
 
-    const [isEditing, setIsEditing] = useState(false);
+    const [,] = useState(false);
     useEffect(() => {
         localStorage.setItem('userName', name);
     }, [name]);
-    const [originalName, setOriginalName] = useState(name);
-    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (isEditing) {
-            const plainText = e.target.value;
-            setName(plainText);
-        }
-    };
-    const handleToggleEdit = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-        e.stopPropagation();
-        setIsEditing(!isEditing);
-        if (!isEditing) {
-            setOriginalName(name);
-        } else {
-            if (!e.currentTarget.classList.contains('save-name-button')) {
-                setName(originalName);
-            }
-        }
-    };
 
     const [isEditingBio, setIsEditingBio] = useState(false);
     useEffect(() => {
         localStorage.setItem('userBio', bio);
     }, [bio]);
-    const [originalBio, setOriginalBio] = useState(bio);
     const handleBioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (isEditingBio) {
             const plainText = e.target.value;
             setBio(plainText);
-        }
-    };
-    const handleToggleBioEdit = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-        e.stopPropagation();
-        setIsEditingBio(!isEditingBio);
-        if (!isEditingBio) {
-            setOriginalBio(bio);
-        } else {
-            if (!e.currentTarget.classList.contains('save-bio-button')) {
-                setBio(originalBio);
-            }
         }
     };
 
@@ -97,15 +53,6 @@ export default function ProfileInfo({ user, movies, series, avatars }: ProfilePr
         localStorage.setItem('profileImage', selectedImage || '');
     }, [selectedImage]);
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
 
     return (
         <Box bg={useColorModeValue('#dbdbdb', '#1A1917')} color={useColorModeValue('#21201D', '#F0F0EE')} >

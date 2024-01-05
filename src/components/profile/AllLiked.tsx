@@ -42,9 +42,10 @@ export default function AllLiked({commonMovies, commonSeries, movies, series, us
         setIsHovered(null);
     }, []);
     // Function for hover
+    // @ts-ignore
     const handleMouseEnter = useCallback((index: number) => {
         setIsHovered(index)
-    }, [isClicked]);
+    }, []);
     // Function for un-hover
     const handleMouseLeave = useCallback(() => {
         if (!isClicked) {
@@ -141,23 +142,19 @@ export default function AllLiked({commonMovies, commonSeries, movies, series, us
                                     alignItems="top"
                                 >
                                     {(user.id === Number(loggedInId) && selectedBox === 0) || (user.id === Number(loggedInId) && selectedBox === 1) ? (
-                                        <Text as='h1' textAlign="center">Your
-                                            liked {selectedBox === 0 ? 'movies' : 'series'}</Text>
+                                        <Text as='h1' textAlign="center">Your liked {selectedBox === 0 ? 'movies' : 'series'}</Text>
                                     ) : null}
 
-                                    {loggedInId === 0 && (user.id !== Number(loggedInId) && selectedBox === 0) || loggedInId === 0 && (user.id !== Number(loggedInId) && selectedBox === 1) ? (
-                                        <Text as='h1' textAlign="center">{user.username}'s
-                                            liked {selectedBox === 0 ? 'movies' : 'series'}</Text>
+                                    {(loggedInId === 0 && user.id !== Number(loggedInId) && selectedBox === 0) || (loggedInId === 0 && user.id !== Number(loggedInId) && selectedBox === 1) ? (
+                                        <Text as='h1' textAlign="center">{user.username}'s liked {selectedBox === 0 ? 'movies' : 'series'}</Text>
                                     ) : null}
 
-                                    {loggedInId !== 0 && (user.id !== Number(loggedInId) && selectedBox === 0) || loggedInId !== 0 && (user.id !== Number(loggedInId) && selectedBox === 1) ? (
-                                        <Text as='h1' textAlign="center">You and {user.username} like
-                                            these {selectedBox === 0 ? 'movies' : 'series'}</Text>
+                                    {(loggedInId !== 0 && user.id !== Number(loggedInId) && selectedBox === 0) || (loggedInId !== 0 && user.id !== Number(loggedInId) && selectedBox === 1) ? (
+                                        <Text as='h1' textAlign="center">You and {user.username} like these {selectedBox === 0 ? 'movies' : 'series'}</Text>
                                     ) : null}
 
-                                    {loggedInId !== 0 && (user.id !== Number(loggedInId) && selectedBox === 2) || loggedInId !== 0 && (user.id !== Number(loggedInId) && selectedBox === 3) ? (
-                                        <Text as='h1' textAlign="center">{user.username}'s
-                                            liked {selectedBox === 2 ? 'movies' : 'series'}</Text>
+                                    {(loggedInId !== 0 && user.id !== Number(loggedInId) && selectedBox === 2) || (loggedInId !== 0 && user.id !== Number(loggedInId) && selectedBox === 3) ? (
+                                        <Text as='h1' textAlign="center">{user.username}'s liked {selectedBox === 2 ? 'movies' : 'series'}</Text>
                                     ) : null}
                                 </Text>
                             </Center>

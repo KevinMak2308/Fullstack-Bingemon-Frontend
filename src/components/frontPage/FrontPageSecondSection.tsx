@@ -55,6 +55,8 @@ function FrontPageSecondSection() {
                                                     <PrimaryButton buttonText="Start swiping now" />
                                                 </a>
                                             </Box>
+
+                                            {/* Comment */}
                                         </Stack>
                                     </Center>
                                 </Flex>

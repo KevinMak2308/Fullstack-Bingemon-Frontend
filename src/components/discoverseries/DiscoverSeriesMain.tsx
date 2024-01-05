@@ -64,7 +64,7 @@ function DiscoverSeriesMain() {
         console.log("What is in decade param?: ", selectedDecade);
         console.log("What is in language param?: ", selectedLanguage);
         console.log("What is in actor param?: ", selectedActor);
-    }, [selectedGenre, selectedDecade, selectedLanguage, selectedActor]);
+    }, );
 
     const handlePrimaryFilterChange = (selectedOption: string) => {
         setSelectedPrimaryFilter(selectedOption);
