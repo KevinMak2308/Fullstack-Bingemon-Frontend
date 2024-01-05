@@ -99,6 +99,8 @@ function DiscoverMovies() {
         setSelectedPrimaryFilter(null);
     };
 
+    console.log("fred på jord")
+
     return (
         <Box bg={defaultBgColor} color={defaultTextColor}>
             {/* Back button */}
